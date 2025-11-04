@@ -25,8 +25,8 @@
         <div id="login-section">
             <div id="login-form">
                 <h3>Login do Desenvolvedor</h3>
-                <input type="text" id="username" placeholder="Usuário (Ex: dev01 ou dev02)">
-                <input type="password" id="password" placeholder="Senha (Ex: 123)">
+                <input type="text" id="username" placeholder="Usuário">
+                <input type="password" id="password" placeholder="Senha">
                 <button onclick="developerLogin()">Entrar como Desenvolvedor</button>
             </div>
             <p style="text-align: center;">Ou</p>
@@ -45,11 +45,11 @@
             </select><br><br>
             
             <label for="item-name">Nome do Item:</label>
-            <input type="text" id="item-name" placeholder="Ex: Tutorial JS" style="width: 100%; margin-bottom: 10px;"><br>
+            <input type="text" id="item-name" placeholder="Nome do item" style="width: 100%; margin-bottom: 10px;"><br>
             
             <div id="link-input">
                 <label for="item-url">URL (Link, Foto ou Vídeo):</label>
-                <input type="text" id="item-url" placeholder="http://exemplo.com/recurso" style="width: 100%; margin-bottom: 10px;">
+                <input type="text" id="item-url" placeholder="http://recurso.com/arquivo" style="width: 100%; margin-bottom: 10px;">
             </div>
             
             <label>Visível para Usuário?</label>
@@ -73,15 +73,63 @@
         </div>
     </div>
 
-    <script>
-        // Dados de desenvolvedores (INSEGURO - APENAS PARA DEMONSTRAÇÃO)
-        const DEVELOPERS = {
-            "dev01": "123",
-            "dev02": "456"
-        };
+<script>
+    // Dados de desenvolvedores (INSEGURO - APENAS PARA DEMONSTRAÇÃO)
+    const DEVELOPERS = {
+        "dev01": "123", // Desenvolvedor 01
+        "dev02": "456",  // Desenvolvedor 02
+        "dev03": "789",  // NOVO: Desenvolvedor 03
+        "dev04": "101",  // NOVO: Desenvolvedor 04
+        "dev05": "112",  // NOVO: Desenvolvedor 05
+        "dev06": "131",  // NOVO: Desenvolvedor 06
+        "dev07": "415",  // NOVO: Desenvolvedor 07
+        "dev08": "161"   // NOVO: Desenvolvedor 08
+    };
 
-        // Lista de arquivos (usando Local Storage para simular persistência no navegador)
-        let files = JSON.parse(localStorage.getItem('files')) || [];
+    // Lista de arquivos (usando Local Storage para simular persistência no navegador)
+    let files = JSON.parse(localStorage.getItem('files')) || [];
+
+    let currentUser = null; // 'user', 'dev01', 'dev02', ..., 'dev08'
+
+    // ... (O restante das funções do JavaScript permanece o mesmo) ...
+
+    // Função para salvar os dados no Local Storage
+    function saveFiles() {
+        localStorage.setItem('files', JSON.stringify(files));
+    }
+
+    function toggleLinkInput() { /* ... */ }
+    function renderDevPanel() { /* ... */ }
+    function renderUserView() { /* ... */ }
+    function addItem() { /* ... */ }
+    function toggleVisibility(index) { /* ... */ }
+    function deleteItem(index) { /* ... */ }
+    function developerLogin() { 
+        const username = document.getElementById('username').value.toLowerCase().trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (DEVELOPERS[username] && DEVELOPERS[username] === password) {
+            currentUser = username;
+            document.getElementById('dev-name').textContent = currentUser;
+            
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('user-view').style.display = 'none';
+            document.getElementById('dev-panel').style.display = 'block';
+            
+            renderDevPanel();
+        } else {
+            alert('Credenciais de Desenvolvedor Inválidas.');
+        }
+    }
+    function userLogin() { /* ... */ }
+    function logout() { /* ... */ }
+
+    // Inicializa a página no estado de login
+    logout();
+
+</script>
+
+
 
         let currentUser = null; // 'user', 'dev01', ou 'dev02'
 
@@ -93,7 +141,7 @@
         // --- Funções de Renderização e Visibilidade ---
 
         function toggleLinkInput() {
-            // Apenas para fins de demonstração, o input é o mesmo, mas podemos adaptá-lo no futuro.
+            // Apenas para fins de demonstração, o input é o mesmo.
         }
 
         function renderDevPanel() {
@@ -138,17 +186,20 @@
                 
                 switch (file.type) {
                     case 'link':
-                        contentHTML = `<a href="${file.url}" target="_blank">${file.name}</a>`;
+                        contentHTML = `
+                            <strong>[LINK]</strong> ${file.name}<br>
+                            <a href="${file.url}" target="_blank">Acessar Link</a>
+                        `;
                         break;
                     case 'foto':
                         contentHTML = `
-                            <strong>${file.name}</strong><br>
+                            <strong>[FOTO]</strong> ${file.name}<br>
                             <a href="${file.url}" target="_blank">Visualizar Foto</a>
-                            `;
+                        `;
                         break;
                     case 'video':
                         contentHTML = `
-                            <strong>${file.name}</strong><br>
+                            <strong>[VÍDEO]</strong> ${file.name}<br>
                             <a href="${file.url}" target="_blank">Assistir Vídeo</a>
                         `;
                         break;
@@ -225,6 +276,7 @@
                 
                 renderDevPanel();
             } else {
+                // Alerta de erro genérico sem revelar credenciais
                 alert('Credenciais de Desenvolvedor Inválidas.');
             }
         }
