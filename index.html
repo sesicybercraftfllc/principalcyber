@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybercraft - Sistema de Acesso</title>
+    <title>Cybercraft</title>
     <style>
         /* PALETA DE CORES TERROSAS */
         :root {
@@ -88,6 +88,10 @@
             color: white;
         }
         #dev-panel button:hover, #user-view button:hover { background-color: var(--cor-principal); }
+        
+        /* Estilo dos Links */
+        .file-item a { color: var(--cor-principal); text-decoration: none; font-weight: bold;}
+        .file-item a:hover { text-decoration: underline; }
 
         /* Visualização do Usuário */
         #user-view h2 { color: var(--cor-destaque-usuario); }
@@ -98,9 +102,7 @@
             border-radius: 6px; 
             background-color: #fffaf0; 
         }
-        .file-item a { color: var(--cor-principal); text-decoration: none; font-weight: bold;}
-        .file-item a:hover { text-decoration: underline; }
-
+        
         /* Painel do Desenvolvedor */
         .dev-item { 
             display: flex; 
@@ -139,7 +141,7 @@
 <body>
 
     <div class="container">
-        <h1>Cybercraft - Sistema de Acesso</h1>
+        <h1>Cybercraft</h1>
 
         <div id="login-section">
             <div id="login-form">
@@ -220,7 +222,7 @@
         
         let files = JSON.parse(localStorage.getItem('files')) || [];
         let currentUser = null; 
-        let currentFolder = 'projetos'; // Pasta inicial
+        let currentFolder = 'projetos'; 
 
         // --- Funções Auxiliares ---
 
@@ -231,7 +233,6 @@
         function changeFolder(folderKey) {
             currentFolder = folderKey;
             
-            // Atualiza os botões de ambas as visualizações (se estiverem visíveis)
             updateFolderSelector('dev');
             updateFolderSelector('user');
             
@@ -274,8 +275,13 @@
                 const item = document.createElement('div');
                 item.className = 'dev-item';
                 
-                // Encontra o índice original no array "files"
-                const originalIndex = files.findIndex(f => f.name === file.name && f.url === file.url && f.developer === file.developer);
+                // *** CORREÇÃO APLICADA AQUI: Busca o índice no array global `files` ***
+                const originalIndex = files.findIndex(f => 
+                    f.name === file.name && 
+                    f.url === file.url && 
+                    f.developer === file.developer && 
+                    f.folder === file.folder
+                );
 
                 const visibilityText = file.visible ? 'Visível' : 'Oculto';
                 
@@ -335,7 +341,7 @@
             const name = document.getElementById('item-name').value.trim();
             const url = document.getElementById('item-url').value.trim();
             const type = document.getElementById('file-type').value;
-            const folder = document.getElementById('item-folder').value; // Captura a pasta
+            const folder = document.getElementById('item-folder').value; 
             const visible = document.getElementById('item-visible').checked;
 
             if (name === '' || url === '') {
@@ -347,21 +353,21 @@
                 name: name,
                 url: url,
                 type: type,
-                folder: folder, // Salva a pasta
+                folder: folder, 
                 visible: visible,
                 developer: currentUser 
             });
 
             saveFiles();
-            renderDevPanel();
-
+            
+            // Muda a pasta atual para onde o item foi adicionado para visualização imediata
+            changeFolder(folder); 
+            
             // Limpa os campos
             document.getElementById('item-name').value = '';
             document.getElementById('item-url').value = '';
             document.getElementById('item-visible').checked = true;
             
-            // Muda a pasta atual para onde o item foi adicionado para visualização imediata
-            changeFolder(folder); 
             alert(`Item adicionado com sucesso na pasta ${FOLDERS[folder]}!`);
         }
 
@@ -384,4 +390,49 @@
 
         function developerLogin() {
             const username = document.getElementById('username').value.toLowerCase().trim();
-            const password = document
+            const password = document.getElementById('password').value.trim();
+
+            if (DEVELOPERS[username] && DEVELOPERS[username] === password) {
+                currentUser = username;
+                document.getElementById('dev-name').textContent = currentUser.toUpperCase();
+                
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('user-view').style.display = 'none';
+                document.getElementById('dev-panel').style.display = 'block';
+                
+                updateFolderSelector('dev');
+                renderDevPanel();
+            } else {
+                alert('Credenciais de Desenvolvedor Inválidas.');
+            }
+        }
+
+        function userLogin() {
+            currentUser = 'user';
+            
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('dev-panel').style.display = 'none';
+            document.getElementById('user-view').style.display = 'block';
+            
+            updateFolderSelector('user');
+            renderUserView();
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('dev-panel').style.display = 'none';
+            document.getElementById('user-view').style.display = 'none';
+
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            
+            currentFolder = 'projetos'; 
+        }
+
+        // Inicializa a página no estado de login
+        logout();
+
+    </script>
+</body>
+</html>
