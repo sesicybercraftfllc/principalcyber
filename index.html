@@ -48,7 +48,7 @@
             background-color: #ffffff;
         }
         #login-form input[type="text"], #login-form input[type="password"],
-        #dev-panel input[type="text"], #dev-panel select { 
+        #dev-panel input[type="text"], #dev-panel select, #item-file { 
             padding: 10px; 
             margin-bottom: 12px; 
             width: 100%; 
@@ -56,7 +56,9 @@
             border: 1px solid var(--cor-borda);
             border-radius: 4px;
         }
-        
+        /* Botão de Arquivo */
+        #item-file { padding: 5px; }
+
         /* Botões */
         button { 
             padding: 10px 15px; 
@@ -89,9 +91,10 @@
         }
         #dev-panel button:hover, #user-view button:hover { background-color: var(--cor-principal); }
         
-        /* Estilo dos Links */
+        /* Estilo dos Links/Arquivos */
         .file-item a { color: var(--cor-principal); text-decoration: none; font-weight: bold;}
         .file-item a:hover { text-decoration: underline; }
+        .dev-info { font-size: 0.85em; color: var(--cor-secundaria); margin-top: 5px; }
 
         /* Visualização do Usuário */
         #user-view h2 { color: var(--cor-destaque-usuario); }
@@ -102,6 +105,7 @@
             border-radius: 6px; 
             background-color: #fffaf0; 
         }
+        .file-item img, .file-item video { max-width: 100%; height: auto; border-radius: 4px; margin-top: 10px; }
         
         /* Painel do Desenvolvedor */
         .dev-item { 
@@ -116,13 +120,7 @@
             color: var(--cor-principal);
         }
         .dev-item span strong { color: var(--cor-principal); }
-        .dev-item div button { 
-            background-color: var(--cor-secundaria); 
-            color: white; 
-            padding: 5px 10px; 
-            margin-left: 10px;
-        }
-        .dev-item div button:hover { background-color: var(--cor-principal); }
+        .dev-item > span { width: 70%; } /* Ajuste para o texto não invadir os botões */
 
         .folder-selector { margin-bottom: 20px; }
         .folder-selector button {
@@ -135,7 +133,6 @@
             color: white;
             font-weight: bold;
         }
-
     </style>
 </head>
 <body>
@@ -168,7 +165,7 @@
             </select><br><br>
             
             <label for="file-type">Tipo:</label>
-            <select id="file-type">
+            <select id="file-type" onchange="toggleInputType()">
                 <option value="link">Link</option>
                 <option value="foto">Foto</option>
                 <option value="video">Vídeo</option>
@@ -177,8 +174,10 @@
             <label for="item-name">Nome do Item:</label>
             <input type="text" id="item-name" placeholder="Ex: Relatório Final" style="width: 100%; margin-bottom: 10px;"><br>
             
-            <label for="item-url">URL (Link, Foto ou Vídeo):</label>
-            <input type="text" id="item-url" placeholder="http://recurso.com/arquivo" style="width: 100%; margin-bottom: 10px;">
+            <div id="dynamic-input-container">
+                <label for="item-url">URL (Link):</label>
+                <input type="text" id="item-url" placeholder="http://recurso.com/link" style="width: 100%; margin-bottom: 10px;">
+            </div>
             
             <label>Visível para Usuário?</label>
             <input type="checkbox" id="item-visible" checked><br><br>
@@ -213,26 +212,55 @@
             "dev07": "415", "dev08": "161"
         };
         const FOLDERS = {
-            "projetos": "Projetos",
-            "documentacao": "Documentação",
-            "tutoriais": "Tutoriais",
-            "midia": "Mídia",
-            "diversos": "Diversos"
+            "projetos": "Projetos", "documentacao": "Documentação", "tutoriais": "Tutoriais", 
+            "midia": "Mídia", "diversos": "Diversos"
         };
         
         let files = JSON.parse(localStorage.getItem('files')) || [];
         let currentUser = null; 
         let currentFolder = 'projetos'; 
+        let fileDataUrl = null; // Armazena temporariamente a Data URL do arquivo
 
         // --- Funções Auxiliares ---
 
         function saveFiles() {
             localStorage.setItem('files', JSON.stringify(files));
         }
+
+        function toggleInputType() {
+            const type = document.getElementById('file-type').value;
+            const container = document.getElementById('dynamic-input-container');
+            
+            if (type === 'link') {
+                container.innerHTML = `
+                    <label for="item-url">URL (Link):</label>
+                    <input type="text" id="item-url" placeholder="http://recurso.com/link" style="width: 100%; margin-bottom: 10px;">
+                `;
+            } else {
+                let acceptType = type === 'foto' ? 'image/*' : 'video/*';
+                container.innerHTML = `
+                    <label for="item-file">Carregar ${type.charAt(0).toUpperCase() + type.slice(1)}:</label>
+                    <input type="file" id="item-file" accept="${acceptType}" onchange="handleFileUpload(event, '${type}')">
+                `;
+                fileDataUrl = null; // Limpa a URL anterior
+            }
+        }
         
+        function handleFileUpload(event, type) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Garante que o arquivo seja lido para a Data URL (Base64)
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                fileDataUrl = e.target.result; // Salva a Data URL
+                alert(`Arquivo (${type}) carregado com sucesso!`);
+            };
+            reader.readAsDataURL(file);
+        }
+
         function changeFolder(folderKey) {
             currentFolder = folderKey;
-            
             updateFolderSelector('dev');
             updateFolderSelector('user');
             
@@ -246,7 +274,6 @@
         function updateFolderSelector(view) {
             const selectorDiv = document.getElementById(`${view}-folder-selector`);
             selectorDiv.innerHTML = '';
-
             for (const key in FOLDERS) {
                 const button = document.createElement('button');
                 button.textContent = FOLDERS[key];
@@ -261,6 +288,7 @@
         // --- Renderização ---
 
         function renderDevPanel() {
+            // ... (Função renderDevPanel permanece a mesma, pois o índice já foi corrigido) ...
             const devList = document.getElementById('dev-file-list');
             devList.innerHTML = '';
             
@@ -275,7 +303,7 @@
                 const item = document.createElement('div');
                 item.className = 'dev-item';
                 
-                // *** CORREÇÃO APLICADA AQUI: Busca o índice no array global `files` ***
+                // Busca o índice no array global `files`
                 const originalIndex = files.findIndex(f => 
                     f.name === file.name && 
                     f.url === file.url && 
@@ -287,7 +315,8 @@
                 
                 item.innerHTML = `
                     <span>
-                        **[${file.type.toUpperCase()}]** ${file.name} (Por: ${file.developer.toUpperCase()}) - *${visibilityText}*
+                        <strong>[${file.type.toUpperCase()}]</strong> ${file.name}<br>
+                        <span class="dev-info">Adicionado por: ${file.developer.toUpperCase()}</span> - *${visibilityText}*
                     </span>
                     <div>
                         <button onclick="toggleVisibility(${originalIndex})">${file.visible ? 'Ocultar' : 'Tornar Visível'}</button>
@@ -313,21 +342,34 @@
                 const item = document.createElement('div');
                 item.className = 'file-item';
                 
-                let contentHTML;
+                let contentHTML = `
+                    <p>
+                        <strong>[${file.type.toUpperCase()}]</strong> ${file.name}<br>
+                        <span class="dev-info">Adicionado por: ${file.developer.toUpperCase()}</span>
+                    </p>
+                `;
                 
-                switch (file.type) {
-                    case 'link':
-                        contentHTML = `<strong>[LINK]</strong> ${file.name}<br><a href="${file.url}" target="_blank">Acessar Recurso</a>`;
-                        break;
-                    case 'foto':
-                        contentHTML = `<strong>[FOTO]</strong> ${file.name}<br><a href="${file.url}" target="_blank">Visualizar Foto</a>`;
-                        break;
-                    case 'video':
-                        contentHTML = `<strong>[VÍDEO]</strong> ${file.name}<br><a href="${file.url}" target="_blank">Assistir Vídeo</a>`;
-                        break;
-                    default:
-                        contentHTML = `<strong>${file.name}</strong> (Tipo Desconhecido)`;
-                        break;
+                // Adiciona o elemento de mídia ou link
+                if (file.type === 'link' || file.type === 'foto') {
+                    contentHTML += `<a href="${file.url}" target="_blank">`;
+                    if (file.type === 'link') {
+                        contentHTML += `Acessar Link`;
+                    } else if (file.type === 'foto') {
+                        // Se for uma foto carregada (Data URL), exibe a imagem
+                        if (file.url.startsWith('data:image')) {
+                            contentHTML += `<img src="${file.url}" alt="${file.name}">`;
+                        } else {
+                            contentHTML += `Visualizar Foto (Link Externo)`;
+                        }
+                    }
+                    contentHTML += `</a>`;
+                } else if (file.type === 'video') {
+                    // Se for um vídeo carregado (Data URL), exibe o player
+                    if (file.url.startsWith('data:video')) {
+                        contentHTML += `<video controls src="${file.url}"></video>`;
+                    } else {
+                        contentHTML += `<a href="${file.url}" target="_blank">Assistir Vídeo (Link Externo)</a>`;
+                    }
                 }
                 
                 item.innerHTML = contentHTML;
@@ -339,19 +381,27 @@
 
         function addItem() {
             const name = document.getElementById('item-name').value.trim();
-            const url = document.getElementById('item-url').value.trim();
             const type = document.getElementById('file-type').value;
             const folder = document.getElementById('item-folder').value; 
             const visible = document.getElementById('item-visible').checked;
+            
+            let url;
 
-            if (name === '' || url === '') {
-                alert('Por favor, preencha o nome e a URL.');
+            if (type === 'link') {
+                url = document.getElementById('item-url').value.trim();
+            } else {
+                // Se for foto/video, usa a Data URL temporária
+                url = fileDataUrl; 
+            }
+
+            if (name === '' || !url) {
+                alert(`Por favor, preencha o nome e ${type === 'link' ? 'a URL' : 'carregue o arquivo'}.`);
                 return;
             }
 
             files.push({
                 name: name,
-                url: url,
+                url: url, // Pode ser URL de link OU Data URL de arquivo
                 type: type,
                 folder: folder, 
                 visible: visible,
@@ -360,17 +410,22 @@
 
             saveFiles();
             
-            // Muda a pasta atual para onde o item foi adicionado para visualização imediata
+            // Muda a pasta atual para onde o item foi adicionado
             changeFolder(folder); 
             
             // Limpa os campos
             document.getElementById('item-name').value = '';
-            document.getElementById('item-url').value = '';
+            if (type === 'link') {
+                document.getElementById('item-url').value = '';
+            }
             document.getElementById('item-visible').checked = true;
-            
+            fileDataUrl = null; // Limpa a URL temporária
+            toggleInputType(); // Restaura o input para link
+
             alert(`Item adicionado com sucesso na pasta ${FOLDERS[folder]}!`);
         }
-
+        
+        // ... (Funções toggleVisibility, deleteItem, developerLogin, userLogin, logout permanecem as mesmas) ...
         function toggleVisibility(index) {
             files[index].visible = !files[index].visible;
             saveFiles();
@@ -386,8 +441,6 @@
             }
         }
 
-        // --- Funções de Login e Controle de Tela ---
-
         function developerLogin() {
             const username = document.getElementById('username').value.toLowerCase().trim();
             const password = document.getElementById('password').value.trim();
@@ -400,6 +453,8 @@
                 document.getElementById('user-view').style.display = 'none';
                 document.getElementById('dev-panel').style.display = 'block';
                 
+                // Inicializa o input dinâmico
+                toggleInputType();
                 updateFolderSelector('dev');
                 renderDevPanel();
             } else {
@@ -428,11 +483,12 @@
             document.getElementById('password').value = '';
             
             currentFolder = 'projetos'; 
+            fileDataUrl = null; // Garante que a URL temporária seja limpa ao sair
         }
 
-        // Inicializa a página no estado de login
+        // Inicializa a página
         logout();
-
+        toggleInputType(); // Chama para garantir que o input inicial seja Link
     </script>
 </body>
 </html>
