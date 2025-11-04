@@ -3,24 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Arquivos Dev/Usuário</title>
+    <title>Cybercraft - Sistema de Acesso</title>
     <style>
-        body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; }
-        .container { max-width: 800px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #333; }
-        #login-form, #dev-panel { margin-top: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 4px; }
-        #login-form input[type="text"], #login-form input[type="password"] { padding: 8px; margin-bottom: 10px; width: 100%; box-sizing: border-box; }
-        #login-form button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        #user-view h2 { color: #28a745; }
-        .file-item { border: 1px solid #eee; padding: 10px; margin-bottom: 10px; border-radius: 4px; background-color: #fafafa; }
-        .dev-item { display: flex; justify-content: space-between; align-items: center; border: 1px solid #ffc107; padding: 10px; margin-bottom: 10px; border-radius: 4px; background-color: #fff3cd; }
-        .dev-item button { margin-left: 10px; padding: 5px 10px; cursor: pointer; }
+        /* PALETA DE CORES TERROSAS */
+        :root {
+            --cor-background: #f7f4e9; /* Bege claro / Off-White */
+            --cor-principal: #6b4423;    /* Marrom Café */
+            --cor-secundaria: #8b5e34;  /* Marrom Médio */
+            --cor-borda: #d4c7b2;       /* Bege acinzentado */
+            --cor-texto-principal: #333;
+            --cor-destaque-usuario: #4a784d; /* Verde Musgo */
+            --cor-destaque-dev: #e0c29a;     /* Ocre/Bege Quente */
+        }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 20px;
+            background-color: var(--cor-background); 
+            color: var(--cor-texto-principal);
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            background-color: #fff; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+        }
+        h1 { 
+            text-align: center; 
+            color: var(--cor-principal); 
+            border-bottom: 2px solid var(--cor-borda); 
+            padding-bottom: 10px;
+        }
+        h2, h3 { color: var(--cor-secundaria); }
+        
+        /* Formulários e Painéis */
+        #login-form, #dev-panel { 
+            margin-top: 20px; 
+            padding: 20px; 
+            border: 1px solid var(--cor-borda); 
+            border-radius: 8px; 
+            background-color: #ffffff;
+        }
+        #login-form input[type="text"], #login-form input[type="password"],
+        #dev-panel input[type="text"], #dev-panel select { 
+            padding: 10px; 
+            margin-bottom: 12px; 
+            width: 100%; 
+            box-sizing: border-box; 
+            border: 1px solid var(--cor-borda);
+            border-radius: 4px;
+        }
+        
+        /* Botões */
+        button { 
+            padding: 10px 15px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            transition: background-color 0.3s;
+        }
+        /* Botão Desenvolvedor */
+        #login-form button { 
+            background-color: var(--cor-principal); 
+            color: white; 
+            width: 100%;
+        }
+        #login-form button:hover { background-color: #4a2f1c; }
+
+        /* Botão Usuário */
+        #login-section button:last-of-type { 
+            background-color: var(--cor-destaque-usuario); 
+            color: white; 
+            width: 100%;
+            margin-top: 15px;
+        }
+        #login-section button:last-of-type:hover { background-color: #3b603e; }
+
+        /* Botões Sair e Ações Dev */
+        #dev-panel button, #user-view button { 
+            background-color: var(--cor-secundaria); 
+            color: white;
+        }
+        #dev-panel button:hover, #user-view button:hover { background-color: var(--cor-principal); }
+
+        /* Visualização do Usuário */
+        #user-view h2 { color: var(--cor-destaque-usuario); }
+        .file-item { 
+            border: 1px solid var(--cor-borda); 
+            padding: 15px; 
+            margin-bottom: 10px; 
+            border-radius: 6px; 
+            background-color: #fffaf0; 
+        }
+        .file-item a { color: var(--cor-principal); text-decoration: none; font-weight: bold;}
+        .file-item a:hover { text-decoration: underline; }
+
+        /* Painel do Desenvolvedor */
+        .dev-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border: 1px solid var(--cor-destaque-dev); 
+            padding: 10px; 
+            margin-bottom: 10px; 
+            border-radius: 6px; 
+            background-color: var(--cor-destaque-dev); 
+            color: var(--cor-principal);
+        }
+        .dev-item span strong { color: var(--cor-principal); }
+        .dev-item div button { 
+            background-color: var(--cor-secundaria); 
+            color: white; 
+            padding: 5px 10px; 
+            margin-left: 10px;
+        }
+        .dev-item div button:hover { background-color: var(--cor-principal); }
+
+        .folder-selector { margin-bottom: 20px; }
+        .folder-selector button {
+            background-color: var(--cor-borda);
+            color: var(--cor-texto-principal);
+            margin-right: 5px;
+        }
+        .folder-selector button.active {
+            background-color: var(--cor-principal);
+            color: white;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Sistema de Acesso Simples</h1>
+        <h1>Cybercraft - Sistema de Acesso</h1>
 
         <div id="login-section">
             <div id="login-form">
@@ -30,27 +149,34 @@
                 <button onclick="developerLogin()">Entrar como Desenvolvedor</button>
             </div>
             <p style="text-align: center;">Ou</p>
-            <button onclick="userLogin()" style="width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">Entrar como Usuário Comum (Sem Login)</button>
+            <button onclick="userLogin()">Entrar como Usuário Comum (Visualização)</button>
         </div>
 
         <div id="dev-panel" style="display: none;">
             <h2>Painel do Desenvolvedor (<span id="dev-name"></span>)</h2>
             
             <h3>Adicionar Novo Item</h3>
+            <label for="item-folder">Pasta:</label>
+            <select id="item-folder">
+                <option value="projetos">Projetos</option>
+                <option value="documentacao">Documentação</option>
+                <option value="tutoriais">Tutoriais</option>
+                <option value="midia">Mídia</option>
+                <option value="diversos">Diversos</option>
+            </select><br><br>
+            
             <label for="file-type">Tipo:</label>
-            <select id="file-type" onchange="toggleLinkInput()">
+            <select id="file-type">
                 <option value="link">Link</option>
                 <option value="foto">Foto</option>
                 <option value="video">Vídeo</option>
             </select><br><br>
             
             <label for="item-name">Nome do Item:</label>
-            <input type="text" id="item-name" placeholder="Nome do item" style="width: 100%; margin-bottom: 10px;"><br>
+            <input type="text" id="item-name" placeholder="Ex: Relatório Final" style="width: 100%; margin-bottom: 10px;"><br>
             
-            <div id="link-input">
-                <label for="item-url">URL (Link, Foto ou Vídeo):</label>
-                <input type="text" id="item-url" placeholder="http://recurso.com/arquivo" style="width: 100%; margin-bottom: 10px;">
-            </div>
+            <label for="item-url">URL (Link, Foto ou Vídeo):</label>
+            <input type="text" id="item-url" placeholder="http://recurso.com/arquivo" style="width: 100%; margin-bottom: 10px;">
             
             <label>Visível para Usuário?</label>
             <input type="checkbox" id="item-visible" checked><br><br>
@@ -59,7 +185,9 @@
 
             <hr>
 
-            <h3>Arquivos Gerenciáveis</h3>
+            <h3>Arquivos Gerenciáveis por Pasta</h3>
+            <div class="folder-selector" id="dev-folder-selector">
+                </div>
             <div id="dev-file-list">
                 </div>
             <button onclick="logout()">Sair</button>
@@ -67,6 +195,8 @@
 
         <div id="user-view" style="display: none;">
             <h2>Visualização do Usuário</h2>
+            <div class="folder-selector" id="user-folder-selector">
+                </div>
             <div id="user-file-list">
                 </div>
             <button onclick="logout()">Sair</button>
@@ -74,58 +204,88 @@
     </div>
 
     <script>
-        // Dados de desenvolvedores (INSEGURO - APENAS PARA DEMONSTRAÇÃO)
-        // As credenciais de teste são: dev01: 123, dev02: 456, dev03: 789, etc.
+        // --- Configurações ---
         const DEVELOPERS = {
-            "dev01": "123", 
-            "dev02": "456", 
-            "dev03": "789", 
-            "dev04": "101", 
-            "dev05": "112", 
-            "dev06": "131", 
-            "dev07": "415", 
-            "dev08": "161"
+            "dev01": "123", "dev02": "456", "dev03": "789", 
+            "dev04": "101", "dev05": "112", "dev06": "131", 
+            "dev07": "415", "dev08": "161"
         };
-
-        // Lista de arquivos (usando Local Storage para simular persistência no navegador)
+        const FOLDERS = {
+            "projetos": "Projetos",
+            "documentacao": "Documentação",
+            "tutoriais": "Tutoriais",
+            "midia": "Mídia",
+            "diversos": "Diversos"
+        };
+        
         let files = JSON.parse(localStorage.getItem('files')) || [];
-
         let currentUser = null; 
+        let currentFolder = 'projetos'; // Pasta inicial
 
-        // Função para salvar os dados no Local Storage
+        // --- Funções Auxiliares ---
+
         function saveFiles() {
             localStorage.setItem('files', JSON.stringify(files));
         }
-
-        // --- Funções de Renderização e Visibilidade ---
-
-        function toggleLinkInput() {
-            // Esta função pode ser expandida se houver necessidade de mudar o input
-            // baseado no tipo (foto/video/link), mas para URLs simples, fica vazia.
+        
+        function changeFolder(folderKey) {
+            currentFolder = folderKey;
+            
+            // Atualiza os botões de ambas as visualizações (se estiverem visíveis)
+            updateFolderSelector('dev');
+            updateFolderSelector('user');
+            
+            if (document.getElementById('dev-panel').style.display === 'block') {
+                renderDevPanel();
+            } else if (document.getElementById('user-view').style.display === 'block') {
+                renderUserView();
+            }
         }
+
+        function updateFolderSelector(view) {
+            const selectorDiv = document.getElementById(`${view}-folder-selector`);
+            selectorDiv.innerHTML = '';
+
+            for (const key in FOLDERS) {
+                const button = document.createElement('button');
+                button.textContent = FOLDERS[key];
+                button.setAttribute('onclick', `changeFolder('${key}')`);
+                if (key === currentFolder) {
+                    button.classList.add('active');
+                }
+                selectorDiv.appendChild(button);
+            }
+        }
+
+        // --- Renderização ---
 
         function renderDevPanel() {
             const devList = document.getElementById('dev-file-list');
             devList.innerHTML = '';
             
-            if (files.length === 0) {
-                devList.innerHTML = '<p>Nenhum item adicionado ainda.</p>';
+            const filesInFolder = files.filter(file => file.folder === currentFolder);
+
+            if (filesInFolder.length === 0) {
+                devList.innerHTML = `<p>Nenhum item na pasta "${FOLDERS[currentFolder]}" para gerenciar.</p>`;
                 return;
             }
             
-            files.forEach((file, index) => {
+            filesInFolder.forEach(file => {
                 const item = document.createElement('div');
                 item.className = 'dev-item';
                 
-                const visibilityText = file.visible ? 'Visível (Público)' : 'Oculto (Privado)';
+                // Encontra o índice original no array "files"
+                const originalIndex = files.findIndex(f => f.name === file.name && f.url === file.url && f.developer === file.developer);
+
+                const visibilityText = file.visible ? 'Visível' : 'Oculto';
                 
                 item.innerHTML = `
                     <span>
-                        **[${file.type.toUpperCase()}]** ${file.name} (Adicionado por: ${file.developer.toUpperCase()}) - *${visibilityText}*
+                        **[${file.type.toUpperCase()}]** ${file.name} (Por: ${file.developer.toUpperCase()}) - *${visibilityText}*
                     </span>
                     <div>
-                        <button onclick="toggleVisibility(${index})">${file.visible ? 'Ocultar' : 'Tornar Visível'}</button>
-                        <button onclick="deleteItem(${index})">Excluir</button>
+                        <button onclick="toggleVisibility(${originalIndex})">${file.visible ? 'Ocultar' : 'Tornar Visível'}</button>
+                        <button onclick="deleteItem(${originalIndex})">Excluir</button>
                     </div>
                 `;
                 devList.appendChild(item);
@@ -136,10 +296,10 @@
             const userList = document.getElementById('user-file-list');
             userList.innerHTML = '';
             
-            const visibleFiles = files.filter(file => file.visible);
+            const visibleFiles = files.filter(file => file.visible && file.folder === currentFolder);
 
             if (visibleFiles.length === 0) {
-                userList.innerHTML = '<p>Nenhum arquivo ou link disponível no momento.</p>';
+                userList.innerHTML = `<p>Nenhum arquivo ou link visível na pasta "${FOLDERS[currentFolder]}".</p>`;
                 return;
             }
             
@@ -151,22 +311,13 @@
                 
                 switch (file.type) {
                     case 'link':
-                        contentHTML = `
-                            <strong>[LINK]</strong> ${file.name}<br>
-                            <a href="${file.url}" target="_blank">Acessar Link</a>
-                        `;
+                        contentHTML = `<strong>[LINK]</strong> ${file.name}<br><a href="${file.url}" target="_blank">Acessar Recurso</a>`;
                         break;
                     case 'foto':
-                        contentHTML = `
-                            <strong>[FOTO]</strong> ${file.name}<br>
-                            <a href="${file.url}" target="_blank">Visualizar Foto</a>
-                        `;
+                        contentHTML = `<strong>[FOTO]</strong> ${file.name}<br><a href="${file.url}" target="_blank">Visualizar Foto</a>`;
                         break;
                     case 'video':
-                        contentHTML = `
-                            <strong>[VÍDEO]</strong> ${file.name}<br>
-                            <a href="${file.url}" target="_blank">Assistir Vídeo</a>
-                        `;
+                        contentHTML = `<strong>[VÍDEO]</strong> ${file.name}<br><a href="${file.url}" target="_blank">Assistir Vídeo</a>`;
                         break;
                     default:
                         contentHTML = `<strong>${file.name}</strong> (Tipo Desconhecido)`;
@@ -184,6 +335,7 @@
             const name = document.getElementById('item-name').value.trim();
             const url = document.getElementById('item-url').value.trim();
             const type = document.getElementById('file-type').value;
+            const folder = document.getElementById('item-folder').value; // Captura a pasta
             const visible = document.getElementById('item-visible').checked;
 
             if (name === '' || url === '') {
@@ -195,6 +347,7 @@
                 name: name,
                 url: url,
                 type: type,
+                folder: folder, // Salva a pasta
                 visible: visible,
                 developer: currentUser 
             });
@@ -206,14 +359,16 @@
             document.getElementById('item-name').value = '';
             document.getElementById('item-url').value = '';
             document.getElementById('item-visible').checked = true;
-            alert('Item adicionado com sucesso!');
+            
+            // Muda a pasta atual para onde o item foi adicionado para visualização imediata
+            changeFolder(folder); 
+            alert(`Item adicionado com sucesso na pasta ${FOLDERS[folder]}!`);
         }
 
         function toggleVisibility(index) {
             files[index].visible = !files[index].visible;
             saveFiles();
             renderDevPanel(); 
-            alert(`Visibilidade do item ${files[index].name} alterada.`);
         }
 
         function deleteItem(index) {
@@ -229,46 +384,4 @@
 
         function developerLogin() {
             const username = document.getElementById('username').value.toLowerCase().trim();
-            const password = document.getElementById('password').value.trim();
-
-            if (DEVELOPERS[username] && DEVELOPERS[username] === password) {
-                currentUser = username;
-                document.getElementById('dev-name').textContent = currentUser.toUpperCase();
-                
-                document.getElementById('login-section').style.display = 'none';
-                document.getElementById('user-view').style.display = 'none';
-                document.getElementById('dev-panel').style.display = 'block';
-                
-                renderDevPanel();
-            } else {
-                alert('Credenciais de Desenvolvedor Inválidas.');
-            }
-        }
-
-        function userLogin() {
-            currentUser = 'user';
-            
-            document.getElementById('login-section').style.display = 'none';
-            document.getElementById('dev-panel').style.display = 'none';
-            document.getElementById('user-view').style.display = 'block';
-
-            renderUserView();
-        }
-
-        function logout() {
-            currentUser = null;
-            document.getElementById('login-section').style.display = 'block';
-            document.getElementById('dev-panel').style.display = 'none';
-            document.getElementById('user-view').style.display = 'none';
-
-            // Limpa os campos de login
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-        }
-
-        // Inicializa a página no estado de login
-        logout();
-
-    </script>
-</body>
-</html>
+            const password = document
