@@ -129,31 +129,6 @@
 
 </script>
 
-
-
-        let currentUser = null; // 'user', 'dev01', ou 'dev02'
-
-        // Função para salvar os dados no Local Storage
-        function saveFiles() {
-            localStorage.setItem('files', JSON.stringify(files));
-        }
-
-        // --- Funções de Renderização e Visibilidade ---
-
-        function toggleLinkInput() {
-            // Apenas para fins de demonstração, o input é o mesmo.
-        }
-
-        function renderDevPanel() {
-            const devList = document.getElementById('dev-file-list');
-            devList.innerHTML = '';
-            
-            files.forEach((file, index) => {
-                const item = document.createElement('div');
-                item.className = 'dev-item';
-                
-                const visibilityText = file.visible ? 'Visível (Público)' : 'Oculto (Privado)';
-                
                 item.innerHTML = `
                     <span>
                         **[${file.type.toUpperCase()}]** ${file.name} (Adicionado por: ${file.developer}) - *${visibilityText}*
