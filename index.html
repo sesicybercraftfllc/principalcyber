@@ -1,101 +1,258 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Portfólio</title>
+    <title>Sistema de Arquivos Dev/Usuário</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            display: flex; 
-            flex-direction: column; /* Para alinhar o conteúdo principal no centro vertical */
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            background-color: #f0f2f5; 
-            margin: 0;
-        }
-        .login-container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 350px;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 25px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #555;
-        }
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box; /* Garante que o padding não aumente a largura total */
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        #loginDevButton {
-            background-color: #007bff;
-            color: white;
-            margin-top: 10px;
-        }
-        #loginDevButton:hover {
-            background-color: #0056b3;
-        }
-        #loginComumButton {
-            background-color: #28a745; /* Cor verde para destaque */
-            color: white;
-            margin-top: 20px;
-        }
-        #loginComumButton:hover {
-            background-color: #1e7e34;
-        }
-        #message {
-            margin-top: 15px;
-            text-align: center;
-            color: red;
-        }
+        body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; }
+        .container { max-width: 800px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; }
+        #login-form, #dev-panel { margin-top: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 4px; }
+        #login-form input[type="text"], #login-form input[type="password"] { padding: 8px; margin-bottom: 10px; width: 100%; box-sizing: border-box; }
+        #login-form button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        #user-view h2 { color: #28a745; }
+        .file-item { border: 1px solid #eee; padding: 10px; margin-bottom: 10px; border-radius: 4px; background-color: #fafafa; }
+        .dev-item { display: flex; justify-content: space-between; align-items: center; border: 1px solid #ffc107; padding: 10px; margin-bottom: 10px; border-radius: 4px; background-color: #fff3cd; }
+        .dev-item button { margin-left: 10px; padding: 5px 10px; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Acesso ao Portfólio</h2>
 
-        <form id="devLoginForm">
-            <label for="username">Usuário (Dev):</label>
-            <input type="text" id="username" name="username" placeholder="dev01, dev02..." required>
+    <div class="container">
+        <h1>Sistema de Acesso Simples</h1>
 
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" required>
+        <div id="login-section">
+            <div id="login-form">
+                <h3>Login do Desenvolvedor</h3>
+                <input type="text" id="username" placeholder="Usuário (Ex: dev01 ou dev02)">
+                <input type="password" id="password" placeholder="Senha (Ex: 123)">
+                <button onclick="developerLogin()">Entrar como Desenvolvedor</button>
+            </div>
+            <p style="text-align: center;">Ou</p>
+            <button onclick="userLogin()" style="width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">Entrar como Usuário Comum (Sem Login)</button>
+        </div>
 
-            <button type="submit" id="loginDevButton">Acesso Restrito (Dev)</button>
-        </form>
-        
-        <div id="message"></div>
+        <div id="dev-panel" style="display: none;">
+            <h2>Painel do Desenvolvedor (<span id="dev-name"></span>)</h2>
+            
+            <h3>Adicionar Novo Item</h3>
+            <label for="file-type">Tipo:</label>
+            <select id="file-type" onchange="toggleLinkInput()">
+                <option value="link">Link</option>
+                <option value="foto">Foto</option>
+                <option value="video">Vídeo</option>
+            </select><br><br>
+            
+            <label for="item-name">Nome do Item:</label>
+            <input type="text" id="item-name" placeholder="Ex: Tutorial JS" style="width: 100%; margin-bottom: 10px;"><br>
+            
+            <div id="link-input">
+                <label for="item-url">URL (Link, Foto ou Vídeo):</label>
+                <input type="text" id="item-url" placeholder="http://exemplo.com/recurso" style="width: 100%; margin-bottom: 10px;">
+            </div>
+            
+            <label>Visível para Usuário?</label>
+            <input type="checkbox" id="item-visible" checked><br><br>
+            
+            <button onclick="addItem()">Adicionar Item</button>
 
-        <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+            <hr>
 
-        <button id="loginComumButton">Entrar como Usuário Comum</button>
+            <h3>Arquivos Gerenciáveis</h3>
+            <div id="dev-file-list">
+                </div>
+            <button onclick="logout()">Sair</button>
+        </div>
+
+        <div id="user-view" style="display: none;">
+            <h2>Visualização do Usuário</h2>
+            <div id="user-file-list">
+                </div>
+            <button onclick="logout()">Sair</button>
+        </div>
     </div>
 
-    <script src="script.js"></script> 
+    <script>
+        // Dados de desenvolvedores (INSEGURO - APENAS PARA DEMONSTRAÇÃO)
+        const DEVELOPERS = {
+            "dev01": "123",
+            "dev02": "456"
+        };
+
+        // Lista de arquivos (usando Local Storage para simular persistência no navegador)
+        let files = JSON.parse(localStorage.getItem('files')) || [];
+
+        let currentUser = null; // 'user', 'dev01', ou 'dev02'
+
+        // Função para salvar os dados no Local Storage
+        function saveFiles() {
+            localStorage.setItem('files', JSON.stringify(files));
+        }
+
+        // --- Funções de Renderização e Visibilidade ---
+
+        function toggleLinkInput() {
+            // Apenas para fins de demonstração, o input é o mesmo, mas podemos adaptá-lo no futuro.
+        }
+
+        function renderDevPanel() {
+            const devList = document.getElementById('dev-file-list');
+            devList.innerHTML = '';
+            
+            files.forEach((file, index) => {
+                const item = document.createElement('div');
+                item.className = 'dev-item';
+                
+                const visibilityText = file.visible ? 'Visível (Público)' : 'Oculto (Privado)';
+                
+                item.innerHTML = `
+                    <span>
+                        **[${file.type.toUpperCase()}]** ${file.name} (Adicionado por: ${file.developer}) - *${visibilityText}*
+                    </span>
+                    <div>
+                        <button onclick="toggleVisibility(${index})">${file.visible ? 'Ocultar' : 'Tornar Visível'}</button>
+                        <button onclick="deleteItem(${index})">Excluir</button>
+                    </div>
+                `;
+                devList.appendChild(item);
+            });
+        }
+
+        function renderUserView() {
+            const userList = document.getElementById('user-file-list');
+            userList.innerHTML = '';
+            
+            const visibleFiles = files.filter(file => file.visible);
+
+            if (visibleFiles.length === 0) {
+                userList.innerHTML = '<p>Nenhum arquivo ou link disponível no momento.</p>';
+                return;
+            }
+            
+            visibleFiles.forEach(file => {
+                const item = document.createElement('div');
+                item.className = 'file-item';
+                
+                let contentHTML;
+                
+                switch (file.type) {
+                    case 'link':
+                        contentHTML = `<a href="${file.url}" target="_blank">${file.name}</a>`;
+                        break;
+                    case 'foto':
+                        contentHTML = `
+                            <strong>${file.name}</strong><br>
+                            <a href="${file.url}" target="_blank">Visualizar Foto</a>
+                            `;
+                        break;
+                    case 'video':
+                        contentHTML = `
+                            <strong>${file.name}</strong><br>
+                            <a href="${file.url}" target="_blank">Assistir Vídeo</a>
+                        `;
+                        break;
+                    default:
+                        contentHTML = `<strong>${file.name}</strong> (Tipo Desconhecido)`;
+                        break;
+                }
+                
+                item.innerHTML = contentHTML;
+                userList.appendChild(item);
+            });
+        }
+
+        // --- Funções de Ação (Desenvolvedor) ---
+
+        function addItem() {
+            const name = document.getElementById('item-name').value.trim();
+            const url = document.getElementById('item-url').value.trim();
+            const type = document.getElementById('file-type').value;
+            const visible = document.getElementById('item-visible').checked;
+
+            if (name === '' || url === '') {
+                alert('Por favor, preencha o nome e a URL.');
+                return;
+            }
+
+            files.push({
+                name: name,
+                url: url,
+                type: type,
+                visible: visible,
+                developer: currentUser // Salva quem adicionou
+            });
+
+            saveFiles();
+            renderDevPanel();
+
+            // Limpa os campos
+            document.getElementById('item-name').value = '';
+            document.getElementById('item-url').value = '';
+            document.getElementById('item-visible').checked = true;
+            alert('Item adicionado com sucesso!');
+        }
+
+        function toggleVisibility(index) {
+            files[index].visible = !files[index].visible;
+            saveFiles();
+            renderDevPanel(); // Renderiza novamente o painel do dev
+            alert(`Visibilidade do item ${files[index].name} alterada.`);
+        }
+
+        function deleteItem(index) {
+            if (confirm(`Tem certeza que deseja excluir o item: ${files[index].name}?`)) {
+                files.splice(index, 1);
+                saveFiles();
+                renderDevPanel();
+                alert('Item excluído.');
+            }
+        }
+
+        // --- Funções de Login e Controle de Tela ---
+
+        function developerLogin() {
+            const username = document.getElementById('username').value.toLowerCase().trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (DEVELOPERS[username] && DEVELOPERS[username] === password) {
+                currentUser = username;
+                document.getElementById('dev-name').textContent = currentUser;
+                
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('user-view').style.display = 'none';
+                document.getElementById('dev-panel').style.display = 'block';
+                
+                renderDevPanel();
+            } else {
+                alert('Credenciais de Desenvolvedor Inválidas.');
+            }
+        }
+
+        function userLogin() {
+            currentUser = 'user';
+            
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('dev-panel').style.display = 'none';
+            document.getElementById('user-view').style.display = 'block';
+
+            renderUserView();
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('dev-panel').style.display = 'none';
+            document.getElementById('user-view').style.display = 'none';
+
+            // Limpa os campos de login
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // Inicializa a página no estado de login
+        logout();
+
+    </script>
 </body>
 </html>
