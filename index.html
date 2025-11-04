@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Portfólio</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            flex-direction: column; /* Para alinhar o conteúdo principal no centro vertical */
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            background-color: #f0f2f5; 
+            margin: 0;
+        }
+        .login-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        #loginDevButton {
+            background-color: #007bff;
+            color: white;
+            margin-top: 10px;
+        }
+        #loginDevButton:hover {
+            background-color: #0056b3;
+        }
+        #loginComumButton {
+            background-color: #28a745; /* Cor verde para destaque */
+            color: white;
+            margin-top: 20px;
+        }
+        #loginComumButton:hover {
+            background-color: #1e7e34;
+        }
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Acesso ao Portfólio</h2>
+
+        <form id="devLoginForm">
+            <label for="username">Usuário (Dev):</label>
+            <input type="text" id="username" name="username" placeholder="dev01, dev02..." required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" id="loginDevButton">Acesso Restrito (Dev)</button>
+        </form>
+        
+        <div id="message"></div>
+
+        <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+
+        <button id="loginComumButton">Entrar como Usuário Comum</button>
+    </div>
+
+    <script src="script.js"></script> 
+</body>
+</html>
