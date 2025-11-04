@@ -162,7 +162,7 @@
                 <option value="tutoriais">Tutoriais</option>
                 <option value="midia">Mídia</option>
                 <option value="diversos">Diversos</option>
-            </select><br><br>
+                <option value="conscientizacao">Conscientização</option> </select><br><br>
             
             <label for="file-type">Tipo:</label>
             <select id="file-type" onchange="toggleInputType()">
@@ -213,13 +213,28 @@
         };
         const FOLDERS = {
             "projetos": "Projetos", "documentacao": "Documentação", "tutoriais": "Tutoriais", 
-            "midia": "Mídia", "diversos": "Diversos"
+            "midia": "Mídia", "diversos": "Diversos",
+            "conscientizacao": "Conscientização" // NOVA PASTA AQUI
         };
         
         let files = JSON.parse(localStorage.getItem('files')) || [];
         let currentUser = null; 
         let currentFolder = 'projetos'; 
-        let fileDataUrl = null; // Armazena temporariamente a Data URL do arquivo
+        let fileDataUrl = null; 
+
+        // --- Adiciona a página de Conscientização na primeira vez que o site é carregado ---
+        if (files.length === 0) {
+            files.push({
+                name: "Guardiões da História (Arqueologia em Ação)",
+                url: "Conscientizacao/conscientizacao.html", // URL RELATIVA
+                type: "link",
+                folder: "conscientizacao", // Pasta de destino
+                visible: true,
+                developer: "dev01" 
+            });
+            localStorage.setItem('files', JSON.stringify(files));
+        }
+        // ---------------------------------------------------------------------------------
 
         // --- Funções Auxiliares ---
 
@@ -242,7 +257,7 @@
                     <label for="item-file">Carregar ${type.charAt(0).toUpperCase() + type.slice(1)}:</label>
                     <input type="file" id="item-file" accept="${acceptType}" onchange="handleFileUpload(event, '${type}')">
                 `;
-                fileDataUrl = null; // Limpa a URL anterior
+                fileDataUrl = null; 
             }
         }
         
@@ -250,10 +265,9 @@
             const file = event.target.files[0];
             if (!file) return;
 
-            // Garante que o arquivo seja lido para a Data URL (Base64)
             const reader = new FileReader();
             reader.onload = function(e) {
-                fileDataUrl = e.target.result; // Salva a Data URL
+                fileDataUrl = e.target.result; 
                 alert(`Arquivo (${type}) carregado com sucesso!`);
             };
             reader.readAsDataURL(file);
@@ -288,7 +302,6 @@
         // --- Renderização ---
 
         function renderDevPanel() {
-            // ... (Função renderDevPanel permanece a mesma, pois o índice já foi corrigido) ...
             const devList = document.getElementById('dev-file-list');
             devList.innerHTML = '';
             
@@ -303,7 +316,6 @@
                 const item = document.createElement('div');
                 item.className = 'dev-item';
                 
-                // Busca o índice no array global `files`
                 const originalIndex = files.findIndex(f => 
                     f.name === file.name && 
                     f.url === file.url && 
@@ -349,13 +361,11 @@
                     </p>
                 `;
                 
-                // Adiciona o elemento de mídia ou link
                 if (file.type === 'link' || file.type === 'foto') {
                     contentHTML += `<a href="${file.url}" target="_blank">`;
                     if (file.type === 'link') {
-                        contentHTML += `Acessar Link`;
+                        contentHTML += `Acessar Recurso`;
                     } else if (file.type === 'foto') {
-                        // Se for uma foto carregada (Data URL), exibe a imagem
                         if (file.url.startsWith('data:image')) {
                             contentHTML += `<img src="${file.url}" alt="${file.name}">`;
                         } else {
@@ -364,7 +374,6 @@
                     }
                     contentHTML += `</a>`;
                 } else if (file.type === 'video') {
-                    // Se for um vídeo carregado (Data URL), exibe o player
                     if (file.url.startsWith('data:video')) {
                         contentHTML += `<video controls src="${file.url}"></video>`;
                     } else {
@@ -390,7 +399,6 @@
             if (type === 'link') {
                 url = document.getElementById('item-url').value.trim();
             } else {
-                // Se for foto/video, usa a Data URL temporária
                 url = fileDataUrl; 
             }
 
@@ -401,7 +409,7 @@
 
             files.push({
                 name: name,
-                url: url, // Pode ser URL de link OU Data URL de arquivo
+                url: url, 
                 type: type,
                 folder: folder, 
                 visible: visible,
@@ -410,22 +418,19 @@
 
             saveFiles();
             
-            // Muda a pasta atual para onde o item foi adicionado
             changeFolder(folder); 
             
-            // Limpa os campos
             document.getElementById('item-name').value = '';
             if (type === 'link') {
                 document.getElementById('item-url').value = '';
             }
             document.getElementById('item-visible').checked = true;
-            fileDataUrl = null; // Limpa a URL temporária
-            toggleInputType(); // Restaura o input para link
+            fileDataUrl = null; 
+            toggleInputType(); 
 
             alert(`Item adicionado com sucesso na pasta ${FOLDERS[folder]}!`);
         }
         
-        // ... (Funções toggleVisibility, deleteItem, developerLogin, userLogin, logout permanecem as mesmas) ...
         function toggleVisibility(index) {
             files[index].visible = !files[index].visible;
             saveFiles();
@@ -453,7 +458,6 @@
                 document.getElementById('user-view').style.display = 'none';
                 document.getElementById('dev-panel').style.display = 'block';
                 
-                // Inicializa o input dinâmico
                 toggleInputType();
                 updateFolderSelector('dev');
                 renderDevPanel();
@@ -483,12 +487,12 @@
             document.getElementById('password').value = '';
             
             currentFolder = 'projetos'; 
-            fileDataUrl = null; // Garante que a URL temporária seja limpa ao sair
+            fileDataUrl = null; 
         }
 
         // Inicializa a página
         logout();
-        toggleInputType(); // Chama para garantir que o input inicial seja Link
+        toggleInputType(); 
     </script>
 </body>
 </html>
