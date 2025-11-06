@@ -108,16 +108,55 @@
         }
         .file-item img, .file-item video { max-width: 100%; height: auto; border-radius: 4px; margin-top: 10px; }
         
-        /* Mensagem de Erro */
-        .error-message {
-            font-size: 2em;
-            font-weight: bold;
-            color: var(--cor-erro);
-            text-align: center;
-            padding: 20px 0;
-            border-top: 1px dashed var(--cor-borda);
-            margin-top: 10px;
+        /* Mensagem de Conscientização */
+        .message {
+            font-size: 1em;
+            text-align: justify;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid var(--cor-borda);
+            border-radius: 8px;
+            background-color: #ffffff;
+            line-height: 1.5;
         }
+
+        /* NOVO ESTILO: Semáforo da Arqueologia */
+        .semaforo-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 1px solid var(--cor-secundaria);
+            border-bottom: 1px solid var(--cor-secundaria);
+        }
+        .semaforo-item {
+            width: 30%; /* Para garantir que caibam 3 lado a lado */
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            font-size: 1.1em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s;
+        }
+        .semaforo-item:hover {
+             transform: translateY(-3px);
+        }
+        .semaforo-vermelho { background-color: #cc0000; } /* Vermelho puro */
+        .semaforo-amarelo { 
+            background-color: #ffc400; /* Amarelo ouro/forte */
+            color: var(--cor-principal); /* Texto escuro para contraste */
+            text-shadow: none;
+        } 
+        .semaforo-verde { background-color: var(--cor-destaque-usuario); } /* Verde Musgo */
 
         /* Estilos para o Quiz */
         .quiz-container {
@@ -390,7 +429,7 @@
             });
         }
 
-        // FUNÇÃO RENDERUSERVIEW (INCLUI ERRO E QUIZ)
+        // FUNÇÃO RENDERUSERVIEW (INCLUI SEMÁFORO E QUIZ)
         function renderUserView() {
             const userList = document.getElementById('user-file-list');
             userList.innerHTML = '';
@@ -413,7 +452,7 @@
                     </p>
                 `;
                 
-                // RENDERIZAÇÃO DA TELA DE QUIZ
+                // RENDERIZAÇÃO DA TELA DE CONSCIENTIZAÇÃO, SEMÁFORO E O QUIZ
                 if (file.folder === 'conscientizacao' && file.name.includes("Guardiões da História")) {
                     contentHTML = `
                         <h2 style="color: var(--cor-principal); border-bottom: 2px solid var(--cor-borda); padding-bottom: 5px;">Conscientização</h2>
@@ -421,14 +460,23 @@
                         <div class="message">
                             A História de Salto está em suas mãos. Você está pronto para protegê-la?
                             
+                            Somos a equipe SESI Cybercraft e nosso Projeto de Inovação "Guardiões da História: Arqueologia em Ação" nasceu de uma missão simples: reconectar Salto com seu próprio passado.
 
-Somos a equipe SESI Cybercraft e nosso Projeto de Inovação "Guardiões da História: Arqueologia em Ação" nasceu de uma missão simples: reconectar Salto com seu próprio passado.
-
-Sua criança participou da nossa oficina e agora é uma Guardiã do Passado! Aqui, você encontra o Guia Completo da Arqueologia em Casa com vídeos rápidos, o Quiz de Conscientização e a Regra de Ouro para preservar o patrimônio.
-
-
+                            Sua criança participou da nossa oficina e agora é uma **Guardiã do Passado!** Aqui, você encontra o **Guia Completo da Arqueologia em Casa** com vídeos rápidos, o Quiz de Conscientização e a Regra de Ouro para preservar o patrimônio.
                         </div>
 
+                        <h3 style="text-align: center; color: var(--cor-principal); margin-top: 40px;">⚠️ Regra de Ouro: Semáforo do Sítio ⚠️</h3>
+                        <div class="semaforo-container">
+                            <div class="semaforo-item semaforo-vermelho">
+                                **VERMELHO:** NÃO TOQUE
+                            </div>
+                            <div class="semaforo-item semaforo-amarelo">
+                                **AMARELO:** FOTOGRAFE
+                            </div>
+                            <div class="semaforo-item semaforo-verde">
+                                **VERDE:** LIGUE (e avise as autoridades)
+                            </div>
+                        </div>
                         <div class="quiz-container">
                             <h3>Quiz: Guardiões Da Historia </h3>
                             <div id="quiz-content">
