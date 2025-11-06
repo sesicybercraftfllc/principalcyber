@@ -10,10 +10,11 @@
             --cor-background: #f7f4e9; /* Bege claro / Off-White */
             --cor-principal: #6b4423;    /* Marrom Café */
             --cor-secundaria: #8b5e34;  /* Marrom Médio */
-            --cor-borda: #d4c7b2;       /* Bege acinzentado */
+            --cor-borda: #d4c7b2;        /* Bege acinzentado */
             --cor-texto-principal: #333;
             --cor-destaque-usuario: #4a784d; /* Verde Musgo */
             --cor-destaque-dev: #e0c29a;     /* Ocre/Bege Quente */
+            --cor-erro: #cc0000; /* NOVO: Cor Vermelha para Erro */
         }
         
         body { 
@@ -107,6 +108,55 @@
         }
         .file-item img, .file-item video { max-width: 100%; height: auto; border-radius: 4px; margin-top: 10px; }
         
+        /* NOVO ESTILO: Mensagem de Erro */
+        .error-message {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--cor-erro);
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px dashed var(--cor-borda);
+            margin-top: 10px;
+        }
+
+        /* NOVO ESTILO: Estilos para o Quiz */
+        .quiz-container {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid var(--cor-secundaria); /* Borda Marrom Médio */
+            border-radius: 8px;
+            background-color: var(--cor-background); /* Fundo bege claro do body */
+            text-align: left;
+        }
+        .quiz-question {
+            font-weight: bold;
+            color: var(--cor-principal);
+            margin-bottom: 15px;
+            padding-top: 15px;
+            border-top: 1px dotted var(--cor-borda);
+        }
+        .quiz-option {
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+            border: 1px solid transparent;
+        }
+        .quiz-option:hover {
+            background-color: #e0d9c9;
+        }
+        .quiz-result {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid var(--cor-borda);
+            font-weight: bold;
+            text-align: center;
+        }
+        .correct { color: var(--cor-destaque-usuario); } /* Verde */
+        .incorrect { color: var(--cor-erro); } /* Vermelho */
+
+
         /* Painel do Desenvolvedor */
         .dev-item { 
             display: flex; 
@@ -162,7 +212,8 @@
                 <option value="tutoriais">Tutoriais</option>
                 <option value="midia">Mídia</option>
                 <option value="diversos">Diversos</option>
-                <option value="conscientizacao">Conscientização</option> </select><br><br>
+                <option value="conscientizacao">Conscientização</option>
+            </select><br><br>
             
             <label for="file-type">Tipo:</label>
             <select id="file-type" onchange="toggleInputType()">
@@ -214,7 +265,7 @@
         const FOLDERS = {
             "projetos": "Projetos", "documentacao": "Documentação", "tutoriais": "Tutoriais", 
             "midia": "Mídia", "diversos": "Diversos",
-            "conscientizacao": "Conscientização" // NOVA PASTA AQUI
+            "conscientizacao": "Conscientização"
         };
         
         let files = JSON.parse(localStorage.getItem('files')) || [];
@@ -226,7 +277,7 @@
         if (files.length === 0) {
             files.push({
                 name: "Guardiões da História (Arqueologia em Ação)",
-                url: "Conscientizacao/conscientizacao.html", // URL RELATIVA
+                url: "#", // URL alterada para '#' pois o conteúdo será renderizado internamente
                 type: "link",
                 folder: "conscientizacao", // Pasta de destino
                 visible: true,
@@ -339,6 +390,7 @@
             });
         }
 
+        // FUNÇÃO RENDERUSERVIEW MODIFICADA PARA INCLUIR O QUIZ
         function renderUserView() {
             const userList = document.getElementById('user-file-list');
             userList.innerHTML = '';
@@ -361,7 +413,27 @@
                     </p>
                 `;
                 
-                if (file.type === 'link' || file.type === 'foto') {
+                // RENDERIZAÇÃO DA TELA DE ERRO E O QUIZ
+                if (file.folder === 'conscientizacao' && file.name.includes("Guardiões da História")) {
+                    contentHTML = `
+                        <h2 style="color: var(--cor-principal); border-bottom: 2px solid var(--cor-borda); padding-bottom: 5px;">Conscientização</h2>
+                        <p class="dev-info" style="text-align: center;">Conteúdo em desenvolvimento</p>
+                        <div class="error-message">
+                            Erro
+                        </div>
+
+                        <div class="quiz-container">
+                            <h3>Quiz: Desvendando a História (4º Ano)</h3>
+                            <div id="quiz-content">
+                                </div>
+                            <div class="quiz-result" id="quiz-result"></div>
+                        </div>
+                    `;
+                    // Assegura que o Quiz seja carregado depois que o HTML for renderizado na página
+                    setTimeout(loadQuiz, 0); 
+                } 
+                // Renderização normal para outros arquivos
+                else if (file.type === 'link' || file.type === 'foto') {
                     contentHTML += `<a href="${file.url}" target="_blank">`;
                     if (file.type === 'link') {
                         contentHTML += `Acessar Recurso`;
@@ -386,7 +458,9 @@
             });
         }
 
+
         // --- Funções de Ação (Desenvolvedor) ---
+        // ... (Suas funções: addItem, toggleVisibility, deleteItem, developerLogin, userLogin, logout) ...
 
         function addItem() {
             const name = document.getElementById('item-name').value.trim();
@@ -489,6 +563,118 @@
             currentFolder = 'projetos'; 
             fileDataUrl = null; 
         }
+
+        // ------------------------------------------------------------------
+        // --- Funções do Quiz de Arqueologia ---
+
+        const QUIZ_QUESTIONS = [
+            {
+                question: "1. Qual é o trabalho principal do arqueólogo?",
+                options: ["A) Construir casas.", "B) Estudar coisas antigas que os humanos deixaram (como panelas e ferramentas).", "C) Cuidar de animais na floresta."],
+                answerIndex: 1 
+            },
+            {
+                question: "2. O que são os 'vestígios' que o arqueólogo procura?",
+                options: ["A) Pedaços de gelo.", "B) Coisas que contam a história das pessoas, como ossos, pinturas e objetos.", "C) Frutas da estação."],
+                answerIndex: 1
+            },
+            {
+                question: "3. Como chamamos o lugar onde os arqueólogos fazem escavações para encontrar objetos?",
+                options: ["A) Praça de alimentação.", "B) Sítio Arqueológico.", "C) Campo de futebol."],
+                answerIndex: 1
+            },
+            {
+                question: "4. Se você achar uma ponta de flecha muito antiga, isso é um tipo de quê?",
+                options: ["A) Um lixo moderno.", "B) Um brinquedo novo.", "C) Um artefato (um objeto feito por humanos no passado)."],
+                answerIndex: 2
+            },
+            {
+                question: "5. Que ferramenta o arqueólogo usa para cavar com muito cuidado?",
+                options: ["A) Um trator grande.", "B) Pincéis pequenos e colheres.", "C) Uma máquina de lavar."],
+                answerIndex: 1
+            }
+        ];
+
+        let correctAnswers = 0;
+        let answeredCount = 0;
+
+        function loadQuiz() {
+            const quizDiv = document.getElementById('quiz-content');
+            const resultDiv = document.getElementById('quiz-result');
+
+            if (!quizDiv || !resultDiv) return;
+
+            quizDiv.innerHTML = ''; // Limpa o conteúdo anterior
+            correctAnswers = 0;
+            answeredCount = 0;
+            resultDiv.textContent = 'Responda as 5 perguntas!';
+
+            QUIZ_QUESTIONS.forEach((q, qIndex) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'quiz-question';
+                questionDiv.innerHTML = q.question;
+
+                q.options.forEach((option, oIndex) => {
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'quiz-option';
+                    optionDiv.textContent = option;
+                    optionDiv.onclick = () => checkAnswer(qIndex, oIndex, optionDiv);
+                    questionDiv.appendChild(optionDiv);
+                });
+
+                quizDiv.appendChild(questionDiv);
+            });
+        }
+
+        function checkAnswer(questionIndex, selectedIndex, element) {
+            // Se a pergunta já foi respondida, ignora
+            if (element.parentElement.classList.contains('answered')) {
+                return; 
+            }
+
+            const questionDiv = element.parentElement;
+            questionDiv.classList.add('answered'); // Marca como respondida
+            answeredCount++;
+
+            const isCorrect = selectedIndex === QUIZ_QUESTIONS[questionIndex].answerIndex;
+
+            // Aplica a cor correta em todos os elementos da pergunta
+            Array.from(questionDiv.querySelectorAll('.quiz-option')).forEach((opt, idx) => {
+                opt.style.fontWeight = 'normal'; // Remove negrito
+                opt.style.cursor = 'default';
+                opt.onclick = null; // Desabilita cliques
+                opt.style.backgroundColor = 'transparent'; // Remove hover effect
+
+                if (idx === QUIZ_QUESTIONS[questionIndex].answerIndex) {
+                    opt.classList.add('correct'); // Marca a correta sempre de verde
+                    opt.style.fontWeight = 'bold';
+                }
+            });
+
+            if (isCorrect) {
+                correctAnswers++;
+            } else {
+                // Se a resposta estiver errada, a marca de vermelho (a correta já está verde)
+                element.classList.add('incorrect');
+                element.style.fontWeight = 'bold';
+            }
+
+            updateQuizResult();
+        }
+
+        function updateQuizResult() {
+            const resultDiv = document.getElementById('quiz-result');
+            if (answeredCount === QUIZ_QUESTIONS.length) {
+                resultDiv.innerHTML = `
+                    Você completou o Quiz!<br>
+                    Resultado Final: <span class="${correctAnswers >= 3 ? 'correct' : 'incorrect'}">${correctAnswers} de ${QUIZ_QUESTIONS.length} acertos!</span>
+                `;
+            } else {
+                // Mostra o progresso
+                resultDiv.textContent = `Respondidas: ${answeredCount} / ${QUIZ_QUESTIONS.length}`;
+            }
+        }
+        // ------------------------------------------------------------------
 
         // Inicializa a página
         logout();
