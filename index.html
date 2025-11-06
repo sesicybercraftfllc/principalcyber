@@ -14,7 +14,7 @@
             --cor-texto-principal: #333;
             --cor-destaque-usuario: #4a784d; /* Verde Musgo */
             --cor-destaque-dev: #e0c29a;     /* Ocre/Bege Quente */
-            --cor-erro: #cc0000; /* NOVO: Cor Vermelha para Erro */
+            --cor-erro: #cc0000; /* Cor Vermelha para Erro */
         }
         
         body { 
@@ -108,7 +108,7 @@
         }
         .file-item img, .file-item video { max-width: 100%; height: auto; border-radius: 4px; margin-top: 10px; }
         
-        /* NOVO ESTILO: Mensagem de Erro */
+        /* Mensagem de Erro */
         .error-message {
             font-size: 2em;
             font-weight: bold;
@@ -119,13 +119,13 @@
             margin-top: 10px;
         }
 
-        /* NOVO ESTILO: Estilos para o Quiz */
+        /* Estilos para o Quiz */
         .quiz-container {
             margin-top: 30px;
             padding: 20px;
-            border: 1px solid var(--cor-secundaria); /* Borda Marrom Médio */
+            border: 1px solid var(--cor-secundaria); 
             border-radius: 8px;
-            background-color: var(--cor-background); /* Fundo bege claro do body */
+            background-color: var(--cor-background); 
             text-align: left;
         }
         .quiz-question {
@@ -170,7 +170,7 @@
             color: var(--cor-principal);
         }
         .dev-item span strong { color: var(--cor-principal); }
-        .dev-item > span { width: 70%; } /* Ajuste para o texto não invadir os botões */
+        .dev-item > span { width: 70%; } 
 
         .folder-selector { margin-bottom: 20px; }
         .folder-selector button {
@@ -277,9 +277,9 @@
         if (files.length === 0) {
             files.push({
                 name: "Guardiões da História (Arqueologia em Ação)",
-                url: "#", // URL alterada para '#' pois o conteúdo será renderizado internamente
+                url: "#", 
                 type: "link",
-                folder: "conscientizacao", // Pasta de destino
+                folder: "conscientizacao", 
                 visible: true,
                 developer: "dev01" 
             });
@@ -390,7 +390,7 @@
             });
         }
 
-        // FUNÇÃO RENDERUSERVIEW MODIFICADA PARA INCLUIR O QUIZ
+        // FUNÇÃO RENDERUSERVIEW (INCLUI ERRO E QUIZ)
         function renderUserView() {
             const userList = document.getElementById('user-file-list');
             userList.innerHTML = '';
@@ -429,7 +429,7 @@
                             <div class="quiz-result" id="quiz-result"></div>
                         </div>
                     `;
-                    // Assegura que o Quiz seja carregado depois que o HTML for renderizado na página
+                    // Assegura que o Quiz seja carregado depois que o HTML for renderizado
                     setTimeout(loadQuiz, 0); 
                 } 
                 // Renderização normal para outros arquivos
@@ -460,7 +460,6 @@
 
 
         // --- Funções de Ação (Desenvolvedor) ---
-        // ... (Suas funções: addItem, toggleVisibility, deleteItem, developerLogin, userLogin, logout) ...
 
         function addItem() {
             const name = document.getElementById('item-name').value.trim();
@@ -565,7 +564,7 @@
         }
 
         // ------------------------------------------------------------------
-        // --- Funções do Quiz de Arqueologia ---
+        // --- Funções do Quiz de Arqueologia (Uma Pergunta por Vez) ---
 
         const QUIZ_QUESTIONS = [
             {
@@ -595,84 +594,106 @@
             }
         ];
 
+        let currentQuestionIndex = 0; // Controla a pergunta atual
         let correctAnswers = 0;
-        let answeredCount = 0;
+        let quizFinished = false; 
 
         function loadQuiz() {
-            const quizDiv = document.getElementById('quiz-content');
-            const resultDiv = document.getElementById('quiz-result');
-
-            if (!quizDiv || !resultDiv) return;
-
-            quizDiv.innerHTML = ''; // Limpa o conteúdo anterior
+            currentQuestionIndex = 0;
             correctAnswers = 0;
-            answeredCount = 0;
-            resultDiv.textContent = 'Responda as 5 perguntas!';
-
-            QUIZ_QUESTIONS.forEach((q, qIndex) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'quiz-question';
-                questionDiv.innerHTML = q.question;
-
-                q.options.forEach((option, oIndex) => {
-                    const optionDiv = document.createElement('div');
-                    optionDiv.className = 'quiz-option';
-                    optionDiv.textContent = option;
-                    optionDiv.onclick = () => checkAnswer(qIndex, oIndex, optionDiv);
-                    questionDiv.appendChild(optionDiv);
-                });
-
-                quizDiv.appendChild(questionDiv);
-            });
+            quizFinished = false;
+            renderQuestion();
+            document.getElementById('quiz-result').textContent = 'Responda as 5 perguntas!';
         }
 
-        function checkAnswer(questionIndex, selectedIndex, element) {
-            // Se a pergunta já foi respondida, ignora
-            if (element.parentElement.classList.contains('answered')) {
-                return; 
+        function renderQuestion() {
+            const quizDiv = document.getElementById('quiz-content');
+            if (!quizDiv) return;
+
+            if (quizFinished) {
+                // Se terminou, exibe apenas a mensagem final
+                quizDiv.innerHTML = '<p>Quiz Finalizado! Role para baixo e veja seu resultado.</p>';
+                return;
             }
 
-            const questionDiv = element.parentElement;
-            questionDiv.classList.add('answered'); // Marca como respondida
-            answeredCount++;
+            const q = QUIZ_QUESTIONS[currentQuestionIndex];
+            quizDiv.innerHTML = ''; 
 
-            const isCorrect = selectedIndex === QUIZ_QUESTIONS[questionIndex].answerIndex;
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'quiz-question';
+            questionDiv.innerHTML = q.question;
+            
+            q.options.forEach((option, oIndex) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'quiz-option';
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => checkAnswer(oIndex, optionDiv); 
+                questionDiv.appendChild(optionDiv);
+            });
 
-            // Aplica a cor correta em todos os elementos da pergunta
-            Array.from(questionDiv.querySelectorAll('.quiz-option')).forEach((opt, idx) => {
-                opt.style.fontWeight = 'normal'; // Remove negrito
+            quizDiv.appendChild(questionDiv);
+            document.getElementById('quiz-result').textContent = `Pergunta ${currentQuestionIndex + 1} de ${QUIZ_QUESTIONS.length}`;
+        }
+
+        function checkAnswer(selectedIndex, element) {
+            const q = QUIZ_QUESTIONS[currentQuestionIndex];
+            const isCorrect = selectedIndex === q.answerIndex;
+
+            // Desabilita todas as opções de clique para esta pergunta
+            Array.from(element.parentElement.querySelectorAll('.quiz-option')).forEach(opt => {
+                opt.onclick = null;
                 opt.style.cursor = 'default';
-                opt.onclick = null; // Desabilita cliques
-                opt.style.backgroundColor = 'transparent'; // Remove hover effect
+                opt.style.backgroundColor = 'transparent';
+            });
 
-                if (idx === QUIZ_QUESTIONS[questionIndex].answerIndex) {
-                    opt.classList.add('correct'); // Marca a correta sempre de verde
+            // Marca a correta e a incorreta
+            Array.from(element.parentElement.querySelectorAll('.quiz-option')).forEach((opt, idx) => {
+                if (idx === q.answerIndex) {
+                    opt.classList.add('correct');
                     opt.style.fontWeight = 'bold';
+                } else if (idx === selectedIndex && !isCorrect) {
+                    opt.classList.add('incorrect');
                 }
             });
 
             if (isCorrect) {
                 correctAnswers++;
-            } else {
-                // Se a resposta estiver errada, a marca de vermelho (a correta já está verde)
-                element.classList.add('incorrect');
-                element.style.fontWeight = 'bold';
             }
 
-            updateQuizResult();
+            // Adiciona um botão para ir para a próxima pergunta após a resposta
+            const nextButton = document.createElement('button');
+            nextButton.textContent = currentQuestionIndex < QUIZ_QUESTIONS.length - 1 ? 'Próxima Pergunta →' : 'Ver Resultado Final';
+            nextButton.style.marginTop = '20px';
+            nextButton.style.padding = '10px 20px';
+            nextButton.style.backgroundColor = 'var(--cor-destaque-usuario)';
+            nextButton.style.color = 'white';
+            nextButton.onclick = moveToNextQuestion;
+
+            element.parentElement.appendChild(nextButton);
+
+            // Atualiza o placar provisório no resultado
+            document.getElementById('quiz-result').innerHTML += `<br> <span class="${isCorrect ? 'correct' : 'incorrect'}">${isCorrect ? 'Correto!' : 'Errado!'}</span>`;
+        }
+
+        function moveToNextQuestion() {
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex < QUIZ_QUESTIONS.length) {
+                renderQuestion();
+            } else {
+                quizFinished = true;
+                renderQuestion(); // Renderiza a mensagem final
+                updateQuizResult();
+            }
         }
 
         function updateQuizResult() {
             const resultDiv = document.getElementById('quiz-result');
-            if (answeredCount === QUIZ_QUESTIONS.length) {
-                resultDiv.innerHTML = `
-                    Você completou o Quiz!<br>
-                    Resultado Final: <span class="${correctAnswers >= 3 ? 'correct' : 'incorrect'}">${correctAnswers} de ${QUIZ_QUESTIONS.length} acertos!</span>
-                `;
-            } else {
-                // Mostra o progresso
-                resultDiv.textContent = `Respondidas: ${answeredCount} / ${QUIZ_QUESTIONS.length}`;
-            }
+            resultDiv.innerHTML = `
+                <h3 style="color: var(--cor-principal);">✅ QUIZ FINALIZADO! ✅</h3>
+                Resultado Final: <span class="${correctAnswers >= 3 ? 'correct' : 'incorrect'}">${correctAnswers} de ${QUIZ_QUESTIONS.length} acertos!</span>
+                <button onclick="loadQuiz()" style="margin-top: 15px; background-color: var(--cor-secundaria);">Tentar Novamente</button>
+            `;
         }
         // ------------------------------------------------------------------
 
