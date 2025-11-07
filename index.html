@@ -17,43 +17,43 @@
             --cor-erro: #cc0000; /* Cor Vermelha para Erro */
         }
         
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
+        body {    
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+            margin: 0;    
             padding: 20px;
-            background-color: var(--cor-background); 
+            background-color: var(--cor-background);    
             color: var(--cor-texto-principal);
         }
-        .container { 
-            max-width: 900px; 
-            margin: 0 auto; 
-            background-color: #fff; 
-            padding: 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+        .container {    
+            max-width: 900px;    
+            margin: 0 auto;    
+            background-color: #fff;    
+            padding: 30px;    
+            border-radius: 12px;    
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);    
         }
-        h1 { 
-            text-align: center; 
-            color: var(--cor-principal); 
-            border-bottom: 2px solid var(--cor-borda); 
+        h1 {    
+            text-align: center;    
+            color: var(--cor-principal);    
+            border-bottom: 2px solid var(--cor-borda);    
             padding-bottom: 10px;
         }
         h2, h3 { color: var(--cor-secundaria); }
         
         /* Formulários e Painéis */
-        #login-form, #dev-panel { 
-            margin-top: 20px; 
-            padding: 20px; 
-            border: 1px solid var(--cor-borda); 
-            border-radius: 8px; 
+        #login-form, #dev-panel {    
+            margin-top: 20px;    
+            padding: 20px;    
+            border: 1px solid var(--cor-borda);    
+            border-radius: 8px;    
             background-color: #ffffff;
         }
         #login-form input[type="text"], #login-form input[type="password"],
-        #dev-panel input[type="text"], #dev-panel select, #item-file { 
-            padding: 10px; 
-            margin-bottom: 12px; 
-            width: 100%; 
-            box-sizing: border-box; 
+        #dev-panel input[type="text"], #dev-panel select, #item-file {    
+            padding: 10px;    
+            margin-bottom: 12px;    
+            width: 100%;    
+            box-sizing: border-box;    
             border: 1px solid var(--cor-borda);
             border-radius: 4px;
         }
@@ -61,24 +61,24 @@
         #item-file { padding: 5px; }
 
         /* Botões */
-        button { 
-            padding: 10px 15px; 
-            border: none; 
-            border-radius: 4px; 
-            cursor: pointer; 
+        button {    
+            padding: 10px 15px;    
+            border: none;    
+            border-radius: 4px;    
+            cursor: pointer;    
             transition: background-color 0.3s;
         }
         
         /* Botão Desenvolvedor */
-        #login-form button { 
-            background-color: var(--cor-principal); 
-            color: white; 
+        #login-form button {    
+            background-color: var(--cor-principal);    
+            color: white;    
             width: 100%;
         }
         #login-form button:hover { background-color: #4a2f1c; }
 
         /* Botão Usuário (MÁXIMO DE DESTAQUE) */
-        #login-section > button { 
+        #login-section > button {    
             background-color: var(--cor-destaque-usuario); /* Verde Musgo */
             color: white;
             width: 100%;
@@ -88,14 +88,14 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
             font-weight: bold;
         }
-        #login-section > button:hover { 
-            background-color: #3b603e; 
+        #login-section > button:hover {    
+            background-color: #3b603e;    
             transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
         }
 
         /* Botões Sair e Ações Dev */
-        #dev-panel button, #user-view button { 
-            background-color: var(--cor-secundaria); 
+        #dev-panel button, #user-view button {    
+            background-color: var(--cor-secundaria);    
             color: white;
         }
         #dev-panel button:hover, #user-view button:hover { background-color: var(--cor-principal); }
@@ -107,12 +107,12 @@
 
         /* Visualização do Usuário */
         #user-view h2 { color: var(--cor-destaque-usuario); }
-        .file-item { 
-            border: 1px solid var(--cor-borda); 
-            padding: 15px; 
-            margin-bottom: 10px; 
-            border-radius: 6px; 
-            background-color: #fffaf0; 
+        .file-item {    
+            border: 1px solid var(--cor-borda);    
+            padding: 15px;    
+            margin-bottom: 10px;    
+            border-radius: 6px;    
+            background-color: #fffaf0;    
         }
         .file-item img, .file-item video { max-width: 100%; height: auto; border-radius: 4px; margin-top: 10px; }
         
@@ -139,7 +139,7 @@
             border-bottom: 1px solid var(--cor-secundaria);
         }
         .semaforo-item {
-            width: 30%; 
+            width: 30%;    
             min-height: 120px;
             display: flex;
             flex-direction: column;
@@ -158,21 +158,21 @@
         .semaforo-item:hover {
              transform: translateY(-3px);
         }
-        .semaforo-vermelho { background-color: #cc0000; } 
-        .semaforo-amarelo { 
-            background-color: #ffc400; 
-            color: var(--cor-principal); 
+        .semaforo-vermelho { background-color: #cc0000; }    
+        .semaforo-amarelo {    
+            background-color: #ffc400;    
+            color: var(--cor-principal);    
             text-shadow: none;
-        } 
-        .semaforo-verde { background-color: var(--cor-destaque-usuario); } 
+        }    
+        .semaforo-verde { background-color: var(--cor-destaque-usuario); }    
 
         /* Estilos para o Quiz */
         .quiz-container {
             margin-top: 30px;
             padding: 20px;
-            border: 1px solid var(--cor-secundaria); 
+            border: 1px solid var(--cor-secundaria);    
             border-radius: 8px;
-            background-color: var(--cor-background); 
+            background-color: var(--cor-background);    
             text-align: left;
         }
         .quiz-question {
@@ -200,24 +200,36 @@
             font-weight: bold;
             text-align: center;
         }
-        .correct { color: var(--cor-destaque-usuario); } 
-        .incorrect { color: var(--cor-erro); } 
+        .correct { color: var(--cor-destaque-usuario); }    
+        .incorrect { color: var(--cor-erro); }    
 
+        /* Melhorias de UX no Quiz */
+        .quiz-option.correct {
+            background-color: #e6ffe6; /* Fundo Verde muito claro */
+            border: 1px solid var(--cor-destaque-usuario);
+        }
+        .quiz-option.incorrect {
+            background-color: #ffe6e6; /* Fundo Vermelho muito claro */
+            border: 1px solid var(--cor-erro);
+        }
+        .quiz-option.correct:hover, .quiz-option.incorrect:hover {
+            background-color: initial; 
+        }
 
         /* Painel do Desenvolvedor */
-        .dev-item { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border: 1px solid var(--cor-destaque-dev); 
-            padding: 10px; 
-            margin-bottom: 10px; 
-            border-radius: 6px; 
-            background-color: var(--cor-destaque-dev); 
+        .dev-item {    
+            display: flex;    
+            justify-content: space-between;    
+            align-items: center;    
+            border: 1px solid var(--cor-destaque-dev);    
+            padding: 10px;    
+            margin-bottom: 10px;    
+            border-radius: 6px;    
+            background-color: var(--cor-destaque-dev);    
             color: var(--cor-principal);
         }
         .dev-item span strong { color: var(--cor-principal); }
-        .dev-item > span { width: 70%; } 
+        .dev-item > span { width: 70%; }    
 
         .folder-selector { margin-bottom: 20px; }
         .folder-selector button {
@@ -230,6 +242,28 @@
             color: white;
             font-weight: bold;
         }
+        
+        /* Estilos para a nova tela de Vídeos */
+        #videos-screen {
+            padding: 20px;
+            border: 1px solid var(--cor-destaque-usuario);
+            border-radius: 8px;
+            background-color: #ffffff;
+            margin-top: 20px;
+        }
+
+        /* Estilo para vídeos externos */
+        .video-item a {
+            display: block; 
+            padding: 10px; 
+            background-color: #f0f0f0; 
+            border-radius: 4px; 
+            border: 1px solid var(--cor-borda); 
+            margin-bottom: 10px; 
+            text-align: center;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
@@ -302,8 +336,21 @@
             <h2>Visualização do Usuário</h2>
             <div class="folder-selector" id="user-folder-selector">
                 </div>
+            
             <div id="user-file-list">
                 </div>
+
+            <div id="videos-screen" style="display: none;">
+                <button onclick="changeView('conscientizacao_quiz')" style="margin-bottom: 20px; background-color: var(--cor-principal);">
+                    ← Voltar ao Quiz e Semáforo
+                </button>
+                <h3 style="color: var(--cor-destaque-usuario);">▶️ Vídeos Educativos: Guia de Arqueologia em Casa</h3>
+                <p>Assista aos vídeos para aprender como ser um Guardião da História e preservar o patrimônio!</p>
+                <hr>
+                <div id="videos-list-content">
+                    </div>
+            </div>
+
             <button onclick="logout()">Sair</button>
         </div>
     </div>
@@ -311,34 +358,20 @@
     <script>
         // --- Configurações ---
         const DEVELOPERS = {
-            "dev01": "123", "dev02": "456", "dev03": "789", 
-            "dev04": "101", "dev05": "112", "dev06": "131", 
+            "dev01": "123", "dev02": "456", "dev03": "789",    
+            "dev04": "101", "dev04": "112", "dev06": "131",    
             "dev07": "415", "dev08": "161"
         };
         const FOLDERS = {
-            "projetos": "Projetos", "documentacao": "Documentação", "tutoriais": "Tutoriais", 
+            "projetos": "Projetos", "documentacao": "Documentação", "tutoriais": "Tutoriais",    
             "midia": "Mídia", "diversos": "Diversos",
             "conscientizacao": "Conscientização"
         };
         
         let files = JSON.parse(localStorage.getItem('files')) || [];
-        let currentUser = null; 
-        let currentFolder = 'projetos'; 
-        let fileDataUrl = null; 
-
-        // --- Adiciona a página de Conscientização na primeira vez que o site é carregado ---
-        if (files.length === 0) {
-            files.push({
-                name: "Guardiões da História (Arqueologia em Ação)",
-                url: "#", 
-                type: "link",
-                folder: "conscientizacao", 
-                visible: true,
-                developer: "dev01" 
-            });
-            localStorage.setItem('files', JSON.stringify(files));
-        }
-        // ---------------------------------------------------------------------------------
+        let currentUser = null;    
+        let currentFolder = 'projetos';    
+        let fileDataUrl = null;    
 
         // --- Funções Auxiliares ---
 
@@ -361,7 +394,7 @@
                     <label for="item-file">Carregar ${type.charAt(0).toUpperCase() + type.slice(1)}:</label>
                     <input type="file" id="item-file" accept="${acceptType}" onchange="handleFileUpload(event, '${type}')">
                 `;
-                fileDataUrl = null; 
+                fileDataUrl = null;    
             }
         }
         
@@ -371,10 +404,32 @@
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                fileDataUrl = e.target.result; 
+                fileDataUrl = e.target.result;    
                 alert(`Arquivo (${type}) carregado com sucesso!`);
             };
             reader.readAsDataURL(file);
+        }
+        
+        // NOVO: Função para alternar entre as views de usuário
+        function changeView(viewType) {
+            const userFileList = document.getElementById('user-file-list');
+            const videosScreen = document.getElementById('videos-screen');
+
+            if (viewType === 'conscientizacao_quiz') {
+                userFileList.style.display = 'block';
+                videosScreen.style.display = 'none';
+                // Certifica-se de que o quiz está carregado quando volta
+                loadQuiz(); 
+            } else if (viewType === 'educational_videos') {
+                userFileList.style.display = 'none';
+                videosScreen.style.display = 'block';
+                // Carrega os vídeos quando muda para esta tela
+                loadEducationalVideos(); 
+            } else {
+                // Para outras pastas normais (projetos, tutoriais, etc.)
+                userFileList.style.display = 'block';
+                videosScreen.style.display = 'none';
+            }
         }
 
         function changeFolder(folderKey) {
@@ -386,6 +441,10 @@
                 renderDevPanel();
             } else if (document.getElementById('user-view').style.display === 'block') {
                 renderUserView();
+            }
+            // Garante que, ao mudar de pasta, a tela de vídeos é escondida
+            if(currentUser === 'user') {
+                changeView(folderKey === 'conscientizacao' ? 'conscientizacao_quiz' : 'default');
             }
         }
 
@@ -420,10 +479,10 @@
                 const item = document.createElement('div');
                 item.className = 'dev-item';
                 
-                const originalIndex = files.findIndex(f => 
-                    f.name === file.name && 
-                    f.url === file.url && 
-                    f.developer === file.developer && 
+                const originalIndex = files.findIndex(f =>    
+                    f.name === file.name &&    
+                    f.url === file.url &&    
+                    f.developer === file.developer &&    
                     f.folder === file.folder
                 );
 
@@ -443,7 +502,7 @@
             });
         }
 
-        // FUNÇÃO RENDERUSERVIEW (INCLUI SEMÁFORO E QUIZ)
+        // FUNÇÃO RENDERUSERVIEW (INCLUI SEMÁFORO, BOTÃO DE VÍDEOS E QUIZ)
         function renderUserView() {
             const userList = document.getElementById('user-file-list');
             userList.innerHTML = '';
@@ -452,6 +511,10 @@
 
             if (visibleFiles.length === 0) {
                 userList.innerHTML = `<p>Nenhum arquivo ou link visível na pasta "${FOLDERS[currentFolder]}".</p>`;
+                // Se não há arquivos e não é a pasta de conscientização, esconde a tela de vídeos
+                if (currentFolder !== 'conscientizacao') {
+                    document.getElementById('videos-screen').style.display = 'none';
+                }
                 return;
             }
             
@@ -466,7 +529,7 @@
                     </p>
                 `;
                 
-                // RENDERIZAÇÃO DA TELA DE CONSCIENTIZAÇÃO, SEMÁFORO E O QUIZ
+                // RENDERIZAÇÃO DA TELA DE CONSCIENTIZAÇÃO, SEMÁFORO, BOTÃO DE VÍDEOS E O QUIZ
                 if (file.folder === 'conscientizacao' && file.name.includes("Guardiões da História")) {
                     contentHTML = `
                         <h2 style="color: var(--cor-principal); border-bottom: 2px solid var(--cor-borda); padding-bottom: 5px;">Conscientização</h2>
@@ -482,15 +545,24 @@
                         <h3 style="text-align: center; color: var(--cor-principal); margin-top: 40px;">⚠️ Regra de Ouro: Semáforo do Sítio ⚠️</h3>
                         <div class="semaforo-container">
                             <div class="semaforo-item semaforo-vermelho">
-                                VERMELHO: NÃO TOQUE
+                                🛑 VERMELHO: NÃO TOQUE
                             </div>
                             <div class="semaforo-item semaforo-amarelo">
-                                AMARELO: FOTOGRAFE
+                                📸 AMARELO: FOTOGRAFE
                             </div>
                             <div class="semaforo-item semaforo-verde">
-                                VERDE: LIGUE (e avise as autoridades)
+                                📞 VERDE: LIGUE (e avise as autoridades)
                             </div>
                         </div>
+
+                        <button 
+                            onclick="changeView('educational_videos')" 
+                            id="toggle-videos-button" 
+                            style="width: 100%; padding: 15px; margin-bottom: 30px; background-color: var(--cor-secundaria); color: white; font-size: 1.1em;"
+                        >
+                            ▶️ Ver Vídeos Educativos (Guia de Arqueologia em Casa)
+                        </button>
+
                         <div class="quiz-container">
                             <h3>Quiz: Guardiões Da Historia </h3>
                             <div id="quiz-content">
@@ -499,8 +571,10 @@
                         </div>
                     `;
                     // Assegura que o Quiz seja carregado depois que o HTML for renderizado
-                    setTimeout(loadQuiz, 0); 
-                } 
+                    setTimeout(() => {
+                        loadQuiz();
+                    }, 0); 
+                }    
                 // Renderização normal para outros arquivos
                 else if (file.type === 'link' || file.type === 'foto') {
                     contentHTML += `<a href="${file.url}" target="_blank">`;
@@ -533,7 +607,7 @@
         function addItem() {
             const name = document.getElementById('item-name').value.trim();
             const type = document.getElementById('file-type').value;
-            const folder = document.getElementById('item-folder').value; 
+            const folder = document.getElementById('item-folder').value;    
             const visible = document.getElementById('item-visible').checked;
             
             let url;
@@ -541,7 +615,7 @@
             if (type === 'link') {
                 url = document.getElementById('item-url').value.trim();
             } else {
-                url = fileDataUrl; 
+                url = fileDataUrl;    
             }
 
             if (name === '' || !url) {
@@ -551,24 +625,24 @@
 
             files.push({
                 name: name,
-                url: url, 
+                url: url,    
                 type: type,
-                folder: folder, 
+                folder: folder,    
                 visible: visible,
-                developer: currentUser 
+                developer: currentUser    
             });
 
             saveFiles();
             
-            changeFolder(folder); 
+            changeFolder(folder);    
             
             document.getElementById('item-name').value = '';
             if (type === 'link') {
                 document.getElementById('item-url').value = '';
             }
             document.getElementById('item-visible').checked = true;
-            fileDataUrl = null; 
-            toggleInputType(); 
+            fileDataUrl = null;    
+            toggleInputType();    
 
             alert(`Item adicionado com sucesso na pasta ${FOLDERS[folder]}!`);
         }
@@ -576,7 +650,7 @@
         function toggleVisibility(index) {
             files[index].visible = !files[index].visible;
             saveFiles();
-            renderDevPanel(); 
+            renderDevPanel();    
         }
 
         function deleteItem(index) {
@@ -627,8 +701,8 @@
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
             
-            currentFolder = 'projetos'; 
-            fileDataUrl = null; 
+            currentFolder = 'projetos';    
+            fileDataUrl = null;    
         }
 
         // ------------------------------------------------------------------
@@ -638,7 +712,7 @@
             {
                 question: "1. Qual é o trabalho principal do arqueólogo?",
                 options: ["A) Construir casas.", "B) Estudar coisas antigas que os humanos deixaram (como panelas e ferramentas).", "C) Cuidar de animais na floresta."],
-                answerIndex: 1 
+                answerIndex: 1    
             },
             {
                 question: "2. O que são os 'vestígios' que o arqueólogo procura?",
@@ -664,7 +738,7 @@
 
         let currentQuestionIndex = 0; // Controla a pergunta atual
         let correctAnswers = 0;
-        let quizFinished = false; 
+        let quizFinished = false;    
 
         function loadQuiz() {
             currentQuestionIndex = 0;
@@ -685,7 +759,7 @@
             }
 
             const q = QUIZ_QUESTIONS[currentQuestionIndex];
-            quizDiv.innerHTML = ''; 
+            quizDiv.innerHTML = '';    
 
             const questionDiv = document.createElement('div');
             questionDiv.className = 'quiz-question';
@@ -695,7 +769,7 @@
                 const optionDiv = document.createElement('div');
                 optionDiv.className = 'quiz-option';
                 optionDiv.textContent = option;
-                optionDiv.onclick = () => checkAnswer(oIndex, optionDiv); 
+                optionDiv.onclick = () => checkAnswer(oIndex, optionDiv);    
                 questionDiv.appendChild(optionDiv);
             });
 
@@ -763,11 +837,67 @@
                 <button onclick="loadQuiz()" style="margin-top: 15px; background-color: var(--cor-secundaria);">Tentar Novamente</button>
             `;
         }
+        
+        // --- Funções para Vídeos Educativos ---
+
+        function loadEducationalVideos() {
+            const videoListDiv = document.getElementById('videos-list-content');
+            if (!videoListDiv) return;
+
+            // Filtra apenas vídeos visíveis na pasta 'tutoriais'
+            const educationalVideos = files.filter(file => file.visible && file.folder === 'tutoriais' && file.type === 'video');
+
+            if (educationalVideos.length === 0) {
+                videoListDiv.innerHTML = '<p style="padding: 20px; text-align: center; border: 1px dashed var(--cor-borda);">Nenhum vídeo educativo visível cadastrado. Peça ao desenvolvedor para adicionar tutoriais na pasta **Tutoriais**.</p>';
+                return;
+            }
+
+            videoListDiv.innerHTML = '';
+            educationalVideos.forEach(video => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'video-item';
+                videoItem.style.marginBottom = '20px';
+                
+                let contentHtml = '';
+                if (video.url.startsWith('data:video')) {
+                     // Se for um vídeo carregado via dataURL, exibe o player
+                    contentHtml = `<p><strong>${video.name}</strong></p><video controls src="${video.url}" style="max-width: 100%; border-radius: 4px;"></video>`;
+                } else {
+                    // Se for link externo (Youtube, Vimeo, etc.)
+                    contentHtml = `<a href="${video.url}" target="_blank">
+                                    ▶️ ${video.name} (Assistir Vídeo Externo) 
+                                </a>`;
+                }
+                videoItem.innerHTML = contentHtml;
+                videoListDiv.appendChild(videoItem);
+            });
+        }
+
         // ------------------------------------------------------------------
 
         // Inicializa a página
-        logout();
-        toggleInputType(); 
+        function init() {
+            // 1. Garante que os arquivos iniciais existam (se for a primeira visita)
+            if (files.length === 0) {
+                files.push({
+                    name: "Guardiões da História (Arqueologia em Ação)",
+                    url: "#", 
+                    type: "link",
+                    folder: "conscientizacao", 
+                    visible: true,
+                    developer: "dev01"
+                });
+                saveFiles(); 
+            }
+
+            // 2. Garante o estado inicial (como se tivesse feito logout)
+            logout();
+            
+            // 3. Garante que o painel de adicionar itens do Dev esteja no estado Link
+            toggleInputType();
+        }
+
+        init();
     </script>
 </body>
 </html>
