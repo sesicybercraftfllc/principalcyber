@@ -1,17 +1,4 @@
-
-<html>
-<body>
-	Página HTML 
-	<script type="text/javascript">
-		<!--
-		
-			/* escreva seu código aqui.*/
-			
-		//-->
-	</script>
-
-</body>
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -81,6 +68,7 @@
             cursor: pointer; 
             transition: background-color 0.3s;
         }
+        
         /* Botão Desenvolvedor */
         #login-form button { 
             background-color: var(--cor-principal); 
@@ -89,14 +77,21 @@
         }
         #login-form button:hover { background-color: #4a2f1c; }
 
-        /* Botão Usuário */
-        #login-section button:last-of-type { 
-            background-color: var(--cor-destaque-usuario); 
-            color: white; 
+        /* Botão Usuário (MÁXIMO DE DESTAQUE) */
+        #login-section > button { 
+            background-color: var(--cor-destaque-usuario); /* Verde Musgo */
+            color: white;
             width: 100%;
             margin-top: 15px;
+            font-size: 1.3em; /* Mais destaque */
+            padding: 18px; /* Mais preenchimento */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
+            font-weight: bold;
         }
-        #login-section button:last-of-type:hover { background-color: #3b603e; }
+        #login-section > button:hover { 
+            background-color: #3b603e; 
+            transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
+        }
 
         /* Botões Sair e Ações Dev */
         #dev-panel button, #user-view button { 
@@ -144,7 +139,7 @@
             border-bottom: 1px solid var(--cor-secundaria);
         }
         .semaforo-item {
-            width: 30%; /* Para garantir que caibam 3 lado a lado */
+            width: 30%; 
             min-height: 120px;
             display: flex;
             flex-direction: column;
@@ -163,13 +158,13 @@
         .semaforo-item:hover {
              transform: translateY(-3px);
         }
-        .semaforo-vermelho { background-color: #cc0000; } /* Vermelho puro */
+        .semaforo-vermelho { background-color: #cc0000; } 
         .semaforo-amarelo { 
-            background-color: #ffc400; /* Amarelo ouro/forte */
-            color: var(--cor-principal); /* Texto escuro para contraste */
+            background-color: #ffc400; 
+            color: var(--cor-principal); 
             text-shadow: none;
         } 
-        .semaforo-verde { background-color: var(--cor-destaque-usuario); } /* Verde Musgo */
+        .semaforo-verde { background-color: var(--cor-destaque-usuario); } 
 
         /* Estilos para o Quiz */
         .quiz-container {
@@ -205,8 +200,8 @@
             font-weight: bold;
             text-align: center;
         }
-        .correct { color: var(--cor-destaque-usuario); } /* Verde */
-        .incorrect { color: var(--cor-erro); } /* Vermelho */
+        .correct { color: var(--cor-destaque-usuario); } 
+        .incorrect { color: var(--cor-erro); } 
 
 
         /* Painel do Desenvolvedor */
@@ -243,14 +238,20 @@
         <h1>Cybercraft</h1>
 
         <div id="login-section">
+            <button onclick="userLogin()" style="margin-bottom: 25px;">
+                <span style="font-size: 1.3em; margin-right: 10px;">📚</span> Acessar Como Usuario Comum
+            </button>
+            
+            <p style="text-align: center; margin-bottom: 20px;">
+                Ou
+            </p>
+
             <div id="login-form">
                 <h3>Login do Desenvolvedor</h3>
                 <input type="text" id="username" placeholder="Usuário">
                 <input type="password" id="password" placeholder="Senha">
                 <button onclick="developerLogin()">Entrar como Desenvolvedor</button>
             </div>
-            <p style="text-align: center;">Ou</p>
-            <button onclick="userLogin()">Entrar como Usuário Comum (Visualização)</button>
         </div>
 
         <div id="dev-panel" style="display: none;">
@@ -600,8 +601,7 @@
                 document.getElementById('dev-panel').style.display = 'block';
                 
                 toggleInputType();
-                updateFolderSelector('dev');
-                renderDevPanel();
+                changeFolder('projetos'); // Volta para a pasta padrão do dev
             } else {
                 alert('Credenciais de Desenvolvedor Inválidas.');
             }
@@ -614,8 +614,8 @@
             document.getElementById('dev-panel').style.display = 'none';
             document.getElementById('user-view').style.display = 'block';
             
-            updateFolderSelector('user');
-            renderUserView();
+            // ALTERAÇÃO CHAVE: Vai direto para a pasta 'conscientizacao'
+            changeFolder('conscientizacao');
         }
 
         function logout() {
