@@ -1,17 +1,4 @@
-
-<html>
-<body>
-	Página HTML 
-	<script type="text/javascript">
-		<!--
-		
-			/* escreva seu código aqui.*/
-			
-		//-->
-	</script>
-
-</body>
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -53,14 +40,27 @@
         }
         h2, h3 { color: var(--cor-secundaria); }
         
-        /* Formulários e Painéis */
-        #login-form, #dev-panel { 
-            margin-top: 20px; 
-            padding: 20px; 
-            border: 1px solid var(--cor-borda); 
+        /* Container do Usuário Comum */
+        #user-login-highlight {
+            padding: 25px;
+            background-color: #e6f7e8; 
+            border: 2px solid var(--cor-destaque-usuario);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2); 
+            margin-bottom: 30px;
+        }
+
+        /* Formulário do Desenvolvedor (Menos Proeminente) */
+        #login-form { 
+            margin-top: 15px; 
+            padding: 15px; 
+            border: 1px dashed var(--cor-borda); 
             border-radius: 8px; 
             background-color: #ffffff;
+            box-shadow: none; 
         }
+
+        /* Campos de Input */
         #login-form input[type="text"], #login-form input[type="password"],
         #dev-panel input[type="text"], #dev-panel select, #item-file { 
             padding: 10px; 
@@ -79,7 +79,32 @@
             border: none; 
             border-radius: 4px; 
             cursor: pointer; 
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        /* Botão Grande (Usuário Comum) */
+        .user-login-button.large-button {
+            padding: 18px 25px; 
+            font-size: 1.2em; 
+            font-weight: bold;
+            width: 100%;
+            margin: 0; 
+        }
+        .user-login-button:hover { background-color: #3b603e; transform: scale(1.02); }
+
+        /* Botão de Ação da Conscientização */
+        .video-action-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            background-color: #a4c9a7; 
+            color: var(--cor-principal);
+            margin: 25px 0;
+            border: 2px solid var(--cor-destaque-usuario);
+        }
+        .video-action-button:hover {
+            background-color: var(--cor-destaque-usuario);
+            color: white;
         }
         /* Botão Desenvolvedor */
         #login-form button { 
@@ -88,15 +113,6 @@
             width: 100%;
         }
         #login-form button:hover { background-color: #4a2f1c; }
-
-        /* Botão Usuário */
-        #login-section button:last-of-type { 
-            background-color: var(--cor-destaque-usuario); 
-            color: white; 
-            width: 100%;
-            margin-top: 15px;
-        }
-        #login-section button:last-of-type:hover { background-color: #3b603e; }
 
         /* Botões Sair e Ações Dev */
         #dev-panel button, #user-view button { 
@@ -133,7 +149,7 @@
             line-height: 1.5;
         }
 
-        /* NOVO ESTILO: Semáforo da Arqueologia */
+        /* Semáforo da Arqueologia */
         .semaforo-container {
             display: flex;
             justify-content: space-around;
@@ -144,7 +160,7 @@
             border-bottom: 1px solid var(--cor-secundaria);
         }
         .semaforo-item {
-            width: 30%; /* Para garantir que caibam 3 lado a lado */
+            width: 30%; 
             min-height: 120px;
             display: flex;
             flex-direction: column;
@@ -163,13 +179,13 @@
         .semaforo-item:hover {
              transform: translateY(-3px);
         }
-        .semaforo-vermelho { background-color: #cc0000; } /* Vermelho puro */
+        .semaforo-vermelho { background-color: #cc0000; } 
         .semaforo-amarelo { 
-            background-color: #ffc400; /* Amarelo ouro/forte */
-            color: var(--cor-principal); /* Texto escuro para contraste */
+            background-color: #ffc400; 
+            color: var(--cor-principal); 
             text-shadow: none;
         } 
-        .semaforo-verde { background-color: var(--cor-destaque-usuario); } /* Verde Musgo */
+        .semaforo-verde { background-color: var(--cor-destaque-usuario); } 
 
         /* Estilos para o Quiz */
         .quiz-container {
@@ -180,6 +196,32 @@
             background-color: var(--cor-background); 
             text-align: left;
         }
+        /* Estilos para o Painel de Vídeos */
+        .video-slot {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid var(--cor-borda);
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        /* REMOVIDO: .video-slot p */
+        .video-slot iframe {
+            width: 100%;
+            height: 315px; 
+            border: none;
+            border-radius: 4px;
+        }
+        
+        /* Estilo Discreto para "Conteúdo em desenvolvimento" */
+        .dev-status-tag {
+            font-size: 0.9em;
+            color: var(--cor-secundaria);
+            text-align: center;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Estilos de Quiz e Dev (mantidos) */
         .quiz-question {
             font-weight: bold;
             color: var(--cor-principal);
@@ -205,11 +247,26 @@
             font-weight: bold;
             text-align: center;
         }
-        .correct { color: var(--cor-destaque-usuario); } /* Verde */
-        .incorrect { color: var(--cor-erro); } /* Vermelho */
+        .correct { 
+            background-color: #e6f7e8; 
+            color: var(--cor-destaque-usuario); 
+            font-weight: bold;
+        } 
+        .incorrect { 
+            background-color: #f7e6e6; 
+            color: var(--cor-erro); 
+        } 
 
 
         /* Painel do Desenvolvedor */
+        #dev-panel { 
+            margin-top: 20px; 
+            padding: 20px; 
+            border: 1px solid var(--cor-borda); 
+            border-radius: 8px; 
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        }
         .dev-item { 
             display: flex; 
             justify-content: space-between; 
@@ -238,19 +295,26 @@
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>Cybercraft</h1>
 
-        <div id="login-section">
+        <div id="login-section" style="display: block;">
+            
+            <div id="user-login-highlight">
+                <h2 style="text-align: center; color: var(--cor-destaque-usuario); margin-bottom: 15px;">Entre no Mundo dos Guardiões da História</h2>
+                <button onclick="userLogin()" class="user-login-button large-button">
+                    Entrar como Usuário Comum (Visualização)
+                </button>
+            </div>
+
+            <p style="text-align: center; margin-top: 25px;">Ou acesse como</p>
+
             <div id="login-form">
                 <h3>Login do Desenvolvedor</h3>
                 <input type="text" id="username" placeholder="Usuário">
                 <input type="password" id="password" placeholder="Senha">
                 <button onclick="developerLogin()">Entrar como Desenvolvedor</button>
             </div>
-            <p style="text-align: center;">Ou</p>
-            <button onclick="userLogin()">Entrar como Usuário Comum (Visualização)</button>
         </div>
 
         <div id="dev-panel" style="display: none;">
@@ -290,19 +354,44 @@
             <hr>
 
             <h3>Arquivos Gerenciáveis por Pasta</h3>
-            <div class="folder-selector" id="dev-folder-selector">
-                </div>
-            <div id="dev-file-list">
-                </div>
+            <div class="folder-selector" id="dev-folder-selector"></div>
+            <div id="dev-file-list"></div>
             <button onclick="logout()">Sair</button>
         </div>
 
         <div id="user-view" style="display: none;">
             <h2>Visualização do Usuário</h2>
-            <div class="folder-selector" id="user-folder-selector">
-                </div>
-            <div id="user-file-list">
-                </div>
+            <div class="folder-selector" id="user-folder-selector"></div>
+            
+            <div id="conscientizacao-view">
+                <div id="user-file-list"></div>
+            </div>
+
+            <div id="video-tutorial-view" style="display: none;">
+                <button onclick="returnToConscientizacao()" style="background-color: #ccc;"> &lt; Voltar para Conscientização</button>
+                <h2 style="color: var(--cor-destaque-usuario); margin-top: 20px; border-bottom: 2px solid var(--cor-borda); padding-bottom: 5px;">🎥 Vídeos Educativos Rápidos</h2>
+                
+                <span class="dev-status-tag">Conteúdo em desenvolvimento</span>
+                
+                <div class="video-slot">
+                    <h3>1. Vídeo sobre a Importância da Arqueologia</h3>
+                    <iframe src="https://www.youtube.com/embed/VvK7q5N1X0Y" allowfullscreen></iframe>
+                    </div>
+                
+                <div class="video-slot">
+                    <h3>2. Como identificar um artefato</h3>
+                    <iframe src="https://www.youtube.com/embed/VvK7q5N1X0Y" allowfullscreen></iframe>
+                    </div>
+
+                <div class="video-slot">
+                    <h3>3. A História de Salto</h3>
+                    <iframe src="https://www.youtube.com/embed/VvK7q5N1X0Y" allowfullscreen></iframe>
+                    </div>
+
+                <button onclick="returnToConscientizacao()" style="background-color: #ccc;"> &lt; Voltar para Conscientização</button>
+            </div>
+
+
             <button onclick="logout()">Sair</button>
         </div>
     </div>
@@ -322,7 +411,7 @@
         
         let files = JSON.parse(localStorage.getItem('files')) || [];
         let currentUser = null; 
-        let currentFolder = 'projetos'; 
+        let currentFolder = 'conscientizacao'; 
         let fileDataUrl = null; 
 
         // --- Adiciona a página de Conscientização na primeira vez que o site é carregado ---
@@ -355,7 +444,7 @@
                     <input type="text" id="item-url" placeholder="http://recurso.com/link" style="width: 100%; margin-bottom: 10px;">
                 `;
             } else {
-                let acceptType = type === 'foto' ? 'image/*' : 'video/*';
+                let acceptType = type === 'foto' ? 'image/' : 'video/';
                 container.innerHTML = `
                     <label for="item-file">Carregar ${type.charAt(0).toUpperCase() + type.slice(1)}:</label>
                     <input type="file" id="item-file" accept="${acceptType}" onchange="handleFileUpload(event, '${type}')">
@@ -371,13 +460,24 @@
             const reader = new FileReader();
             reader.onload = function(e) {
                 fileDataUrl = e.target.result; 
-                alert(`Arquivo (${type}) carregado com sucesso!`);
+                alert(Arquivo (${type}) carregado com sucesso! (Cuidado com arquivos grandes, estamos usando o armazenamento local!));
             };
             reader.readAsDataURL(file);
         }
 
         function changeFolder(folderKey) {
             currentFolder = folderKey;
+            
+            // Gerencia a visualização de vídeos/conscientização ao mudar de pasta
+            if (folderKey === 'conscientizacao' && document.getElementById('user-view').style.display === 'block') {
+                document.getElementById('conscientizacao-view').style.display = 'block';
+                document.getElementById('video-tutorial-view').style.display = 'none';
+            } else if (document.getElementById('user-view').style.display === 'block') {
+                 document.getElementById('conscientizacao-view').style.display = 'block';
+                 document.getElementById('video-tutorial-view').style.display = 'none';
+            }
+
+
             updateFolderSelector('dev');
             updateFolderSelector('user');
             
@@ -389,12 +489,12 @@
         }
 
         function updateFolderSelector(view) {
-            const selectorDiv = document.getElementById(`${view}-folder-selector`);
+            const selectorDiv = document.getElementById(${view}-folder-selector);
             selectorDiv.innerHTML = '';
             for (const key in FOLDERS) {
                 const button = document.createElement('button');
                 button.textContent = FOLDERS[key];
-                button.setAttribute('onclick', `changeFolder('${key}')`);
+                button.setAttribute('onclick', changeFolder('${key}'));
                 if (key === currentFolder) {
                     button.classList.add('active');
                 }
@@ -402,7 +502,7 @@
             }
         }
 
-        // --- Renderização ---
+        // --- Renderização do Painel Dev ---
 
         function renderDevPanel() {
             const devList = document.getElementById('dev-file-list');
@@ -411,7 +511,7 @@
             const filesInFolder = files.filter(file => file.folder === currentFolder);
 
             if (filesInFolder.length === 0) {
-                devList.innerHTML = `<p>Nenhum item na pasta "${FOLDERS[currentFolder]}" para gerenciar.</p>`;
+                devList.innerHTML = <p>Nenhum item na pasta "${FOLDERS[currentFolder]}" para gerenciar.</p>;
                 return;
             }
             
@@ -431,26 +531,134 @@
                 item.innerHTML = `
                     <span>
                         <strong>[${file.type.toUpperCase()}]</strong> ${file.name}<br>
-                        <span class="dev-info">Adicionado por: ${file.developer.toUpperCase()}</span> - *${visibilityText}*
+                        <span class="dev-info">Adicionado por: ${file.developer.toUpperCase()}</span> - ${visibilityText}
                     </span>
                     <div>
                         <button onclick="toggleVisibility(${originalIndex})">${file.visible ? 'Ocultar' : 'Tornar Visível'}</button>
-                        <button onclick="deleteItem(${originalIndex})">Excluir</button>
+                        <button onclick="deleteItem(${originalIndex})" style="background-color: var(--cor-erro);">Excluir</button>
                     </div>
                 `;
                 devList.appendChild(item);
             });
         }
 
-        // FUNÇÃO RENDERUSERVIEW (INCLUI SEMÁFORO E QUIZ)
+        // --- Funções de Ação (Desenvolvedor) ---
+        
+        function addItem() {
+            const name = document.getElementById('item-name').value.trim();
+            const type = document.getElementById('file-type').value;
+            const folder = document.getElementById('item-folder').value; 
+            const visible = document.getElementById('item-visible').checked;
+            
+            let url;
+
+            if (type === 'link') {
+                url = document.getElementById('item-url').value.trim();
+            } else {
+                url = fileDataUrl; 
+            }
+
+            if (name === '' || !url) {
+                alert(Por favor, preencha o nome e ${type === 'link' ? 'a URL' : 'carregue o arquivo'}.);
+                return;
+            }
+
+            files.push({
+                name: name, url: url, type: type, folder: folder, visible: visible, developer: currentUser 
+            });
+            saveFiles();
+            changeFolder(folder); 
+            
+            document.getElementById('item-name').value = '';
+            if (type === 'link') { document.getElementById('item-url').value = ''; }
+            document.getElementById('item-visible').checked = true;
+            fileDataUrl = null; 
+            toggleInputType(); 
+
+            alert(Item adicionado com sucesso na pasta ${FOLDERS[folder]}!);
+        }
+        
+        function toggleVisibility(index) {
+            files[index].visible = !files[index].visible;
+            saveFiles();
+            renderDevPanel(); 
+        }
+
+        function deleteItem(index) {
+            if (confirm(Tem certeza que deseja excluir o item: ${files[index].name}?)) {
+                files.splice(index, 1);
+                saveFiles();
+                renderDevPanel();
+                alert('Item excluído.');
+            }
+        }
+        
+        // --- Funções de Login, Logout e UserView ---
+        
+        function developerLogin() {
+            const username = document.getElementById('username').value.toLowerCase().trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (DEVELOPERS[username] && DEVELOPERS[username] === password) {
+                currentUser = username;
+                document.getElementById('dev-name').textContent = currentUser.toUpperCase();
+                
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('user-view').style.display = 'none';
+                document.getElementById('dev-panel').style.display = 'block';
+                
+                currentFolder = 'projetos';
+                toggleInputType();
+                updateFolderSelector('dev');
+                renderDevPanel();
+            } else {
+                alert('Credenciais de Desenvolvedor Inválidas.');
+            }
+        }
+
+        function userLogin() {
+            currentUser = 'user';
+            
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('dev-panel').style.display = 'none';
+            document.getElementById('user-view').style.display = 'block';
+            
+            currentFolder = 'conscientizacao'; 
+            updateFolderSelector('user');
+            
+            document.getElementById('conscientizacao-view').style.display = 'block';
+            document.getElementById('video-tutorial-view').style.display = 'none';
+            
+            renderUserView();
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('dev-panel').style.display = 'none';
+            document.getElementById('user-view').style.display = 'none';
+
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            
+            currentFolder = 'conscientizacao'; 
+            fileDataUrl = null; 
+        }
+        
+        // FUNÇÃO RENDERUSERVIEW
         function renderUserView() {
             const userList = document.getElementById('user-file-list');
             userList.innerHTML = '';
+
+            if (currentFolder !== 'conscientizacao') {
+                document.getElementById('conscientizacao-view').style.display = 'block';
+                document.getElementById('video-tutorial-view').style.display = 'none'; 
+            }
             
             const visibleFiles = files.filter(file => file.visible && file.folder === currentFolder);
 
             if (visibleFiles.length === 0) {
-                userList.innerHTML = `<p>Nenhum arquivo ou link visível na pasta "${FOLDERS[currentFolder]}".</p>`;
+                userList.innerHTML = <p>Nenhum arquivo ou link visível na pasta "${FOLDERS[currentFolder]}".</p>;
                 return;
             }
             
@@ -475,10 +683,10 @@
                             
                             Somos a equipe SESI Cybercraft e nosso Projeto de Inovação "Guardiões da História: Arqueologia em Ação" nasceu de uma missão simples: reconectar Salto com seu próprio passado.
 
-                            Sua criança participou da nossa oficina e agora é uma **Guardiã do Passado!** Aqui, você encontra o **Guia Completo da Arqueologia em Casa** com vídeos rápidos, o Quiz de Conscientização e a Regra de Ouro para preservar o patrimônio.
+                            Sua criança participou da nossa oficina e agora é uma *Guardiã do Passado!* Aqui, você encontra o *Guia Completo da Arqueologia em Casa* com vídeos rápidos, o Quiz de Conscientização e a Regra de Ouro para preservar o patrimônio.
                         </div>
 
-                        <h3 style="text-align: center; color: var(--cor-principal); margin-top: 40px;">⚠️ Regra de Ouro: Semáforo do Sítio ⚠️</h3>
+                        <h3 style="text-align: center; color: var(--cor-principal); margin-top: 40px;">⚠ Regra de Ouro: Semáforo do Sítio ⚠</h3>
                         <div class="semaforo-container">
                             <div class="semaforo-item semaforo-vermelho">
                                 VERMELHO: NÃO TOQUE
@@ -490,10 +698,14 @@
                                 VERDE: LIGUE (e avise as autoridades)
                             </div>
                         </div>
+                        
+                        <button onclick="showVideoPage()" class="video-action-button">
+                            ▶ Ver Vídeos
+                        </button>
+                        
                         <div class="quiz-container">
                             <h3>Quiz: Guardiões Da Historia </h3>
-                            <div id="quiz-content">
-                                </div>
+                            <div id="quiz-content"></div>
                             <div class="quiz-result" id="quiz-result"></div>
                         </div>
                     `;
@@ -501,23 +713,21 @@
                     setTimeout(loadQuiz, 0); 
                 } 
                 // Renderização normal para outros arquivos
-                else if (file.type === 'link' || file.type === 'foto') {
-                    contentHTML += `<a href="${file.url}" target="_blank">`;
+                else if (file.type === 'link' || file.type === 'foto' || file.type === 'video') {
                     if (file.type === 'link') {
-                        contentHTML += `Acessar Recurso`;
+                        contentHTML += <a href="${file.url}" target="_blank">Acessar Recurso</a>;
                     } else if (file.type === 'foto') {
                         if (file.url.startsWith('data:image')) {
-                            contentHTML += `<img src="${file.url}" alt="${file.name}">`;
+                            contentHTML += <img src="${file.url}" alt="${file.name}">;
                         } else {
-                            contentHTML += `Visualizar Foto (Link Externo)`;
+                            contentHTML += <a href="${file.url}" target="_blank">Visualizar Foto (Link Externo)</a>;
                         }
-                    }
-                    contentHTML += `</a>`;
-                } else if (file.type === 'video') {
-                    if (file.url.startsWith('data:video')) {
-                        contentHTML += `<video controls src="${file.url}"></video>`;
-                    } else {
-                        contentHTML += `<a href="${file.url}" target="_blank">Assistir Vídeo (Link Externo)</a>`;
+                    } else if (file.type === 'video') {
+                        if (file.url.startsWith('data:video')) {
+                            contentHTML += <video controls src="${file.url}"></video>;
+                        } else {
+                            contentHTML += <a href="${file.url}" target="_blank">Assistir Vídeo (Link Externo)</a>;
+                        }
                     }
                 }
                 
@@ -525,114 +735,22 @@
                 userList.appendChild(item);
             });
         }
-
-
-        // --- Funções de Ação (Desenvolvedor) ---
-
-        function addItem() {
-            const name = document.getElementById('item-name').value.trim();
-            const type = document.getElementById('file-type').value;
-            const folder = document.getElementById('item-folder').value; 
-            const visible = document.getElementById('item-visible').checked;
-            
-            let url;
-
-            if (type === 'link') {
-                url = document.getElementById('item-url').value.trim();
-            } else {
-                url = fileDataUrl; 
-            }
-
-            if (name === '' || !url) {
-                alert(`Por favor, preencha o nome e ${type === 'link' ? 'a URL' : 'carregue o arquivo'}.`);
-                return;
-            }
-
-            files.push({
-                name: name,
-                url: url, 
-                type: type,
-                folder: folder, 
-                visible: visible,
-                developer: currentUser 
-            });
-
-            saveFiles();
-            
-            changeFolder(folder); 
-            
-            document.getElementById('item-name').value = '';
-            if (type === 'link') {
-                document.getElementById('item-url').value = '';
-            }
-            document.getElementById('item-visible').checked = true;
-            fileDataUrl = null; 
-            toggleInputType(); 
-
-            alert(`Item adicionado com sucesso na pasta ${FOLDERS[folder]}!`);
-        }
         
-        function toggleVisibility(index) {
-            files[index].visible = !files[index].visible;
-            saveFiles();
-            renderDevPanel(); 
+        // --- NOVAS FUNÇÕES DE NAVEGAÇÃO DE VÍDEOS ---
+
+        function showVideoPage() {
+            document.getElementById('conscientizacao-view').style.display = 'none';
+            document.getElementById('video-tutorial-view').style.display = 'block';
+            window.scrollTo(0, 0); 
         }
 
-        function deleteItem(index) {
-            if (confirm(`Tem certeza que deseja excluir o item: ${files[index].name}?`)) {
-                files.splice(index, 1);
-                saveFiles();
-                renderDevPanel();
-                alert('Item excluído.');
-            }
+        function returnToConscientizacao() {
+            document.getElementById('video-tutorial-view').style.display = 'none';
+            document.getElementById('conscientizacao-view').style.display = 'block';
         }
 
-        function developerLogin() {
-            const username = document.getElementById('username').value.toLowerCase().trim();
-            const password = document.getElementById('password').value.trim();
 
-            if (DEVELOPERS[username] && DEVELOPERS[username] === password) {
-                currentUser = username;
-                document.getElementById('dev-name').textContent = currentUser.toUpperCase();
-                
-                document.getElementById('login-section').style.display = 'none';
-                document.getElementById('user-view').style.display = 'none';
-                document.getElementById('dev-panel').style.display = 'block';
-                
-                toggleInputType();
-                updateFolderSelector('dev');
-                renderDevPanel();
-            } else {
-                alert('Credenciais de Desenvolvedor Inválidas.');
-            }
-        }
-
-        function userLogin() {
-            currentUser = 'user';
-            
-            document.getElementById('login-section').style.display = 'none';
-            document.getElementById('dev-panel').style.display = 'none';
-            document.getElementById('user-view').style.display = 'block';
-            
-            updateFolderSelector('user');
-            renderUserView();
-        }
-
-        function logout() {
-            currentUser = null;
-            document.getElementById('login-section').style.display = 'block';
-            document.getElementById('dev-panel').style.display = 'none';
-            document.getElementById('user-view').style.display = 'none';
-
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            
-            currentFolder = 'projetos'; 
-            fileDataUrl = null; 
-        }
-
-        // ------------------------------------------------------------------
-        // --- Funções do Quiz de Arqueologia (Uma Pergunta por Vez) ---
+        // --- Funções do Quiz de Arqueologia (Completadas) ---
 
         const QUIZ_QUESTIONS = [
             {
@@ -662,7 +780,7 @@
             }
         ];
 
-        let currentQuestionIndex = 0; // Controla a pergunta atual
+        let currentQuestionIndex = 0; 
         let correctAnswers = 0;
         let quizFinished = false; 
 
@@ -679,8 +797,11 @@
             if (!quizDiv) return;
 
             if (quizFinished) {
-                // Se terminou, exibe apenas a mensagem final
-                quizDiv.innerHTML = '<p>Quiz Finalizado! Role para baixo e veja seu resultado.</p>';
+                quizDiv.innerHTML = '<p style="font-weight: bold;">✅ Parabéns! Você completou o Quiz!</p><p>Sua pontuação final está abaixo.</p>';
+                document.getElementById('quiz-result').innerHTML = `
+                    <span style="font-size: 1.2em;">Resultado: ${correctAnswers} de ${QUIZ_QUESTIONS.length} corretas.</span>
+                    <br><button onclick="loadQuiz()" style="margin-top: 15px;">Tentar Novamente</button>
+                `;
                 return;
             }
 
@@ -700,25 +821,23 @@
             });
 
             quizDiv.appendChild(questionDiv);
-            document.getElementById('quiz-result').textContent = `Pergunta ${currentQuestionIndex + 1} de ${QUIZ_QUESTIONS.length}`;
+            document.getElementById('quiz-result').textContent = Pergunta ${currentQuestionIndex + 1} de ${QUIZ_QUESTIONS.length};
         }
 
         function checkAnswer(selectedIndex, element) {
             const q = QUIZ_QUESTIONS[currentQuestionIndex];
             const isCorrect = selectedIndex === q.answerIndex;
 
-            // Desabilita todas as opções de clique para esta pergunta
+            // Desabilita cliques em todas as opções
             Array.from(element.parentElement.querySelectorAll('.quiz-option')).forEach(opt => {
                 opt.onclick = null;
                 opt.style.cursor = 'default';
-                opt.style.backgroundColor = 'transparent';
             });
 
-            // Marca a correta e a incorreta
+            // Adiciona a classe de cor correta/incorreta
             Array.from(element.parentElement.querySelectorAll('.quiz-option')).forEach((opt, idx) => {
                 if (idx === q.answerIndex) {
                     opt.classList.add('correct');
-                    opt.style.fontWeight = 'bold';
                 } else if (idx === selectedIndex && !isCorrect) {
                     opt.classList.add('incorrect');
                 }
@@ -728,48 +847,27 @@
                 correctAnswers++;
             }
 
-            // Adiciona um botão para ir para a próxima pergunta após a resposta
-            const nextButton = document.createElement('button');
-            nextButton.textContent = currentQuestionIndex < QUIZ_QUESTIONS.length - 1 ? 'Próxima Pergunta →' : 'Ver Resultado Final';
-            nextButton.style.marginTop = '20px';
-            nextButton.style.padding = '10px 20px';
-            nextButton.style.backgroundColor = 'var(--cor-destaque-usuario)';
-            nextButton.style.color = 'white';
-            nextButton.onclick = moveToNextQuestion;
-
-            element.parentElement.appendChild(nextButton);
-
-            // Atualiza o placar provisório no resultado
-            document.getElementById('quiz-result').innerHTML += `<br> <span class="${isCorrect ? 'correct' : 'incorrect'}">${isCorrect ? 'Correto!' : 'Errado!'}</span>`;
-        }
-
-        function moveToNextQuestion() {
             currentQuestionIndex++;
-            
-            if (currentQuestionIndex < QUIZ_QUESTIONS.length) {
-                renderQuestion();
-            } else {
-                quizFinished = true;
-                renderQuestion(); // Renderiza a mensagem final
-                updateQuizResult();
-            }
-        }
 
-        function updateQuizResult() {
-            const resultDiv = document.getElementById('quiz-result');
-            resultDiv.innerHTML = `
-                <h3 style="color: var(--cor-principal);"> QUIZ FINALIZADO! </h3>
-                Resultado Final: <span class="${correctAnswers >= 3 ? 'correct' : 'incorrect'}">${correctAnswers} de ${QUIZ_QUESTIONS.length} acertos!</span>
-                <button onclick="loadQuiz()" style="margin-top: 15px; background-color: var(--cor-secundaria);">Tentar Novamente</button>
-            `;
+            // Passa para a próxima pergunta ou finaliza o quiz
+            setTimeout(() => {
+                if (currentQuestionIndex < QUIZ_QUESTIONS.length) {
+                    renderQuestion();
+                } else {
+                    quizFinished = true;
+                    renderQuestion();
+                }
+            }, 1500); 
         }
-        // ------------------------------------------------------------------
-
-        // Inicializa a página
-        logout();
-        toggleInputType(); 
+        
+        // Inicializa o seletor de pastas ao carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            currentFolder = 'conscientizacao';
+            // Apenas para garantir que o selector está correto na inicialização
+            updateFolderSelector('dev'); 
+            updateFolderSelector('user');
+            toggleInputType();
+        });
     </script>
 </body>
 </html>
-
-		
