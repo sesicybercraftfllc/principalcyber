@@ -560,7 +560,7 @@
                             id="toggle-videos-button" 
                             style="width: 100%; padding: 15px; margin-bottom: 30px; background-color: var(--cor-secundaria); color: white; font-size: 1.1em;"
                         >
-                            ▶️ Ver Vídeos Educativos (Guia de Arqueologia em Casa)
+                            ▶️ Ver Vídeos Educativos
                         </button>
 
                         <div class="quiz-container">
@@ -848,7 +848,7 @@
             const educationalVideos = files.filter(file => file.visible && file.folder === 'tutoriais' && file.type === 'video');
 
             if (educationalVideos.length === 0) {
-                videoListDiv.innerHTML = '<p style="padding: 20px; text-align: center; border: 1px dashed var(--cor-borda);">Nenhum vídeo educativo visível cadastrado. Peça ao desenvolvedor para adicionar tutoriais na pasta **Tutoriais**.</p>';
+                videoListDiv.innerHTML = '<p style="padding: 20px; text-align: center; border: 1px dashed var(--cor-borda);"> ERRO:Nenhum vídeo educativo visível no momento. Volte mais tarde e tente novamente.</p>';
                 return;
             }
 
