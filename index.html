@@ -30,7 +30,7 @@
             background-color: #fff;    
             padding: 30px;    
             border-radius: 12px;    
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);    
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         h1 {    
             text-align: center;    
@@ -38,7 +38,8 @@
             border-bottom: 2px solid var(--cor-borda);    
             padding-bottom: 10px;
         }
-        h2, h3 { color: var(--cor-secundaria); }
+        h2, h3 { color: var(--cor-secundaria);
+        }
        
         /* Formulários e Painéis */
         #login-form, #dev-panel {    
@@ -60,7 +61,8 @@
             border-radius: 4px;
         }
         /* Botão de Arquivo */
-        #item-file { padding: 5px; }
+        #item-file { padding: 5px;
+        }
 
         /* Botões */
         button {    
@@ -77,7 +79,8 @@
             color: white;    
             width: 100%;
         }
-        #login-form button:hover { background-color: #4a2f1c; }
+        #login-form button:hover { background-color: #4a2f1c;
+        }
 
         /* Botão Usuário (MÁXIMO DE DESTAQUE) */
         #login-section > button {    
@@ -100,15 +103,19 @@
             background-color: var(--cor-secundaria);    
             color: white;
         }
-        #dev-panel button:hover, #user-view button:hover { background-color: var(--cor-principal); }
+        #dev-panel button:hover, #user-view button:hover { background-color: var(--cor-principal);
+        }
        
         /* Estilo dos Links/Arquivos */
         .file-item a { color: var(--cor-principal); text-decoration: none; font-weight: bold;}
-        .file-item a:hover { text-decoration: underline; }
-        .dev-info { font-size: 0.85em; color: var(--cor-secundaria); margin-top: 5px; }
+        .file-item a:hover { text-decoration: underline;
+        }
+        .dev-info { font-size: 0.85em; color: var(--cor-secundaria); margin-top: 5px;
+        }
 
         /* Visualização do Usuário */
-        #user-view h2 { color: var(--cor-destaque-usuario); }
+        #user-view h2 { color: var(--cor-destaque-usuario);
+        }
         .file-item {    
             border: 1px solid var(--cor-borda);    
             padding: 15px;    
@@ -167,7 +174,7 @@
             border-bottom: 1px solid var(--cor-secundaria);
         }
         .semaforo-item {
-            width: 30%;    
+            width: 30%;
             min-height: 120px;
             display: flex;
             flex-direction: column;
@@ -186,13 +193,15 @@
         .semaforo-item:hover {
              transform: translateY(-3px);
         }
-        .semaforo-vermelho { background-color: #cc0000; }    
+        .semaforo-vermelho { background-color: #cc0000;
+        }    
         .semaforo-amarelo {    
             background-color: #ffc400;    
             color: var(--cor-principal);    
             text-shadow: none;
         }    
-        .semaforo-verde { background-color: var(--cor-destaque-usuario); }    
+        .semaforo-verde { background-color: var(--cor-destaque-usuario);
+        }    
 
         /* Estilos para o Quiz (Paginado) */
         .quiz-container {
@@ -247,7 +256,7 @@
             border: 1px solid var(--cor-erro) !important;
         }
         .quiz-option.correct:hover, .quiz-option.incorrect:hover {
-            background-color: initial;  
+            background-color: initial;
             cursor: default;
         }
 
@@ -328,8 +337,7 @@
             margin-bottom: 10px;    
             border-radius: 6px;    
             background-color: var(--cor-destaque-dev);    
-            color: var(--cor-principal);
-            /* Garante que o item fique alinhado com o checkbox */
+            color: var(--cor-principal); /* Garante que o item fique alinhado com o checkbox */
         }
         .dev-item input[type="checkbox"] {
             transform: scale(1.3); /* Aumenta o checkbox */
@@ -339,9 +347,11 @@
             flex-grow: 1; /* Permite que o conteúdo principal ocupe o espaço */
             width: auto;
         }
-        .dev-item > div { display: flex; gap: 5px; flex-shrink: 0; } /* Estilo dos botões Dev */
+        .dev-item > div { display: flex; gap: 5px; flex-shrink: 0;
+        } /* Estilo dos botões Dev */
 
-        .folder-selector { margin-bottom: 20px; }
+        .folder-selector { margin-bottom: 20px;
+        }
         .folder-selector button {
             background-color: var(--cor-borda);
             color: var(--cor-texto-principal);
@@ -524,8 +534,7 @@
        
         /* Controles de Busca e Filtro de Usuário */
         #user-controls {
-            margin-bottom: 20px;
-            /* Flexbox será manipulado no JS */
+            margin-bottom: 20px; /* Flexbox será manipulado no JS */
         }
         #search-container {
              position: relative; /* Para posicionar o autocomplete */
@@ -661,6 +670,7 @@
                 <span style="font-size: 1.3em; margin-right: 10px;">📚</span> Acessar Como Usuario Comum
             </button>
            
+        
             <p style="text-align: center; margin-bottom: 20px;">
                 Ou
             </p>
@@ -668,6 +678,7 @@
             <div id="login-form">
                 <h3>Login do Desenvolvedor</h3>
                 <input type="text" id="username" placeholder="Usuário">
+              
                 <input type="password" id="password" placeholder="Senha">
                 <button onclick="developerLogin()">Entrar como Desenvolvedor</button>
             </div>
@@ -677,12 +688,14 @@
             <h2>Painel do Desenvolvedor (<span id="dev-name"></span>)</h2>
            
             <h3>Adicionar Novo Item</h3>
+    
             <label for="item-folder">Pasta:</label>
             <select id="item-folder">
                 <option value="home">Home</option>
                 <option value="projetos">Projetos</option>
                 <option value="documentacao">Documentação</option>
                 <option value="tutoriais">Tutoriais</option>
+          
                 <option value="midia">Mídia</option>
                 <option value="diversos">Diversos</option>
                 <option value="conscientizacao">Conscientização</option>
@@ -690,6 +703,7 @@
            
             <label for="file-type">Tipo:</label>
             <select id="file-type" onchange="toggleInputType()">
+         
                 <option value="link">Link</option>
                 <option value="foto">Foto</option>
                 <option value="video">Vídeo</option>
@@ -710,6 +724,7 @@
 
             <hr>
 
+          
             <h3>Arquivos Gerenciáveis por Pasta</h3>
             <div class="folder-selector" id="dev-folder-selector"></div>
            
@@ -723,6 +738,7 @@
             </div>
         </div>
 
+    
         <div id="user-view" style="display: none;">
             <h2>Visualização do Usuário</h2>
             <div class="folder-selector" id="user-folder-selector"></div>
@@ -734,6 +750,7 @@
                 <div id="search-container">
                     <input type="text" id="search-input" placeholder="🔍 Buscar por nome do arquivo..." oninput="showSearchSuggestions()" onfocus="showSearchSuggestions()" onblur="setTimeout(() => document.getElementById('search-suggestions').style.display='none', 100)">
                     <div id="search-suggestions" style="display: none;"></div>
+      
                 </div>
                
                 <label for="sort-select" style="white-space: nowrap;">Ordenar Por:</label>
@@ -744,80 +761,115 @@
             </div>
            
             <div id="file-type-filters">
+   
                 <button onclick="setFileTypeFilter('all')" id="filter-all" class="active">Tudo</button>
                 <button onclick="setFileTypeFilter('link')" id="filter-link">Links</button>
                 <button onclick="setFileTypeFilter('foto')" id="filter-foto">Fotos</button>
                 <button onclick="setFileTypeFilter('video')" id="filter-video">Vídeos</button>
             </div>
            
-           
-            <div id="user-file-list" style="display: block; margin-top: 20px;"></div>
+            <div id="user-content-view">
+                <div id="conscientizacao-view" style="display: none;">
+                    <h3>Conscientização e Regra de Ouro da Arqueologia</h3>
+                    <div class="message">
+                        <p style="font-weight: bold; color: var(--cor-destaque-usuario);">Atenção! Você está na área de Conscientização. Lembre-se:</p>
+                        <p>A Arqueologia é uma ferramenta para reescrever a história local. Somos apenas guardiões e precisamos da sua ajuda para proteger o patrimônio de Salto. Sua atitude é a regra de ouro!</p>
+                    </div>
+                    
+                    <h4>Semáforo da Regra de Ouro (O que fazer ao encontrar um objeto antigo)</h4>
+                    <div class="semaforo-container">
+                        <div class="semaforo-item semaforo-vermelho"> 🛑 PARE <p style="font-size: 0.9em; margin: 5px 0 0;">(Não mexa, não limpe e não remova do local)</p> </div>
+                        <div class="semaforo-item semaforo-amarelo"> ⚠️ REGISTRE <p style="font-size: 0.9em; margin: 5px 0 0;">(Registre o objeto e o local exato)</p> </div>
+                        <div class="semaforo-item semaforo-verde"> ✅ LIGUE <p style="font-size: 0.9em; margin: 5px 0 0;">(Avise o IPHAN, Museu ou órgão de patrimônio)</p> </div>
+                    </div>
 
-            <div id="videos-screen" style="display: none;">
-                <button onclick="changeView('conscientizacao_quiz')" style="margin-bottom: 20px; background-color: var(--cor-principal);">
-                    ← Voltar ao Quiz e Semáforo
-                </button>
-                <h3 style="color: var(--cor-destaque-usuario);">▶️ Vídeos Educativos: Guia de Arqueologia em Casa</h3>
-                <p>Assista aos vídeos para aprender como ser um Guardião da História e preservar o patrimônio!</p>
-                <hr>
-                <div id="videos-list-content">
+                    <div style="text-align: center;">
+                        <button onclick="changeView('educational_videos')" style="background-color: var(--cor-destaque-usuario); margin-bottom: 20px;"> Ver Vídeos Educativos ▶️ </button>
+                    </div>
+                    
+                    <hr>
+                    
+                    <h3>Teste Seu Conhecimento: O Quiz do Guardião</h3>
+                    <p>Responda às questões para testar o que você aprendeu sobre Arqueologia e a Regra de Ouro.</p>
+                    <div id="quiz-container" class="quiz-container">
+                    </div>
+                    
+                    <div id="quiz-navigation" style="text-align: center; margin-top: 15px;">
+                        <button onclick="prevQuestion()" id="prev-btn" disabled>← Anterior</button>
+                        <span id="question-counter" style="margin: 0 15px; font-weight: bold;"></span>
+                        <button onclick="nextQuestion()" id="next-btn">Próxima →</button>
+                    </div>
+                    
+                    <div id="quiz-completion-area" style="text-align: center; margin-top: 20px; display: none;">
+                        <button onclick="checkQuizCompletion()" style="background-color: var(--cor-principal);"> Finalizar e Ver Resultado </button>
+                        <button onclick="reviewAnswers()" id="review-btn" style="background-color: var(--cor-secundaria); margin-left: 10px; display:none;"> Revisar Respostas </button>
+                        <button onclick="loadQuiz()" id="restart-btn" style="background-color: var(--cor-erro); margin-left: 10px; display:none;"> Reiniciar Quiz </button>
+                    </div>
+                    
                 </div>
-            </div>
-        </div>
-       
-        <div id="chat-panel" style="display: none;">
-            <h2>💬 Canal de Feedback e Comunicação</h2>
-           
-            <div id="dev-chat-controls" style="display: none;">
-                <label for="chat-filter-select">Filtrar Mensagens:</label>
-                <select id="chat-filter-select" onchange="renderChat()">
-                    <option value="all">Todas as Mensagens</option>
-                    <option value="unreplied">Não Respondidas</option>
-                </select>
-                <div id="chat-bulk-actions">
-                    <button onclick="toggleChatCheckboxes()" style="background-color: var(--cor-secundaria);">
-                        Selecionar Tudo
-                    </button>
-                    <button onclick="bulkDeleteMessages()" style="background-color: var(--cor-erro); color: white; margin-left: 10px;">
-                        🗑️ Excluir Mensagens Selecionadas
-                    </button>
+                
+                <div id="educational-videos-view" style="display: none;">
+                    <h3>Vídeos Educativos</h3>
+                    <p>Material de vídeo sobre Arqueologia e Conscientização.</p>
+                    <div id="video-list">
+                        </div>
+                    <button onclick="changeView('conscientizacao_quiz')" style="margin-top: 20px;"> ← Voltar para Semáforo e Quiz</button>
                 </div>
+                
+                <div id="user-file-list">
+                    </div>
             </div>
-           
-            <div id="chat-messages" class="chat-messages">
+            <div id="chat-panel" style="margin-top: 30px;">
+                <h2 style="color: var(--cor-destaque-usuario);">Canal de Feedback e Comunicação</h2>
+                
+                <div id="dev-chat-controls" style="display: none;">
+                    <label for="chat-filter-select">Filtrar Mensagens:</label>
+                    <select id="chat-filter-select" onchange="renderChat()">
+                        <option value="all">Todas as Mensagens</option>
+                        <option value="unreplied">Não Respondidas</option>
+                    </select>
+                    <div id="chat-bulk-actions">
+                         <button onclick="toggleChatCheckboxes()" style="background-color: var(--cor-secundaria);"> Selecionar Tudo </button>
+                         <button onclick="bulkDeleteMessages()" style="background-color: var(--cor-erro); color: white; margin-left: 10px;"> 🗑️ Excluir Mensagens Selecionadas </button>
+                    </div>
                 </div>
 
-            <div id="user-chat-input" style="display: none;">
-                <h3>Enviar uma mensagem / Feedback</h3>
-                <div id="chat-input-area">
-                    <input type="text" id="chat-message-input" placeholder="Digite sua mensagem/feedback aqui...">
-                    <button onclick="sendMessage()">Enviar</button>
+                <div id="chat-messages" class="chat-messages">
+                    </div>
+                
+                <div id="user-chat-input" style="display: none;">
+                    <h3>Enviar uma mensagem / Feedback</h3>
+                    <div id="chat-input-area">
+                        <input type="text" id="chat-message-input" placeholder="Digite sua mensagem/feedback aqui...">
+                        <button onclick="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+                
+                <div id="dev-chat-reply" style="display: none;">
+                    <h3>Responder à Última Mensagem do Usuário</h3>
+                    <div id="chat-input-area">
+                        <input type="text" id="chat-reply-input" placeholder="Resposta do Dev (máx. 1 por mensagem de usuário)">
+                        <button onclick="sendReply()">Responder</button>
+                    </div>
                 </div>
             </div>
 
-            <div id="dev-chat-reply" style="display: none;">
-                <h3>Responder à Última Mensagem do Usuário</h3>
-                <div id="chat-input-area">
-                    <input type="text" id="chat-reply-input" placeholder="Resposta do Dev (máx. 1 por mensagem de usuário)">
-                    <button onclick="sendReply()">Responder</button>
-                </div>
-            </div>
+
         </div>
 
         <button onclick="logout()" style="margin-top: 20px; width: 100%; display: none;" id="main-logout-button">Sair</button>
-       
+
     </div>
-   
+
     <div id="edit-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" onclick="document.getElementById('edit-modal').style.display='none'">&times;</span>
             <h3>✏️ Editar Item</h3>
-           
             <input type="hidden" id="edit-file-index">
-           
+            
             <label for="edit-name">Nome do Item:</label>
-            <input type="text" id="edit-name" placeholder="Nome do Item"><br>
-           
+            <input type="text" id="edit-name" placeholder="Nome do Item">
+            
             <label for="edit-folder">Pasta:</label>
             <select id="edit-folder">
                 <option value="home">Home</option>
@@ -828,72 +880,67 @@
                 <option value="diversos">Diversos</option>
                 <option value="conscientizacao">Conscientização</option>
             </select><br><br>
-           
-            <label for="edit-url">URL / Conteúdo do Arquivo:</label>
-            <input type="text" id="edit-url" placeholder="URL ou Data URL do Arquivo" disabled><br>
-           
+            
+            <label for="edit-url">URL:</label>
+            <input type="text" id="edit-url" placeholder="URL ou Caminho do Arquivo">
+            
             <label>Visível para Usuário?</label>
             <input type="checkbox" id="edit-visible"><br><br>
-           
+            
             <button onclick="saveEdit()">Salvar Alterações</button>
         </div>
     </div>
-    <div id="media-viewer-modal" class="modal" onclick="if(event.target.id === 'media-viewer-modal') this.style.display='none'">
+    
+    <div id="media-viewer-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" onclick="document.getElementById('media-viewer-modal').style.display='none'">&times;</span>
             <div id="media-content">
                 </div>
         </div>
     </div>
-    <div id="terms-modal" class="modal" style="display: none;">
+    
+    <div id="terms-modal" class="modal">
         <div class="modal-content">
-            <h3>🤝 Termo de Aceitação, Conscientização e Uso Ético</h3>
-           
-            <p><strong>Responsabilidade e Integridade no Cybercraft</strong></p>
-           
-            <p>
-                Este recurso digital é uma iniciativa da **Equipe SESI Cybercraft**, focado na missão de promover o **engajamento ético** e a **preservação do patrimônio** histórico e arqueológico de Salto (SP), sob o tema "Guardiões da História".
-            </p>
-           
-            <p style="border-left: 3px solid var(--cor-destaque-usuario); padding-left: 10px; background-color: #f5fff5; margin: 15px 0;">
-                Ao clicar em "Aceitar Termos e Continuar", você se compromete integralmente com a **ética na pesquisa** e no uso do material:
-                <br>
-                <br>
-                <ul>
-                    <li>**Respeito ao Contexto:** Utilizar informações e arquivos estritamente para fins educativos e de conscientização, reconhecendo a importância do contexto histórico e cultural.</li>
-                    <li>**Preservação:** Informar-se sobre e seguir a **Regra de Ouro (Semáforo do Sítio Arqueológico)**, priorizando a **não intervenção** em sítios e artefatos.</li>
-                    <li>**Não Uso Comercial:** O material aqui presente não deve ser utilizado com fins lucrativos ou de maneira que distorça o objetivo primário de preservação.</li>
-                </ul>
-            </p>
-
-            <p>
-                O uso desta plataforma implica na aceitação da sua responsabilidade como promotor da história local e na concordância em manter um comportamento que honre o legado arqueológico de Salto.
-            </p>
-
+            <h3>Termos de Uso e Conscientização</h3>
+            <p>Ao acessar o conteúdo do Cybercraft, você concorda com os seguintes termos:</p>
+            <ol>
+                <li><strong>Finalidade Educacional:</strong> O material aqui contido é apenas para fins de estudo e conscientização sobre Arqueologia e Patrimônio Histórico.</li>
+                <li><strong>Regra de Ouro:</strong> Você se compromete a seguir a "Regra de Ouro da Arqueologia" (PARE, REGISTRE e LIGUE) em caso de descoberta de qualquer vestígio arqueológico.</li>
+                <li><strong>Respeito ao Patrimônio:</strong> É proibido manipular, remover ou danificar quaisquer sítios ou artefatos. A preservação é responsabilidade de todos.</li>
+                <li><strong>Feedback Construtivo:</strong> O canal de feedback deve ser usado para sugestões construtivas ou para reportar descobertas e problemas.</li>
+            </ol>
+            <p style="font-weight: bold; margin-top: 15px;">Este é um compromisso com a aceitação da sua responsabilidade como promotor da história local e na concordância em manter um comportamento que honre o legado arqueológico de Salto.</p>
             <div class="term-actions" style="display: flex; justify-content: space-between;">
-                <button onclick="declineTerms()" style="background-color: var(--cor-erro);">
-                    Não Aceitar e Sair
-                </button>
-                <button onclick="acceptTerms()" style="background-color: var(--cor-destaque-usuario);">
-                    Aceitar Termos e Continuar
-                </button>
+                <button onclick="declineTerms()" style="background-color: var(--cor-erro);"> Não Aceitar e Sair </button>
+                <button onclick="acceptTerms()" style="background-color: var(--cor-destaque-usuario);"> Aceitar Termos e Continuar </button>
             </div>
         </div>
     </div>
+
     <script>
         // --- Configurações ---
+        // Objeto com os usuários e senhas de acesso de Desenvolvedor
         const DEVELOPERS = {
-            "dev01": "123", "dev02": "456", "dev03": "789",    
-            "dev04": "101", "dev05": "112", "dev06": "131",    
-            "dev07": "415", "dev08": "161"
+            "davi": "060973",
+            "girotto": "jUlia2012",
+            "luiza": "lulu@2013",
+            "gustavo": "YqbJSqtm",
+            "enzo": "212620638VMect@",
+            "vieira": "Narnia01",
+            "luiz": "02092013",
+            "marilia": "estela2015",
+            "sofia": "3547",
+            "anna": "Ana2025"
         };
         const FOLDERS = {
             "home": "Home",
-            "projetos": "Projetos", "documentacao": "Documentação", "tutoriais": "Tutoriais",    
-            "midia": "Mídia", "diversos": "Diversos",
+            "projetos": "Projetos",
+            "documentacao": "Documentação",
+            "tutoriais": "Tutoriais",
+            "midia": "Mídia",
+            "diversos": "Diversos",
             "conscientizacao": "Conscientização"
         };
-       
         // RESPOSTAS CORRETAS REEQUILIBRADAS: B, C, A, B, C
         const QUIZ_QUESTIONS = [
             {
@@ -904,38 +951,37 @@
                     "C) Cuidar de animais na floresta."
                 ],
                 answerIndex: 1, // B
-                explanation: "Os arqueólogos estudam vestígios materiais (artefatos) para entender o passado humano."
+                explanation: "Os arqueólogos estudam a história humana através de vestígios materiais (artefatos, estruturas) para entender como as pessoas viviam no passado."
             },
             {
-                question: "2. O que o 'Semáforo do Sítio' da Regra de Ouro indica?",
+                question: "2. O que significa a regra VERMELHA (PARE) ao encontrar um vestígio arqueológico?",
                 options: [
-                    "A) Onde cavar para encontrar o tesouro.",
-                    "B) O tempo de permanência no local.",
-                    "C) Os procedimentos de segurança ao encontrar um artefato."
+                    "A) Pegar o objeto rapidamente para levá-lo para casa.",
+                    "B) Tentar limpar o objeto e desenterrá-lo com cuidado.",
+                    "C) Não mexer no objeto, não limpar e não remover do local para preservar o contexto."
                 ],
                 answerIndex: 2, // C
-                explanation: "O Semáforo indica as ações: NÃO TOQUE (Vermelho), FOTOGRAFE (Amarelo) e LIGUE (Verde) para autoridades, garantindo a preservação e o registro correto."
+                explanation: "Parar é o primeiro passo. O contexto é a informação mais valiosa; remover o objeto antes do registro destrói essa informação."
             },
             {
-                question: "3. Por que não devemos remover um artefato encontrado?",
+                question: "3. Por que é importante registrar (REGISTRE) o local exato da descoberta?",
                 options: [
-                    "A) Porque a posição e o local exato são cruciais para a pesquisa arqueológica.",
-                    "B) Porque ele pode não ter valor.",
-                    "C) Porque ele pode estar sujo."
-                ]
-                ,
+                    "A) Para que os arqueólogos possam ir ao local e entender o sítio, coletando mais informações.",
+                    "B) Para esconder o local e voltar mais tarde.",
+                    "C) Para apenas tirar fotos e postar nas redes sociais."
+                ],
                 answerIndex: 0, // A
-                explanation: "A contextualização (onde e como foi achado) é a parte mais importante para a ciência; remover o objeto destrói essa informação."
+                explanation: "O registro permite que especialistas identifiquem, mapeiem e analisem o sítio corretamente, protegendo o patrimônio histórico."
             },
             {
-                question: "4. Qual a importância de preservar o patrimônio histórico de Salto?",
+                question: "4. Qual tipo de patrimônio o Semáforo da Arqueologia de Salto visa proteger?",
                 options: [
-                    "A) É importante apenas para turistas.",
-                    "B) É fundamental para entendermos nossa identidade, cultura e a história da nossa comunidade.",
-                    "C) É irrelevante, pois são apenas objetos velhos."
+                    "A) Florestas e animais selvagens.",
+                    "B) O patrimônio histórico e arqueológico deixado pelos antigos habitantes de Salto.",
+                    "C) Apenas prédios antigos e igrejas."
                 ],
                 answerIndex: 1, // B
-                explanation: "A história local, através do patrimônio, conecta gerações e fortalece a identidade de todos em Salto."
+                explanation: "O objetivo é proteger os vestígios da ocupação humana pré-histórica e histórica em Salto."
             },
             {
                 question: "5. Se você encontrar um objeto antigo na rua, o que a regra VERDE (LIGUE) significa?",
@@ -948,30 +994,27 @@
                 explanation: "A regra Verde exige que se contate imediatamente as autoridades competentes para que o objeto possa ser investigado e preservado corretamente."
             }
         ];
-       
         let files = JSON.parse(localStorage.getItem('files')) || [];
         let messages = JSON.parse(localStorage.getItem('chatMessages')) || [];
-        let currentUser = null;    
-        let currentFolder = 'home';    
-        let fileDataUrl = null;    
-       
+        let currentUser = null;
+        let currentFolder = 'home';
+        let fileDataUrl = null;
         // NOVO: Sugestão 2 - Filtro de Arquivo Ativo
-        let currentFileTypeFilter = 'all';
-       
+        let currentFileTypeFilter = 'all'; 
+
+        // Variáveis do Quiz
         let userAnswers = Array(QUIZ_QUESTIONS.length).fill(null);
         let score = 0;
         let currentQuestionIndex = 0;
 
         // --- Funções Auxiliares ---
-
         function saveFiles() {
             localStorage.setItem('files', JSON.stringify(files));
         }
-
         function saveMessages() {
             localStorage.setItem('chatMessages', JSON.stringify(messages));
         }
-       
+
         // Função para obter o ícone baseado no tipo de arquivo
         function getFileIcon(type) {
             switch (type) {
@@ -985,7 +1028,7 @@
         function toggleInputType() {
             const type = document.getElementById('file-type').value;
             const container = document.getElementById('dynamic-input-container');
-           
+            
             if (type === 'link') {
                 container.innerHTML = `
                     <label for="item-url">URL (Link):</label>
@@ -994,69 +1037,81 @@
             } else {
                 let acceptType = type === 'foto' ? 'image/*' : 'video/*';
                 container.innerHTML = `
-                    <label for="item-file">Carregar ${type.charAt(0).toUpperCase() + type.slice(1)}:</label>
-                    <input type="file" id="item-file" accept="${acceptType}" onchange="handleFileUpload(event, '${type}')">
-                `;
-                fileDataUrl = null;    
+                    <label for="item-file">Selecione o Arquivo (${type.toUpperCase()}):</label>
+                    <input type="file" id="item-file" accept="${acceptType}" onchange="previewFile(event)">
+                    <p id="file-preview-name" style="font-size: 0.8em; margin-top: 5px; color: var(--cor-secundaria);"></p>
+                    <input type="hidden" id="item-url"> `;
             }
         }
-       
-        function handleFileUpload(event, type) {
+        
+        // Função para visualização de arquivo local antes do upload
+        function previewFile(event) {
             const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                fileDataUrl = e.target.result;    
-                alert(`Arquivo (${type}) carregado com sucesso!`);
-            };
-            reader.readAsDataURL(file);
-        }
-       
-        function changeView(viewType) {
-            const userFileList = document.getElementById('user-file-list');
-            const videosScreen = document.getElementById('videos-screen');
-            const userControls = document.getElementById('user-controls');
-            const fileFilters = document.getElementById('file-type-filters');
-
-            if (viewType === 'conscientizacao_quiz') {
-                userFileList.style.display = 'block';
-                videosScreen.style.display = 'none';
-                userControls.style.display = 'flex'; // Mantém busca/ordem para possível uso futuro
-                fileFilters.style.display = 'none'; // Esconde filtros na tela do quiz
-                loadQuiz(); // Volta para a primeira pergunta
-            } else if (viewType === 'educational_videos') {
-                userFileList.style.display = 'none';
-                videosScreen.style.display = 'block';
-                userControls.style.display = 'flex';
-                fileFilters.style.display = 'none'; // Esconde filtros na tela de vídeos
-                loadEducationalVideos();
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    fileDataUrl = e.target.result; // Armazena o Data URL
+                    document.getElementById('file-preview-name').textContent = `Arquivo selecionado: ${file.name}`;
+                };
+                reader.readAsDataURL(file); // Lê o arquivo como Data URL
             } else {
-                userFileList.style.display = 'block';
-                videosScreen.style.display = 'none';
-                userControls.style.display = 'flex'; // Mostra controles em pastas normais
-                fileFilters.style.display = 'flex'; // Mostra filtros
+                fileDataUrl = null;
+                document.getElementById('file-preview-name').textContent = '';
             }
         }
-
+        
+        // Função para mudar a view principal do usuário
+        function changeView(view) {
+             const userFileList = document.getElementById('user-file-list');
+             const conscientizacaoView = document.getElementById('conscientizacao-view');
+             const videosScreen = document.getElementById('educational-videos-view');
+             const userControls = document.getElementById('user-controls');
+             const fileFilters = document.getElementById('file-type-filters');
+             
+             // Esconde todas as views primeiro
+             userFileList.style.display = 'none';
+             conscientizacaoView.style.display = 'none';
+             videosScreen.style.display = 'none';
+             userControls.style.display = 'none';
+             fileFilters.style.display = 'none';
+             
+             // Mostra a view solicitada e ajusta os controles
+             if (view === 'conscientizacao_quiz') {
+                 conscientizacaoView.style.display = 'block';
+                 videosScreen.style.display = 'none'; // Garante que a tela de vídeos está escondida
+                 loadQuiz(); // Carrega o quiz
+             } else if (view === 'educational_videos') {
+                 videosScreen.style.display = 'block';
+                 conscientizacaoView.style.display = 'none'; // Garante que o quiz está escondido
+                 // Controles e filtros permanecem escondidos, pois esta é uma tela especial.
+                 loadEducationalVideos();
+             } else {
+                 userFileList.style.display = 'block';
+                 videosScreen.style.display = 'none';
+                 userControls.style.display = 'flex'; // Mostra controles em pastas normais
+                 fileFilters.style.display = 'flex'; // Mostra filtros
+             }
+        }
+        
         function changeFolder(folderKey) {
             currentFolder = folderKey;
             updateFolderSelector('dev');
             updateFolderSelector('user');
-           
+            
+            // Atualiza Breadcrumbs
+            const breadcrumbs = document.getElementById('breadcrumbs');
+            breadcrumbs.textContent = `Você está em: ${FOLDERS[currentFolder]}`;
+
             if (document.getElementById('dev-panel').style.display === 'block') {
                 renderDevPanel();
             } else if (document.getElementById('user-view').style.display === 'block') {
-                renderUserView();
-            }
-           
-            // Sugestão 7: Navegação Breadcrumbs (o JS cuidará disso)
-           
-            // Garante que, ao mudar de pasta, a tela de vídeos é escondida e volta para a view correta
-            if (currentUser === 'user' && currentFolder === 'conscientizacao') {
-                changeView('conscientizacao_quiz');
-            } else if (currentUser === 'user') {
-                 changeView('default'); // Oculta vídeos e mostra a lista normal com controles
+                // Lógica de visualização do usuário
+                if (currentFolder === 'conscientizacao') {
+                    changeView('conscientizacao_quiz');
+                } else {
+                    changeView('default'); // Oculta views especiais e mostra a lista normal com controles
+                    renderUserView(); // Renderiza o conteúdo da pasta padrão
+                }
             }
         }
 
@@ -1073,72 +1128,57 @@
                 selectorDiv.appendChild(button);
             }
         }
-       
+        
         // NOVO: Sugestão 2 - Funções de Filtro de Arquivo
         function setFileTypeFilter(type) {
             currentFileTypeFilter = type;
-           
             // Atualiza o estado visual dos botões
             document.querySelectorAll('#file-type-filters button').forEach(btn => {
                 btn.classList.remove('active');
             });
             document.getElementById(`filter-${type}`).classList.add('active');
-           
             renderUserView();
         }
 
-        // --- Renderização ---
-
+        // --- Renderização do Painel do Desenvolvedor ---
         function renderDevPanel() {
             const devList = document.getElementById('dev-file-list');
             devList.innerHTML = '';
-           
-            const filesInFolder = files.filter(file => file.folder === currentFolder);
+            const filteredFiles = files.filter(file => file.folder === currentFolder);
 
-            if (filesInFolder.length === 0) {
-                devList.innerHTML = `<p>Nenhum item na pasta "${FOLDERS[currentFolder]}" para gerenciar.</p>`;
+            if (filteredFiles.length === 0) {
+                devList.innerHTML = `<p style="text-align: center; margin-top: 20px;">Nenhum item nesta pasta.</p>`;
                 return;
             }
-           
-            filesInFolder.forEach((file, index) => {
-                // Encontrar o índice original no array 'files' para usar na edição/exclusão/checkbox
-                const originalIndex = files.findIndex(f =>
-                    f.name === file.name &&
-                    f.url === file.url &&
-                    f.developer === file.developer &&
-                    f.folder === file.folder
-                );
 
-
-                const visibilityText = file.visible ? 'Visível' : 'Oculto';
-                // Lógica NOVO: Determina quem editou pela última vez, usando o criador como fallback
-                const lastEditor = file.lastEditor ? file.lastEditor.toUpperCase() : file.developer.toUpperCase();
-               
+            // Exibir a lista de arquivos
+            filteredFiles.forEach((file, index) => {
+                const originalIndex = files.indexOf(file); // Encontrar o índice original no array 'files'
                 const item = document.createElement('div');
                 item.className = 'dev-item';
-               
+                
                 // Checkbox para exclusão em massa
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.className = 'bulk-delete-checkbox';
                 checkbox.setAttribute('data-file-index', originalIndex);
-               
-                // Contador de Curtidas (Sugestão 13)
-                const likes = file.likes || 0;
-               
-                // Container para o conteúdo principal
+
+                // Conteúdo do item
+                const icon = getFileIcon(file.type);
+                const visibility = file.visible ? '🟢 Visível' : '🔴 Oculto';
                 const contentSpan = document.createElement('span');
+                const lastEditorInfo = file.lastEditor ? `(Editado por: ${file.lastEditor.toUpperCase()})` : '';
+
                 contentSpan.innerHTML = `
-                    <span class="dev-likes">👍 ${likes}</span>
-                    <strong>[${file.type.toUpperCase()}]</strong> ${file.name}<br>
+                    <span style="font-weight: bold;">${icon} ${file.name}</span>
                     <span class="dev-info">
-                        Criado por: ${file.developer.toUpperCase()}
-                        ${file.lastEditor ? `| Última Edição por: ${lastEditor}` : ''}
+                        [Pasta: ${FOLDERS[file.folder]} | Tipo: ${file.type.charAt(0).toUpperCase() + file.type.slice(1)} | Criador: ${file.developer.toUpperCase()}]
+                        <br>
+                        ${visibility} ${lastEditorInfo}
                     </span>
-                    - *${visibilityText}*
                 `;
 
-                // Container para os botões de ação individual
+                // Div para os botões de ação individual
                 const actionDiv = document.createElement('div');
                 actionDiv.innerHTML = `
                     <button onclick="openEditModal(${originalIndex})" style="background-color: var(--cor-principal);">Editar</button>
@@ -1149,15 +1189,14 @@
                 item.appendChild(checkbox);
                 item.appendChild(contentSpan);
                 item.appendChild(actionDiv);
-
                 devList.appendChild(item);
             });
         }
-       
+
         // Função para exclusão em massa de arquivos
         function bulkDeleteItems() {
             const selectedCheckboxes = document.querySelectorAll('#dev-file-list .bulk-delete-checkbox:checked');
-           
+            
             if (selectedCheckboxes.length === 0) {
                 alert('Nenhum item selecionado para exclusão em massa.');
                 return;
@@ -1185,63 +1224,62 @@
                 }
             });
 
-            // 4. Salvar e Re-renderizar
+            saveFiles();
+            alert(`Exclusão em massa concluída. ${selectedCheckboxes.length} item(ns) excluído(s).`);
+            renderDevPanel();
+        }
+        
+        // --- Funções de Ação de Item (Dev) ---
+        function toggleVisibility(index) {
+            files[index].visible = !files[index].visible;
+            files[index].lastEditor = currentUser; // Registra o editor
             saveFiles();
             renderDevPanel();
-            alert(`${indicesToDelete.length} item(ns) excluído(s) com sucesso.`);
         }
 
-        // Função para abrir o modal de edição (Sugestão 1)
+        function deleteItem(index) {
+            if (confirm(`Tem certeza que deseja excluir o item '${files[index].name}'?`)) {
+                files.splice(index, 1);
+                saveFiles();
+                renderDevPanel();
+            }
+        }
+
         function openEditModal(index) {
             const file = files[index];
-            if (!file) {
-                alert('Erro: Item não encontrado para edição.');
-                return;
-            }
-
             document.getElementById('edit-file-index').value = index;
             document.getElementById('edit-name').value = file.name;
             document.getElementById('edit-folder').value = file.folder;
-            document.getElementById('edit-url').value = file.url.length > 50 ? file.url.substring(0, 50) + '...' : file.url; // Exibe URL truncada ou Data URL
+            document.getElementById('edit-url').value = file.url;
             document.getElementById('edit-visible').checked = file.visible;
-
-            // O campo de URL é apenas informativo no modal (não pode ser alterado diretamente, pois precisaria de um novo upload)
-            document.getElementById('edit-url').style.fontStyle = 'italic';
-            document.getElementById('edit-url').style.backgroundColor = '#eee';
-
             document.getElementById('edit-modal').style.display = 'block';
         }
 
-        // Função para salvar as edições (Sugestão 1)
         function saveEdit() {
-            const index = parseInt(document.getElementById('edit-file-index').value);
-            const newName = document.getElementById('edit-name').value.trim();
-            const newFolder = document.getElementById('edit-folder').value;
-            const newVisible = document.getElementById('edit-visible').checked;
+            const index = document.getElementById('edit-file-index').value;
+            const name = document.getElementById('edit-name').value.trim();
+            const folder = document.getElementById('edit-folder').value;
+            const url = document.getElementById('edit-url').value.trim();
+            const visible = document.getElementById('edit-visible').checked;
 
-            if (newName === '') {
-                alert('O nome do item não pode estar vazio.');
-                return;
-            }
-           
-            if (index < 0 || index >= files.length) {
-                alert('Erro ao salvar: Índice inválido.');
+            if (!name || (!url && (files[index].type === 'link' || files[index].type === 'video'))) {
+                alert('Nome e URL/Arquivo são obrigatórios.');
                 return;
             }
 
-            // Atualiza o objeto no array
-            files[index].name = newName;
-            files[index].folder = newFolder;
-            files[index].visible = newVisible;
-            // *** Adiciona o campo lastEditor ***
-            files[index].lastEditor = currentUser;
-
+            files[index].name = name;
+            files[index].folder = folder;
+            files[index].url = url || files[index].url; // Mantém a URL anterior se a nova estiver vazia (para o caso de foto/video local que não pode ser re-selecionado)
+            files[index].visible = visible;
+            // NOVO: Adiciona o campo lastEditor
+            files[index].lastEditor = currentUser; 
+            
             saveFiles();
             document.getElementById('edit-modal').style.display = 'none';
             alert('Item editado com sucesso!');
             changeFolder(currentFolder); // Re-renderiza a pasta atual
         }
-       
+        
         // NOVO: Função para curtir item
         function likeItem(index) {
             if (files[index]) {
@@ -1254,7 +1292,7 @@
                 renderUserView(); // Re-renderiza para atualizar o contador
             }
         }
-       
+
         // NOVO: Sugestão 8 - Função para Compartilhar Item
         function copyItemUrl(url) {
             navigator.clipboard.writeText(url)
@@ -1266,96 +1304,84 @@
                     alert('Erro ao copiar o link. Tente copiar manualmente: ' + url);
                 });
         }
-       
+        
         // NOVO: Sugestão 3 - Abrir Modal de Visualização Rápida de Mídia
         function openMediaViewer(url, type, name) {
             const modal = document.getElementById('media-viewer-modal');
             const content = document.getElementById('media-content');
-           
             content.innerHTML = ''; // Limpa o conteúdo anterior
-           
+            
             if (type === 'foto') {
-                content.innerHTML = `<img src="${url}" alt="${name || 'Foto'}">`;
+                 content.innerHTML = `<img src="${url}" alt="${name || 'Foto'}">`;
             } else if (type === 'video') {
-                content.innerHTML = `<video controls src="${url}"></video>`;
+                 content.innerHTML = `<video controls src="${url}"></video>`;
             }
-           
+            
             modal.style.display = 'block';
         }
-
-
+        
         // NOVO: Sugestão 6 - Mostrar Sugestões de Busca
         function showSearchSuggestions() {
             const input = document.getElementById('search-input');
             const suggestionsDiv = document.getElementById('search-suggestions');
             const searchTerm = input.value.toLowerCase().trim();
-           
-            suggestionsDiv.innerHTML = '';
-           
-            if (searchTerm.length < 2) {
-                suggestionsDiv.style.display = 'none';
-                return;
-            }
 
-            // Filtra TODOS os arquivos visíveis
-            const matchingFiles = files.filter(file =>
-                file.visible && file.name.toLowerCase().includes(searchTerm)
-            );
+            // 1. Encontrar todos os arquivos visíveis na pasta atual
+            const visibleFiles = files.filter(file => file.visible && file.folder === currentFolder);
 
-            // Limita a visualização a, digamos, 5 sugestões
-            matchingFiles.slice(0, 5).forEach(file => {
-                const item = document.createElement('div');
-                item.className = 'suggestion-item';
-                item.textContent = `${getFileIcon(file.type)} ${file.name} (${FOLDERS[file.folder]})`;
-                item.onmousedown = () => selectSuggestion(file.name); // Usa onmousedown para evitar o blur do input
-                suggestionsDiv.appendChild(item);
-            });
-           
-            if (matchingFiles.length > 0) {
-                 suggestionsDiv.style.display = 'block';
+            if (searchTerm.length > 0) {
+                // 2. Filtrar arquivos que contenham o termo de busca no nome
+                const matches = visibleFiles
+                    .filter(file => file.name.toLowerCase().includes(searchTerm))
+                    .slice(0, 5); // Limita a 5 sugestões
+                
+                suggestionsDiv.innerHTML = '';
+                if (matches.length > 0) {
+                    matches.forEach(file => {
+                        const suggestionItem = document.createElement('div');
+                        suggestionItem.className = 'suggestion-item';
+                        suggestionItem.textContent = `${getFileIcon(file.type)} ${file.name}`;
+                        suggestionItem.onclick = function() {
+                            input.value = file.name; // Preenche o input
+                            suggestionsDiv.style.display = 'none'; // Esconde sugestões
+                            renderUserView(); // Executa a busca
+                        };
+                        suggestionsDiv.appendChild(suggestionItem);
+                    });
+                    suggestionsDiv.style.display = 'block';
+                } else {
+                    suggestionsDiv.style.display = 'none';
+                }
             } else {
-                 suggestionsDiv.style.display = 'none';
+                suggestionsDiv.style.display = 'none';
             }
         }
 
-        function selectSuggestion(name) {
-             document.getElementById('search-input').value = name;
-             document.getElementById('search-suggestions').style.display = 'none';
-             renderUserView();
-        }
-
+        // --- Renderização da Visualização do Usuário ---
         function renderUserView() {
+            // Apenas renderiza a lista de arquivos padrão, views especiais são tratadas em changeView
             const userList = document.getElementById('user-file-list');
             userList.innerHTML = '';
-           
-            // Sugestão 7: Atualiza Breadcrumbs
-            const breadcrumbsDiv = document.getElementById('breadcrumbs');
-            breadcrumbsDiv.textContent = `Você está em: Home > ${FOLDERS[currentFolder]}`;
-
-           
-            // 1. Filtra por visibilidade e pasta
+            
+            // 1. Filtrar por Pasta
             let visibleFiles = files.filter(file => file.visible && file.folder === currentFolder);
-           
-            // 2. Aplica Busca (Sugestão 6)
+            
+            // 2. Aplicar Busca (Sugestão 6)
             const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
             if (searchTerm) {
-                visibleFiles = visibleFiles.filter(file =>
-                    file.name.toLowerCase().includes(searchTerm)
-                );
+                visibleFiles = visibleFiles.filter(file => file.name.toLowerCase().includes(searchTerm));
             }
-           
-            // 3. Aplica Filtro por Tipo (Sugestão 2)
+            
+            // 3. Aplicar Filtro por Tipo (Sugestão 2)
             if (currentFileTypeFilter !== 'all') {
-                 visibleFiles = visibleFiles.filter(file => file.type === currentFileTypeFilter);
+                visibleFiles = visibleFiles.filter(file => file.type === currentFileTypeFilter);
             }
-           
+            
             // 4. Aplica Ordenação
             const sortMethod = document.getElementById('sort-select').value;
-           
             visibleFiles.sort((a, b) => {
                 const nameA = a.name.toUpperCase();
                 const nameB = b.name.toUpperCase();
-               
                 if (sortMethod === 'name_asc') {
                     return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
                 } else if (sortMethod === 'name_desc') {
@@ -1363,8 +1389,7 @@
                 }
                 return 0; // Padrão
             });
-
-
+            
             // --- CONTEÚDO ESPECIAL PARA A PASTA 'CONSCIENTIZAÇÃO' ---
             if (currentFolder === 'conscientizacao') {
                 document.getElementById('user-controls').style.display = 'none';
@@ -1374,297 +1399,211 @@
             }
             // --- FIM CONTEÚDO ESPECIAL ---
 
-
             // Conteúdo especial para a pasta 'home'
             if (currentFolder === 'home') {
-                // Conteúdo da home...
-                // ... (código do info-panel e título de avisos permanece inalterado) ...
-               
                 const homeListContainer = document.getElementById('user-file-list');
-               
+                
+                // Painel de boas-vindas/Informação
+                homeListContainer.innerHTML = `
+                    <div class="info-panel">
+                        <h2>Bem-vindo ao Cybercraft!</h2>
+                        <h3>Seu Portal para a História e Arqueologia de Salto.</h3>
+                        <p>Use o menu acima para navegar pelas pastas de recursos (Projetos, Documentação, etc.).</p>
+                    </div>
+                `;
+                
                 // Filtra apenas a home e aplica a busca/ordenação
                 const homeFiles = visibleFiles;
 
                 if (homeFiles.length > 0) {
-                     homeListContainer.innerHTML += `<h3 style="margin-top: 30px; border-bottom: 1px dotted var(--cor-borda); padding-bottom: 10px;">Quadro de Avisos</h3>`;
-                     
-                     // INÍCIO DA NOVA ESTRUTURA DASHBOARD (2 COLUNAS)
-                     let dashboardGridHTML = `<div class="dashboard-grid">`;
-                     
-                     homeFiles.forEach(file => {
-                         const originalIndex = files.indexOf(file);
-                         const fileLink = file.url;
-                         const fileName = file.name;
-                         const fileType = file.type.charAt(0).toUpperCase() + file.type.slice(1);
-                         const lastEditor = file.lastEditor ? file.lastEditor.toUpperCase() : file.developer.toUpperCase();
-                         const likes = file.likes || 0;
-                         
-                         let cardMediaHTML;
-                         let accessAction; // Ação ao clicar no card
-                         
-                         if (file.type === 'foto' || file.type === 'video') {
-                              // Sugestão 3: Para Home Cards, usamos o Modal Quick View
-                              accessAction = `onclick="openMediaViewer('${fileLink}', '${file.type}', '${fileName}')" href="javascript:void(0)"`;
-                         } else {
-                              // Link externo
-                              accessAction = `href="${fileLink}" target="_blank"`;
-                         }
-                         
-                         // Tratamento de Mídia para Visualização no Card
-                         if (file.type === 'foto' && file.url.startsWith('data:image')) {
-                             cardMediaHTML = `<img src="${file.url}" alt="${file.name}" class="card-image-preview">`;
-                         } else {
-                             const icon = getFileIcon(file.type);
-                             cardMediaHTML = `<div class="card-icon">${icon}</div>`;
-                         }
-                         
-                         dashboardGridHTML += `
-                             <div class="dashboard-card">
-                                 <a ${accessAction} style="text-decoration: none; color: inherit;">
-                                     ${cardMediaHTML}
-                                     <div class="card-name">${fileName}</div>
-                                     <div class="card-type">${fileType}</div>
-                                 </a>
-                                 <div class="item-actions" style="justify-content: space-between; border: none; padding-top: 0;">
-                                     <div class="card-dev-info" style="text-align: left;">
-                                         Alterado por: ${lastEditor}
-                                     </div>
-                                 </div>
-                                 <div class="item-actions">
-                                     <button class="share-button" onclick="copyItemUrl('${fileLink}')">
-                                         🔗 Compartilhar
-                                     </button>
-                                     <button class="like-button" onclick="likeItem(${originalIndex})">
-                                         👍 Curti (${likes})
-                                     </button>
-                                 </div>
-                             </div>
-                         `;
-                     });
-                     
-                     dashboardGridHTML += `</div>`;
-                     homeListContainer.innerHTML += dashboardGridHTML;
+                    homeListContainer.innerHTML += `<h3 style="margin-top: 30px; border-bottom: 1px dotted var(--cor-borda); padding-bottom: 10px;">Quadro de Avisos</h3>`;
+                    
+                    let dashboardGridHTML = `<div class="dashboard-grid">`;
+                    homeFiles.forEach(file => {
+                        const originalIndex = files.indexOf(file);
+                        const icon = getFileIcon(file.type);
+                        const likes = file.likes || 0;
+                        const fileLink = file.url;
+                        const editorInfo = file.lastEditor ? `Última Edição: ${file.lastEditor.toUpperCase()}` : '';
+                        
+                        let cardContent;
+                        let cardAction;
+
+                        if (file.type === 'foto' && fileLink.startsWith('data:image')) {
+                            // Pré-visualização para fotos
+                            cardContent = `<img src="${fileLink}" alt="Pré-visualização" class="card-image-preview">`;
+                            cardAction = `onclick="openMediaViewer('${fileLink}', 'foto', '${file.name}')" href="javascript:void(0)"`;
+                        } else if (file.type === 'video') {
+                            // Ícone grande para vídeos
+                            cardContent = `<span class="card-icon">${icon}</span>`;
+                            cardAction = `onclick="openMediaViewer('${fileLink}', 'video', '${file.name}')" href="javascript:void(0)"`;
+                        } else {
+                            // Ícone grande para links e outros
+                            cardContent = `<span class="card-icon">${icon}</span>`;
+                            cardAction = `href="${fileLink}" target="_blank"`;
+                        }
+
+                        dashboardGridHTML += `
+                            <a class="dashboard-card" ${cardAction}>
+                                <div>
+                                    ${cardContent}
+                                    <div class="card-name">${file.name}</div>
+                                    <div class="card-type">Tipo: ${file.type.charAt(0).toUpperCase() + file.type.slice(1)}</div>
+                                </div>
+                                <div class="card-dev-info">${editorInfo}</div>
+                            </a>
+                        `;
+                    });
+                    dashboardGridHTML += `</div>`;
+                    homeListContainer.innerHTML += dashboardGridHTML;
                 }
-               
                 return;
             }
-           
-           
+
             // --- INÍCIO DA RENDERIZAÇÃO PADRÃO PARA OUTRAS PASTAS ---
-           
             if (visibleFiles.length === 0) {
                 userList.innerHTML += `<p>Nenhum arquivo ou link visível na pasta "${FOLDERS[currentFolder]}" que corresponda aos seus filtros de busca/tipo.</p>`;
                 return;
             }
-           
+
             // Renderiza arquivos (visualização de lista para outras pastas)
             visibleFiles.forEach(file => {
                 const originalIndex = files.indexOf(file); // Pega o índice original
                 const item = document.createElement('div');
                 item.className = 'file-item';
-               
                 const icon = getFileIcon(file.type); // Obtém o ícone
                 const editorInfo = file.lastEditor ? `(Editado por: ${file.lastEditor.toUpperCase()})` : '';
                 const likes = file.likes || 0;
-               
                 const fileLink = file.url; // URL do arquivo
 
                 let contentHTML = `
-                    <h4 style="color: var(--cor-principal); margin-bottom: 5px;">
-                        ${icon} ${file.name}
-                    </h4>
+                    <h4 style="color: var(--cor-principal); margin-bottom: 5px;"> ${icon} ${file.name} </h4>
                     <p style="margin-bottom: 10px; font-size: 0.9em; color: var(--cor-secundaria);">
-                        Tipo: ${file.type.charAt(0).toUpperCase() + file.type.slice(1)}
-                        | Criado por: ${file.developer.toUpperCase()} ${editorInfo}
+                        Tipo: ${file.type.charAt(0).toUpperCase() + file.type.slice(1)} | Criado por: ${file.developer.toUpperCase()} ${editorInfo}
                     </p>
                     <hr style="border-top: 1px dotted var(--cor-borda); margin-bottom: 15px;">
                 `;
-               
+
                 // Sugestão 3: Link de Acesso com Modal/Ação
                 if (file.type === 'link') {
                     contentHTML += `<a href="${file.url}" target="_blank">Acessar Link</a>`;
                 } else if (file.type === 'foto') {
-                    if (file.url.startsWith('data:image')) {
-                        // NOVO: Chama o Modal
-                        contentHTML += `<a href="javascript:void(0)" onclick="openMediaViewer('${fileLink}', 'foto', '${file.name}')">Visualizar Foto (Rápido)</a>`;
+                    if (file.url.startsWith('data:image')) { // NOVO: Chama o Modal
+                         contentHTML += `<a href="javascript:void(0)" onclick="openMediaViewer('${fileLink}', 'foto', '${file.name}')">Visualizar Foto (Rápido)</a>`;
                     } else {
-                        contentHTML += `<a href="${file.url}" target="_blank">Visualizar Foto (Link Externo)</a>`;
+                         contentHTML += `<a href="${file.url}" target="_blank">Visualizar Foto (Link Externo)</a>`;
                     }
                 } else if (file.type === 'video') {
-                    if (file.url.startsWith('data:video')) {
-                        // NOVO: Chama o Modal
-                        contentHTML += `<a href="javascript:void(0)" onclick="openMediaViewer('${fileLink}', 'video', '${file.name}')">Assistir Vídeo (Rápido)</a>`;
-                    } else {
-                        contentHTML += `<a href="${file.url}" target="_blank">Assistir Vídeo (Link Externo)</a>`;
-                    }
+                     contentHTML += `<a href="javascript:void(0)" onclick="openMediaViewer('${fileLink}', 'video', '${file.name}')">Assistir Vídeo (Rápido)</a>`;
                 }
-               
-                // Sugestão 8: Adiciona Botões de Ação (Share e Like)
+
+                // Sugestão 8: Ações de Curtir e Compartilhar
                 contentHTML += `
                     <div class="item-actions">
-                        <button class="share-button" onclick="copyItemUrl('${fileLink}')">
-                            🔗 Compartilhar
-                        </button>
-                        <button class="like-button" onclick="likeItem(${originalIndex})">
-                             👍 Curti (${likes})
-                        </button>
+                        <span class="dev-likes">❤️ ${likes}</span>
+                        <button class="like-button" onclick="likeItem(${originalIndex})">Curtir</button>
+                        <button class="share-button" onclick="copyItemUrl('${fileLink}')">Compartilhar 🔗</button>
                     </div>
                 `;
 
                 item.innerHTML = contentHTML;
                 userList.appendChild(item);
             });
-            // --- FIM DA RENDERIZAÇÃO PADRÃO ---
         }
-
-        // --- FUNÇÕES COMPLETO DA PÁGINA DE CONSCIENTIZAÇÃO (QUIZ/VÍDEOS/SEMÁFORO) ---
-       
+        
+        // --- Funções do Quiz ---
         function loadQuiz() {
-            const userList = document.getElementById('user-file-list');
-            userList.innerHTML = `
-                <h2>Conscientização e Patrimônio</h2>
-               
-                <div class="message">
-                    <h3>Regra de Ouro: O Semáforo do Sítio Arqueológico</h3>
-                    <p>Ao encontrar algo que possa ser um vestígio histórico ou arqueológico, siga estes passos para ser um Guardião da História:</p>
-                </div>
+            const container = document.getElementById('conscientizacao-view');
+            // Garante que o container do quiz/semaforo está visível e a lista de arquivos está escondida
+            document.getElementById('user-file-list').style.display = 'none';
+            container.style.display = 'block';
 
-                <div class="semaforo-container">
-                    <div class="semaforo-item semaforo-vermelho">
-                        🛑 NÃO TOQUE
-                        <p style="font-size: 0.9em; margin: 5px 0 0;">(Não remova nem mexa no local)</p>
-                    </div>
-                    <div class="semaforo-item semaforo-amarelo">
-                        ⚠️ FOTOGRAFE
-                        <p style="font-size: 0.9em; margin: 5px 0 0;">(Registre o objeto e o local exato)</p>
-                    </div>
-                    <div class="semaforo-item semaforo-verde">
-                        ✅ LIGUE
-                        <p style="font-size: 0.9em; margin: 5px 0 0;">(Avise o IPHAN, Museu ou órgão de patrimônio)</p>
-                    </div>
-                </div>
-               
-                <div style="text-align: center;">
-                    <button onclick="changeView('educational_videos')" style="background-color: var(--cor-destaque-usuario); margin-bottom: 20px;">
-                        Ver Vídeos Educativos ▶️
-                    </button>
-                </div>
-               
-                <hr>
-
-                <h3>Teste Seu Conhecimento: O Quiz do Guardião</h3>
-                <p>Responda às questões para testar o que você aprendeu sobre Arqueologia e a Regra de Ouro.</p>
-               
-                <div id="quiz-container" class="quiz-container">
-                    </div>
-               
-                <div id="quiz-navigation" style="text-align: center; margin-top: 15px;">
-                    <button onclick="prevQuestion()" id="prev-btn" disabled>← Anterior</button>
-                    <span id="question-counter" style="margin: 0 15px; font-weight: bold;"></span>
-                    <button onclick="nextQuestion()" id="next-btn">Próxima →</button>
-                </div>
-               
-                <div id="quiz-completion-area" style="text-align: center; margin-top: 20px; display: none;">
-                    <button onclick="checkQuizCompletion()" style="background-color: var(--cor-principal);">
-                        Finalizar e Ver Resultado
-                    </button>
-                    <button onclick="reviewAnswers()" id="review-btn" style="background-color: var(--cor-secundaria); margin-left: 10px; display:none;">
-                        Revisar Respostas
-                    </button>
-                    <button onclick="loadQuiz()" id="restart-btn" style="background-color: var(--cor-erro); margin-left: 10px; display:none;">
-                        Reiniciar Quiz
-                    </button>
-                </div>
-            `;
-           
             // Reseta o estado do quiz
             userAnswers.fill(null);
             score = 0;
             currentQuestionIndex = 0;
-           
+            
+            // Reseta a área de navegação e conclusão
+            document.getElementById('quiz-navigation').style.display = 'block';
+            document.getElementById('quiz-completion-area').style.display = 'none';
+            document.getElementById('review-btn').style.display = 'none';
+            document.getElementById('restart-btn').style.display = 'none';
+            document.getElementById('quiz-completion-area').querySelector('button:first-child').style.display = 'inline-block'; // Mostra Finalizar
+            
             displayQuestion();
         }
-       
+
         function displayQuestion() {
             const container = document.getElementById('quiz-container');
             const currentQ = QUIZ_QUESTIONS[currentQuestionIndex];
-           
+            
+            // Renderiza a pergunta
+            let optionsHTML = currentQ.options.map((option, index) => {
+                const isSelected = userAnswers[currentQuestionIndex] === index ? 'selected' : '';
+                return `<div class="quiz-option ${isSelected}" onclick="selectAnswer(${index})">${option}</div>`;
+            }).join('');
+
             container.innerHTML = `
                 <div class="quiz-question">
                     ${currentQ.question}
                 </div>
-                <div id="options-list">
-                    ${currentQ.options.map((option, index) => `
-                        <div class="quiz-option"
-                            data-index="${index}"
-                            onclick="handleAnswerClick(event)"
-                        >
-                            ${option}
-                        </div>
-                    `).join('')}
+                <div>
+                    ${optionsHTML}
                 </div>
             `;
-           
-            // Atualizar o estado visual se já houver uma resposta
-            if (userAnswers[currentQuestionIndex] !== null) {
-                document.querySelector(`.quiz-option[data-index="${userAnswers[currentQuestionIndex]}"]`).classList.add('selected');
-            }
-           
-            // Atualiza botões de navegação e contador
+            
+            // Atualiza navegação
             document.getElementById('question-counter').textContent = `Pergunta ${currentQuestionIndex + 1} de ${QUIZ_QUESTIONS.length}`;
             document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
-           
+            
+            // Oculta/Mostra botão de Próxima/Finalizar
+            const nextBtn = document.getElementById('next-btn');
+            const finishBtn = document.getElementById('quiz-completion-area').querySelector('button:first-child');
+            
             if (currentQuestionIndex === QUIZ_QUESTIONS.length - 1) {
-                document.getElementById('next-btn').style.display = 'none';
-                document.getElementById('quiz-completion-area').style.display = 'block';
+                nextBtn.style.display = 'none';
+                finishBtn.style.display = 'inline-block';
             } else {
-                document.getElementById('next-btn').style.display = 'inline-block';
-                document.getElementById('quiz-completion-area').style.display = 'none';
+                nextBtn.style.display = 'inline-block';
+                finishBtn.style.display = 'none';
             }
-           
-            document.getElementById('review-btn').style.display = 'none';
-            document.getElementById('restart-btn').style.display = 'none';
         }
-       
+        
+        function selectAnswer(index) {
+            // Se o quiz já foi finalizado e está em modo de revisão, não permitir mudança
+            if (document.getElementById('review-btn').style.display === 'inline-block') return; 
+            
+            userAnswers[currentQuestionIndex] = index;
+            displayQuestion(); // Re-renderiza para aplicar a classe 'selected'
+        }
+
         function nextQuestion() {
             if (currentQuestionIndex < QUIZ_QUESTIONS.length - 1) {
                 currentQuestionIndex++;
                 displayQuestion();
             }
         }
-       
+
         function prevQuestion() {
             if (currentQuestionIndex > 0) {
                 currentQuestionIndex--;
                 displayQuestion();
             }
         }
-       
-        function handleAnswerClick(event) {
-            const selectedOption = event.target;
-            const optionsList = selectedOption.parentNode;
-            const selectedIndex = parseInt(selectedOption.getAttribute('data-index'));
-
-            // Remove a seleção anterior
-            optionsList.querySelectorAll('.quiz-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-
-            // Adiciona a nova seleção
-            selectedOption.classList.add('selected');
-            userAnswers[currentQuestionIndex] = selectedIndex;
-        }
-
+        
         function checkQuizCompletion() {
             // Verifica se todas as perguntas foram respondidas
             const notAnswered = userAnswers.indexOf(null);
             if (notAnswered !== -1) {
-                alert(`Por favor, responda a todas as perguntas antes de finalizar. (Questão ${notAnswered + 1} pendente)`);
+                alert(`Por favor, responda a todas as perguntas. A pergunta ${notAnswered + 1} ainda não foi respondida.`);
                 currentQuestionIndex = notAnswered;
                 displayQuestion();
                 return;
             }
+            calculateScore();
+        }
 
+        function calculateScore() {
             let newScore = 0;
             QUIZ_QUESTIONS.forEach((q, index) => {
                 if (userAnswers[index] === q.answerIndex) {
@@ -1672,7 +1611,6 @@
                 }
             });
             score = newScore;
-
             showFinalResult();
         }
 
@@ -1680,18 +1618,18 @@
             const container = document.getElementById('quiz-container');
             const completionArea = document.getElementById('quiz-completion-area');
             const nav = document.getElementById('quiz-navigation');
-           
+
             container.innerHTML = `
                 <div class="quiz-result">
                     <h3>🏆 Resultado Final 🏆</h3>
                     <p>Sua pontuação: ${score} de ${QUIZ_QUESTIONS.length}</p>
-                    ${score === QUIZ_QUESTIONS.length
-                        ? '<p style="color: var(--cor-destaque-usuario); font-size: 1.2em;">Parabéns! Você é um verdadeiro Guardião da História!</p>'
-                        : '<p style="color: var(--cor-erro); font-size: 1.2em;">Você pode melhorar! Revise o material e tente novamente.</p>'
+                    ${score === QUIZ_QUESTIONS.length ? 
+                        '<p style="color: var(--cor-destaque-usuario); font-size: 1.2em;">Parabéns! Você é um verdadeiro Guardião da História!</p>' : 
+                        '<p style="color: var(--cor-erro); font-size: 1.2em;">Você pode melhorar! Revise o material e tente novamente.</p>'
                     }
                 </div>
             `;
-           
+            
             // Esconde navegação, mostra botões de ação final
             nav.style.display = 'none';
             completionArea.style.display = 'block';
@@ -1703,7 +1641,7 @@
         function reviewAnswers() {
             const container = document.getElementById('quiz-container');
             container.innerHTML = `<h3>Revisão do Quiz</h3>`;
-           
+            
             QUIZ_QUESTIONS.forEach((q, index) => {
                 const isCorrect = userAnswers[index] === q.answerIndex;
                 const reviewHTML = document.createElement('div');
@@ -1711,77 +1649,100 @@
                 reviewHTML.style.borderTop = '1px solid var(--cor-secundaria)';
                 reviewHTML.innerHTML = `
                     <p style="color: ${isCorrect ? 'var(--cor-destaque-usuario)' : 'var(--cor-erro)'};">
-                        ${isCorrect ? '✅' : '❌'} ${q.question}
+                        ${isCorrect ? '✅ Resposta Correta' : '❌ Resposta Incorreta'}
                     </p>
-                    <div style="font-size: 0.9em; margin-bottom: 10px;">
-                        <span style="font-weight: normal;">Sua resposta: </span>
-                        <span class="${isCorrect ? 'correct' : 'incorrect'}" style="padding: 5px; border-radius: 4px;">
-                            ${q.options[userAnswers[index]] || 'Não respondida'}
-                        </span>
-                    </div>
-                    ${!isCorrect ? `<div style="font-size: 0.9em; color: var(--cor-principal); margin-bottom: 10px;">
-                        <span style="font-weight: normal;">Resposta correta: </span>
-                        <span class="correct" style="padding: 5px; border-radius: 4px;">
-                            ${q.options[q.answerIndex]}
-                        </span>
-                    </div>` : ''}
-                    <div style="font-size: 0.85em; margin-top: 5px; font-style: italic; color: #666;">
-                         <strong>Explicação:</strong> ${q.explanation}
-                    </div>
+                    <p style="margin-bottom: 10px; font-size: 1.1em;">
+                        ${index + 1}. ${q.question.substring(q.question.indexOf('.') + 1).trim()}
+                    </p>
+                    <p><strong>Sua Resposta:</strong> ${q.options[userAnswers[index]] || 'Não respondida'}</p>
+                    <p style="color: var(--cor-destaque-usuario);"><strong>Resposta Correta:</strong> ${q.options[q.answerIndex]}</p>
+                    <p style="font-size: 0.9em; margin-top: 10px; color: var(--cor-secundaria);">
+                        *Explicação: ${q.explanation}
+                    </p>
                 `;
                 container.appendChild(reviewHTML);
             });
-           
-            document.getElementById('review-btn').style.display = 'none';
         }
-       
+        
+        // Funções para carregar Vídeos Educativos (Exemplo)
         function loadEducationalVideos() {
-            const videoListDiv = document.getElementById('videos-list-content');
-            videoListDiv.innerHTML = '<h4>Conteúdo de Vídeos:</h4>';
+            const videoList = document.getElementById('video-list');
+            const videos = files.filter(f => f.folder === 'conscientizacao' && f.type === 'video' && f.visible);
+            
+            if (videos.length === 0) {
+                 videoList.innerHTML = `<p>Nenhum vídeo educativo disponível no momento.</p>`;
+                 return;
+            }
+            
+            videoList.innerHTML = videos.map(file => {
+                 return `
+                    <div class="video-item">
+                       <a href="javascript:void(0)" onclick="openMediaViewer('${file.url}', 'video', '${file.name}')">🎬 ${file.name} - Clique para Assistir</a>
+                    </div>
+                 `;
+            }).join('');
+        }
 
-            const videoFiles = files.filter(file =>
-                file.visible && file.folder === 'conscientizacao' && file.type === 'video'
-            );
 
-            if (videoFiles.length === 0) {
-                videoListDiv.innerHTML += '<p>Nenhum vídeo educativo disponível no momento. Volte mais tarde!</p>';
+        // --- Funções do Chat/Feedback ---
+        function sendMessage() {
+            const input = document.getElementById('chat-message-input');
+            const content = input.value.trim();
+            if (!content) {
+                alert('A mensagem não pode estar vazia.');
                 return;
             }
-           
-            videoFiles.forEach((file, index) => {
-                 const originalIndex = files.indexOf(file);
-                 
-                 // Se for Data URL/interno, usa o Modal (Sugestão 3)
-                 if (file.url.startsWith('data:video')) {
-                     videoListDiv.innerHTML += `
-                         <div class="video-item">
-                             <a href="javascript:void(0)" onclick="openMediaViewer('${file.url}', 'video', '${file.name}')">
-                                 🎬 ${file.name} (Assistir Agora)
-                             </a>
-                         </div>
-                     `;
-                 } else {
-                     // Caso contrário, link externo
-                     videoListDiv.innerHTML += `
-                         <div class="video-item">
-                             <a href="${file.url}" target="_blank">
-                                 🎬 ${file.name} (Link Externo)
-                             </a>
-                         </div>
-                     `;
-                 }
+            messages.push({
+                sender: 'user',
+                content: content,
+                timestamp: new Date().toISOString(),
+                reply: false // Marca como não respondida
             });
+            saveMessages();
+            input.value = '';
+            renderChat();
+            alert('Mensagem/Feedback enviado com sucesso!');
         }
-       
-        // --- FUNÇÕES DE CHAT ---
+        
+        function sendReply() {
+            const replyInput = document.getElementById('chat-reply-input');
+            const replyContent = replyInput.value.trim();
+            if (!replyContent) {
+                alert('A resposta não pode estar vazia.');
+                return;
+            }
+
+            // 1. Encontra a última mensagem de usuário sem resposta
+            const userMessageIndex = messages.findLastIndex(msg => msg.sender === 'user' && !msg.reply);
+            
+            if (userMessageIndex === -1) {
+                alert('Nenhuma mensagem de usuário pendente de resposta.');
+                return;
+            }
+
+            // 2. Adiciona a resposta do desenvolvedor (nova mensagem)
+            messages.push({
+                sender: 'dev',
+                content: replyContent,
+                timestamp: new Date().toISOString(),
+                developer: currentUser
+            });
+
+            // 3. Marca a mensagem original do usuário como respondida
+            messages[userMessageIndex].reply = true;
+            saveMessages();
+            replyInput.value = '';
+            renderChat();
+            alert('Resposta enviada com sucesso.');
+        }
 
         function renderChat() {
             const chatDiv = document.getElementById('chat-messages');
             chatDiv.innerHTML = '';
-           
-            const isDev = currentUser in DEVELOPERS;
+            const isDev = !!DEVELOPERS[currentUser];
+            
+            // Filtra as mensagens se for Dev
             const filterValue = isDev ? document.getElementById('chat-filter-select').value : 'all';
-           
             const filteredMessages = messages.filter(msg => {
                 if (filterValue === 'unreplied') {
                     // Mensagens sem reply do dev (apenas do usuário)
@@ -1793,18 +1754,14 @@
             filteredMessages.forEach((msg, index) => {
                 const item = document.createElement('div');
                 item.className = 'message-item ' + (msg.sender === 'dev' ? 'dev-reply' : 'user-message');
-               
+                
                 const contentDiv = document.createElement('div');
                 contentDiv.style.flexGrow = '1';
-
-                const replyMeta = msg.reply ?
-                    `<span style="color: var(--cor-destaque-usuario); font-weight: bold;">(RESPONDIDA)</span>` :
-                    (msg.sender === 'user' ? `<span style="color: var(--cor-erro);"> (AGUARDANDO)</span>` : '');
-
+                
+                const replyMeta = msg.reply ? `<span style="color: var(--cor-destaque-usuario); font-weight: bold;">(RESPONDIDA)</span>` : (msg.sender === 'user' ? `<span style="color: var(--cor-erro);"> (AGUARDANDO)</span>` : '');
+                
                 contentDiv.innerHTML = `
-                    <p style="margin: 0;">
-                        ${msg.content}
-                    </p>
+                    <p style="margin: 0;"> ${msg.content} </p>
                     <span class="message-meta">
                         ${msg.sender.toUpperCase()} | ${new Date(msg.timestamp).toLocaleString()} ${replyMeta}
                     </span>
@@ -1818,18 +1775,18 @@
                     checkbox.setAttribute('data-message-index', index);
                     item.prepend(checkbox);
                 }
-               
+                
                 item.appendChild(contentDiv);
                 chatDiv.appendChild(item);
             });
-           
+            
             // Rola para o final
             chatDiv.scrollTop = chatDiv.scrollHeight;
         }
 
         function bulkDeleteMessages() {
             const selectedCheckboxes = document.querySelectorAll('.bulk-delete-chat-checkbox:checked');
-           
+            
             if (selectedCheckboxes.length === 0) {
                 alert('Nenhuma mensagem selecionada para exclusão em massa.');
                 return;
@@ -1841,11 +1798,18 @@
 
             const indicesToDelete = [];
             selectedCheckboxes.forEach(checkbox => {
-                indicesToDelete.push(parseInt(checkbox.getAttribute('data-message-index')));
+                // O índice aqui deve ser o índice original no array 'messages', não o índice filtrado
+                // Esta parte precisa ser revista para garantir que pega o índice original
+                // Como o renderChat filtra, é mais seguro pegar o índice da mensagem filtrada e encontrar a original
+                const filteredIndex = parseInt(checkbox.getAttribute('data-message-index'));
+                const messageInQuestion = messages[filteredIndex];
+                const originalIndex = messages.indexOf(messageInQuestion);
+                indicesToDelete.push(originalIndex);
             });
 
             indicesToDelete.sort((a, b) => b - a);
-
+            
+            // Excluir os itens do array 'messages'
             indicesToDelete.forEach(index => {
                 if (index >= 0 && index < messages.length) {
                     messages.splice(index, 1);
@@ -1853,86 +1817,20 @@
             });
 
             saveMessages();
+            alert(`Exclusão em massa de mensagens concluída. ${selectedCheckboxes.length} mensagem(ns) excluída(s).`);
             renderChat();
-            alert(`${indicesToDelete.length} mensagem(ns) excluída(s) com sucesso.`);
         }
-
+        
         function toggleChatCheckboxes() {
-            const checkboxes = document.querySelectorAll('.bulk-delete-chat-checkbox');
-            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
-           
-            checkboxes.forEach(cb => {
-                cb.checked = !allChecked;
-            });
-        }
-       
-        function sendMessage() {
-            const input = document.getElementById('chat-message-input');
-            const messageContent = input.value.trim();
-
-            if (messageContent === '') {
-                alert('A mensagem não pode estar vazia.');
-                return;
-            }
-
-            // Garante que só há uma mensagem do usuário pendente de resposta
-            const lastMessage = messages.findLast(msg => msg.sender === 'user');
-            if (lastMessage && !lastMessage.reply) {
-                 alert('Aguarde a resposta do Desenvolvedor para a sua última mensagem antes de enviar uma nova.');
-                 return;
-            }
-
-            messages.push({
-                sender: 'user',
-                content: messageContent,
-                timestamp: new Date().toISOString(),
-                reply: false // Indica que não foi respondida
-            });
-
-            saveMessages();
-            input.value = '';
-            renderChat();
-            alert('Mensagem enviada com sucesso! O Desenvolvedor responderá em breve.');
-        }
-
-        function sendReply() {
-            const replyInput = document.getElementById('chat-reply-input');
-            const replyContent = replyInput.value.trim();
-
-            if (replyContent === '') {
-                alert('A resposta não pode estar vazia.');
-                return;
-            }
-           
-            // 1. Encontra a última mensagem de usuário sem resposta
-            const userMessageIndex = messages.findLastIndex(msg => msg.sender === 'user' && !msg.reply);
-           
-            if (userMessageIndex === -1) {
-                 alert('Nenhuma mensagem de usuário pendente de resposta.');
-                 return;
-            }
-
-            // 2. Adiciona a resposta do desenvolvedor (nova mensagem)
-            messages.push({
-                sender: 'dev',
-                content: replyContent,
-                timestamp: new Date().toISOString(),
-                developer: currentUser
-            });
-
-            // 3. Marca a mensagem original do usuário como respondida
-            messages[userMessageIndex].reply = true;
-
-
-            saveMessages();
-            replyInput.value = '';
-            renderChat();
-            alert('Resposta enviada com sucesso.');
+             const checkboxes = document.querySelectorAll('.bulk-delete-chat-checkbox');
+             const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+             checkboxes.forEach(cb => {
+                 cb.checked = !allChecked;
+             });
         }
 
 
         // --- Funções de Login, Logout e Termos ---
-       
         // NOVO: Funções para Termos
         function acceptTerms() {
             localStorage.setItem('cybercraftTermsAccepted', 'true');
@@ -1942,11 +1840,10 @@
         }
 
         function declineTerms() {
-             document.getElementById('terms-modal').style.display = 'none';
-             logout(); // Volta para a tela de login
-             alert('Para acessar o conteúdo do Cybercraft é necessário aceitar os termos de uso e conscientização.');
+            document.getElementById('terms-modal').style.display = 'none';
+            logout(); // Volta para a tela de login
+            alert('Para acessar o conteúdo do Cybercraft é necessário aceitar os termos de uso e conscientização.');
         }
-
 
         function developerLogin() {
             const username = document.getElementById('username').value.toLowerCase().trim();
@@ -1955,159 +1852,143 @@
             if (DEVELOPERS[username] && DEVELOPERS[username] === password) {
                 currentUser = username;
                 document.getElementById('dev-name').textContent = currentUser.toUpperCase();
-               
+                
                 document.getElementById('login-section').style.display = 'none';
                 document.getElementById('user-view').style.display = 'none';
                 document.getElementById('dev-panel').style.display = 'block';
                 document.getElementById('main-logout-button').style.display = 'block';
-               
+
                 // Exibir painel de chat e input de resposta (Dev)
                 document.getElementById('chat-panel').style.display = 'block';
                 document.getElementById('user-chat-input').style.display = 'none';
                 document.getElementById('dev-chat-reply').style.display = 'block';
                 document.getElementById('dev-chat-controls').style.display = 'flex';
                 document.getElementById('chat-bulk-actions').style.display = 'flex';
+                
+                changeFolder('home');
                 renderChat();
-               
-                toggleInputType();
-                changeFolder('home'); // Padrão Dev
+
+                alert(`Bem-vindo, Desenvolvedor ${currentUser.toUpperCase()}!`);
             } else {
-                alert('Credenciais de Desenvolvedor Inválidas.');
+                alert('Usuário ou Senha incorretos.');
             }
         }
 
         function userLogin() {
-            currentUser = 'user';
-           
-            // Verifica se os termos foram aceitos
             const termsAccepted = localStorage.getItem('cybercraftTermsAccepted');
-           
-            if (termsAccepted !== 'true') {
-                 // Exibe o modal e para o fluxo
-                 document.getElementById('login-section').style.display = 'none';
-                 document.getElementById('main-logout-button').style.display = 'block';
+            
+            if (termsAccepted === 'true') {
+                 // Se os termos já foram aceitos, entra direto
+                 initializeUserView();
+            } else {
+                 // Senão, mostra o modal de termos
                  document.getElementById('terms-modal').style.display = 'block';
-                 return;
             }
-           
-            // Se já aceitou, prossegue
-            initializeUserView();
         }
-
+        
         function initializeUserView() {
+            currentUser = 'user';
+            
             document.getElementById('login-section').style.display = 'none';
             document.getElementById('dev-panel').style.display = 'none';
             document.getElementById('user-view').style.display = 'block';
             document.getElementById('main-logout-button').style.display = 'block';
-           
-            // Exibir painel de chat e input de usuário
+
+            // Ocultar controles de Dev, mostrar input de mensagem (Usuário)
             document.getElementById('chat-panel').style.display = 'block';
-            document.getElementById('user-chat-input').style.display = 'block';
+            document.getElementById('user-chat-input').style.display = 'flex';
             document.getElementById('dev-chat-reply').style.display = 'none';
             document.getElementById('dev-chat-controls').style.display = 'none';
             document.getElementById('chat-bulk-actions').style.display = 'none';
+            
+            // Inicializa a view na pasta 'home'
+            changeFolder('home');
+            setFileTypeFilter('all'); // Reseta o filtro para o padrão
             renderChat();
-
-            // Reseta o filtro de tipo para "Tudo" ao logar
-            setFileTypeFilter('all');
-            changeFolder('home'); // Padrão Usuário é 'home'
+            alert('Acesso como Usuário Comum liberado.');
         }
 
         function logout() {
             currentUser = null;
+            
             document.getElementById('login-section').style.display = 'block';
             document.getElementById('dev-panel').style.display = 'none';
             document.getElementById('user-view').style.display = 'none';
             document.getElementById('main-logout-button').style.display = 'none';
-           
-            // Esconder painel de chat e controles
             document.getElementById('chat-panel').style.display = 'none';
             document.getElementById('user-controls').style.display = 'none';
-            document.getElementById('dev-chat-controls').style.display = 'none';
-            document.getElementById('chat-bulk-actions').style.display = 'none';
             document.getElementById('file-type-filters').style.display = 'none';
             document.getElementById('terms-modal').style.display = 'none'; // Garante que o modal de termos seja escondido
 
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
             document.getElementById('search-input').value = ''; // Limpa busca
-
             currentFolder = 'home'; // Reset para o novo padrão
             fileDataUrl = null;
         }
-       
-        // --- Outras Ações do Desenvolvedor ---
 
+
+        // --- Outras Funções do Desenvolvedor ---
         function addItem() {
             const name = document.getElementById('item-name').value.trim();
             const folder = document.getElementById('item-folder').value;
             const type = document.getElementById('file-type').value;
             const visible = document.getElementById('item-visible').checked;
-           
             let url = '';
-           
+
             if (type === 'link') {
                 url = document.getElementById('item-url').value.trim();
-                if (!url) { alert('URL do Link é obrigatória.'); return; }
+                if (!url) {
+                    alert('Por favor, preencha o URL do Link.');
+                    return;
+                }
             } else {
-                if (!fileDataUrl) { alert(`É necessário carregar o arquivo (${type}).`); return; }
-                url = fileDataUrl; // Usa o Data URL
+                url = fileDataUrl;
+                if (!url) {
+                    alert(`Por favor, selecione um arquivo de ${type}.`);
+                    return;
+                }
             }
 
-            if (name === '') {
-                alert('Nome do Item é obrigatório.');
+            if (!name) {
+                alert('Por favor, preencha o Nome do Item.');
                 return;
             }
 
+            // Adicionar novo item
             files.push({
                 name: name,
                 folder: folder,
                 type: type,
                 url: url,
+                visible: visible,
                 developer: currentUser,
                 timestamp: new Date().toISOString(),
-                visible: visible,
-                likes: 0 // Novo campo de curtidas
+                likes: 0,
+                lastEditor: currentUser // Quem criou é o primeiro editor
             });
 
             saveFiles();
-            alert(`Item '${name}' adicionado com sucesso!`);
-           
+            
             // Limpa o formulário
             document.getElementById('item-name').value = '';
-            if (type === 'link') {
-                document.getElementById('item-url').value = '';
-            }
-            toggleInputType(); // Reseta para Link
-           
-            changeFolder(folder); // Re-renderiza a lista do Dev
-        }
-       
-        function toggleVisibility(index) {
-            files[index].visible = !files[index].visible;
-            files[index].lastEditor = currentUser; // Marca o desenvolvedor que alterou
-            saveFiles();
+            document.getElementById('item-url').value = '';
+            document.getElementById('item-visible').checked = true;
+            fileDataUrl = null;
+            document.getElementById('file-preview-name').textContent = '';
+            
+            alert(`Item '${name}' adicionado com sucesso na pasta ${FOLDERS[folder]}!`);
             renderDevPanel();
-            alert(`Visibilidade alterada para: ${files[index].visible ? 'Visível' : 'Oculto'}`);
         }
-
-        function deleteItem(index) {
-            if (confirm(`Tem certeza que deseja excluir o item: ${files[index].name}?`)) {
-                files.splice(index, 1);
-                saveFiles();
-                renderDevPanel();
-            }
-        }
-
 
         // Inicializa o Quiz e os seletores de pasta ao carregar a página
         document.addEventListener('DOMContentLoaded', () => {
             updateFolderSelector('dev');
             updateFolderSelector('user');
-           
+            
             const userView = document.getElementById('user-view');
             const devPanel = document.getElementById('dev-panel');
-           
+            
             // Se já logado, configura a visualização
             if (devPanel.style.display === 'block') {
                  document.getElementById('main-logout-button').style.display = 'block';
